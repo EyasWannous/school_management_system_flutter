@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:teacher_app/constant/my_colors.dart';
 
 class LightDarkTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.red),
-    fontFamily: 'Roboto',
-    textTheme: const TextTheme(
+    useMaterial3: true,
+    primaryColor: MyColors.royalBlue,
+    scaffoldBackgroundColor: MyColors.milkyWhite,
+    fontFamily: 'Amiri',
+    appBarTheme: AppBarTheme(
+      color: MyColors.royalBlue,
+      titleTextStyle: headline1,
+    ),
+    textTheme: TextTheme(
       headline1: headline1,
       bodyText1: bodyText1,
     ),
-    useMaterial3: true,
-    // Add more attributes as needed
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(MyColors.soLightBlue),
+        backgroundColor: MaterialStateProperty.all<Color>(MyColors.royalBlue),
+        overlayColor: MaterialStateProperty.all<Color>(
+            MyColors.milkyWhite.withOpacity(0.3)),
+        padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(
+            vertical: 12.0,
+            horizontal: 24.0,
+          ),
+        ),
+        textStyle: MaterialStateProperty.all<TextStyle>(
+          const TextStyle(fontSize: 20),
+        ),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -19,23 +45,135 @@ class LightDarkTheme {
     primaryColor: Colors.deepPurple,
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(secondary: Colors.orange, brightness: Brightness.dark),
-    fontFamily: 'Roboto',
-    textTheme: const TextTheme(
+    fontFamily: 'Montserrat',
+    textTheme: TextTheme(
       headline1: headline1,
       bodyText1: bodyText1,
     ),
-    useMaterial3: true,
+    useMaterial3: false,
     // Add more attributes as needed
   );
 
-  static const TextStyle headline1 = TextStyle(
-    fontSize: 24,
+  static TextStyle headline1 = TextStyle(
+    fontSize: 28,
     fontWeight: FontWeight.bold,
-    color: Colors.black,
+    color: Colors.black.withOpacity(0.8),
   );
 
   static const TextStyle bodyText1 = TextStyle(
     fontSize: 16,
     color: Colors.black87,
   );
+}
+
+class LDT {
+  static final ThemeData light = ThemeData(
+    brightness: Brightness.light,
+    fontFamily: 'Roboto',
+
+// Colors like primaryColor and colorScheme
+    primaryColor: Colors.blue,
+    colorScheme: ColorScheme.light(
+      primary: MyColors.royalBlue,
+      secondary: Colors.red,
+    ),
+// End of colors
+
+    appBarTheme: AppBarTheme(
+      color: const Color(0x00fbe4d8),
+      toolbarTextStyle: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 18.0,
+        ),
+      ).bodyText2,
+      titleTextStyle: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 18.0,
+        ),
+      ).headline6,
+    ),
+
+    textTheme: const TextTheme(
+      headline1: headline1,
+      headline6: headline6,
+      bodyText2: bodyText2,
+    ),
+
+// Buttons themes
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Colors.blue,
+      textTheme: ButtonTextTheme.primary,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Colors.green,
+    ),
+  );
+// End of buttons themes
+
+// Dark theme
+  static final ThemeData dark = ThemeData(
+    brightness: Brightness.dark,
+    fontFamily: 'Roboto',
+
+// Colors like primaryColor and colorScheme
+    primaryColorDark: Colors.black,
+    colorScheme: ColorScheme.dark(
+      surface: Colors.grey.shade900,
+    ),
+// End of colors
+
+    appBarTheme: AppBarTheme(
+      color: Colors.blue,
+      toolbarTextStyle: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 18.0,
+        ),
+      ).bodyText2,
+      titleTextStyle: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 18.0,
+        ),
+      ).headline6,
+    ),
+
+    textTheme: const TextTheme(
+      headline1: headline1,
+    ),
+
+// Buttons themes
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Colors.black,
+      textTheme: ButtonTextTheme.primary,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Colors.green,
+    ),
+// End of buttons themes
+  );
+// End of dark theme
+
+// Static TextStyles
+  static const TextStyle headline1 = TextStyle(
+    fontSize: 72.0,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle headline6 = TextStyle(
+    fontSize: 36.0,
+    fontStyle: FontStyle.italic,
+  );
+  static const TextStyle bodyText2 = TextStyle(
+    fontSize: 14.0,
+    fontFamily: 'Hind',
+  );
+// End Of Static TextStyle
 }
