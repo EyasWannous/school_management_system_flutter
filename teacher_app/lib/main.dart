@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         // darkTheme: LightDarkTheme.darkTheme,
         // initialRoute: '/homepage',
         // getPages: MyRoutes.pages,
-        home: const Homework(),
+        home: const Post(),
       ),
     );
   }

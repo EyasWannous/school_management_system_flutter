@@ -103,6 +103,8 @@ class Calendar extends StatelessWidget {
 
               headerStyle: HeaderStyle(
                 titleCentered: false,
+                titleTextFormatter: (date, locale) =>
+                    DateFormat.yMMMd(locale).format(date),
 
                 formatButtonVisible: true,
                 formatButtonShowsNext: false,

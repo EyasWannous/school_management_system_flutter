@@ -241,7 +241,7 @@ class RestAPIPost {
 
       for (var image in images) {
         http.MultipartFile file =
-            await http.MultipartFile.fromPath('files', image.path);
+            await http.MultipartFile.fromPath('files[]', image.path);
         request.files.add(file);
       }
 
@@ -250,7 +250,7 @@ class RestAPIPost {
       http.StreamedResponse response = await request.send();
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print(await response.stream.bytesToString());
+        print(await response.stream.bytesToString());
 
         return;
       }
