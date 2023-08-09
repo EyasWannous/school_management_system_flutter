@@ -133,9 +133,11 @@ class Post extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Stack(
                       children: [
-                        Image.file(
-                          File(controller.images![index].path),
-                          fit: BoxFit.cover,
+                        Center(
+                          child: Image.file(
+                            File(controller.images![index].path),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         Align(
                           alignment: Alignment.centerRight,
