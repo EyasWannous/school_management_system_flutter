@@ -1,13 +1,16 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+
 import 'package:teacher_app/model/event_model.dart';
 import 'package:teacher_app/model/grade_model.dart';
+import 'package:teacher_app/model/profile_model.dart';
 import 'package:teacher_app/model/schedule_model.dart';
 import 'package:teacher_app/model/students_model.dart';
 
 import '../constant/days.dart';
-import '../constant/myurl.dart';
+import '../constant/my_url.dart';
 import '../model/courses_model.dart';
 import '../model/sections_model.dart';
 
@@ -28,15 +31,16 @@ class RestAPIGet {
 
         res.forEach((key, value) {
           try {
-            DateTime dateTime = DateTime.parse(key);
-            dateTime =
-                DateTime.utc(dateTime.year, dateTime.month, dateTime.day);
+            DateTime dateTimeAfterParsing = DateTime.parse(key);
+            DateTime dateTime = DateTime.utc(dateTimeAfterParsing.year,
+                dateTimeAfterParsing.month, dateTimeAfterParsing.day);
             print(dateTime);
             List<Event> events = (value as List)
                 .map(
                   (e) => Event(
                     title: e['title'],
                     isHoliday: e['type'] == 'holiday',
+                    time: DateFormat.Hm().format(dateTimeAfterParsing),
                     content: e['content'],
                   ),
                 )
@@ -317,5 +321,30 @@ class RestAPIGet {
       // throw Exception((e) => print(e));
     }
     return [];
+  }
+
+  static Future<Profile> getprofile() async {
+    Profile tpf = Profile();
+    try {
+      http.Response response =
+          await http.get(Uri.parse('${MyURL.url}teachers/profile'), headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${MyURL.token}'
+      });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var res = TeacherProfileModel.fromJson(jsonDecode(response.body));
+        tpf = res.profile!;
+        return tpf;
+      } else if (response.statusCode == 400) {
+        print('getprofile Funtion in statusCode :');
+        print(response);
+      }
+    } catch (error) {
+      print('getprofile Funtion in cathc :');
+      print(error);
+      // throw Exception((e) => print(e));
+    }
+    return tpf;
   }
 }

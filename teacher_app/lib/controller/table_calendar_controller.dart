@@ -18,21 +18,29 @@ class TableCalendarController extends GetxController {
   List<DateTime> holidays = [];
   Map<DateTime, List<Event>> selectedEvents = {};
 
+  bool isLoading = false;
+
   @override
-  onInit() {
-    fetchCalendarData();
+  onInit() async {
+    await fetchCalendarData();
     super.onInit();
   }
 
   fetchCalendarData() async {
+    isLoading = true;
+    update();
+
     Map<DateTime, List<Event>> temporary = await RestAPIGet.getevents();
     print(temporary);
 
     temporary.forEach(
       (key, value) {
         if (value.isEmpty) {
+          update();
           return;
         } else if (value[0].isHoliday) {
+          selectedEvents[key] ??= [];
+          selectedEvents[key]!.addAll(value);
           holidays.add(key);
         } else {
           selectedEvents[key] ??= [];
@@ -40,6 +48,8 @@ class TableCalendarController extends GetxController {
         }
       },
     );
+    isLoading = false;
+    update();
   }
 
   /// Functions for [TableCalendar]
