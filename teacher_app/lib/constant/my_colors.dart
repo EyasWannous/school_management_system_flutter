@@ -7,6 +7,18 @@ class MyColors {
   static const Color littleBlue = Color.fromRGBO(141, 168, 209, 1);
   static const Color warning = Color(0xFFFBCBCB);
 
+  static const Color testColor = Color(0xFFD9F8C9);
+  // static const Color testColor = Color(0xFFF2CDFE);
+
+  // selected color in calendar
+  static const Color claendarSelectedColor = Color(0xFF5C6BC0);
+  static const Color claendarWeekendColor = Color(0xFFDDFBD0);
+  static const Color claendartestColor = Color(0xFF4762B3);
+  static const Color claendarEventsColor = Color(0xFF79D4B3);
+
+  // Text
+  static const Color textColor = Color(0xFF050F2E);
+
   // Light
   static const Color color1 = Color(0xFFBBC9F2);
   static const Color color2 = Color(0xFFCEF3F3);
@@ -39,5 +51,17 @@ class MyColors {
   static List<Color> popupColors = [
     MyColors.royalBlue.withOpacity(0.6),
     MyColors.royalBlue.withOpacity(0.2)
+  ];
+
+  static List<Color> randomColorsInSchedule = [
+    MyColors.color1,
+    MyColors.color2,
+    MyColors.color4,
+    MyColors.color5,
+    MyColors.color6,
+    MyColors.color7,
+    MyColors.color8,
+    MyColors.color9,
+    MyColors.color10,
   ];
 }

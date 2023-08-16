@@ -1,11 +1,13 @@
 class StudentsModel {
   String? message;
+  bool? checked;
   List<Student>? data;
 
   StudentsModel({this.message, this.data});
 
   StudentsModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
+    checked = json['checked'];
     if (json['data'] != null) {
       data = <Student>[];
       json['data'].forEach((v) {
@@ -17,6 +19,7 @@ class StudentsModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['message'] = message;
+    data['checked'] = checked;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -38,6 +41,7 @@ class Student {
   String? gender;
   String? type;
   int? absence;
+  bool? todayAttendance;
 
   Student({
     this.id,
@@ -53,6 +57,7 @@ class Student {
     this.gender,
     this.type,
     this.absence,
+    this.todayAttendance,
   });
 
   Student.fromJson(Map<String, dynamic> json) {
@@ -69,6 +74,7 @@ class Student {
     gender = json['gender'];
     type = json['type'];
     absence = json['absence'];
+    todayAttendance = json['today_attendance'];
   }
 
   Map<String, dynamic> toJson() {
@@ -86,6 +92,7 @@ class Student {
     data['gender'] = gender;
     data['type'] = type;
     data['absence'] = absence;
+    data['today_attendance'] = todayAttendance;
     return data;
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:teacher_app/constant/my_colors.dart';
+
 class PartOfSchedule extends StatelessWidget {
   final String startTime;
   final String endTime;
@@ -17,20 +19,30 @@ class PartOfSchedule extends StatelessWidget {
     required this.sectionNumber,
   });
 
-  Color _generateRandomColor() {
+  // Color _generateRandomColor() {
+  //   final random = Random();
+  //   return Color.fromRGBO(
+  //     random.nextInt(256),
+  //     random.nextInt(256),
+  //     random.nextInt(256),
+  //     1,
+  //   );
+  // }
+
+  List<Color> _randomlyChooseColor() {
     final random = Random();
-    return Color.fromRGBO(
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-      1,
-    );
+    int randomIndex = random.nextInt(MyColors.randomColorsInSchedule.length);
+    Color choosenColor = MyColors.randomColorsInSchedule[randomIndex];
+    return [
+      choosenColor,
+      choosenColor.withOpacity(0.3),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
     // Generate random colors for the LinearGradient
-    final Color color1 = _generateRandomColor();
+    // final Color color1 = _generateRandomColor();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -47,13 +59,10 @@ class PartOfSchedule extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              width: 200,
-              height: 80,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    color1,
-                    color1.withOpacity(0.3),
+                    ..._randomlyChooseColor(),
                   ],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft,

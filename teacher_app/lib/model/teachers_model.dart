@@ -1,27 +1,30 @@
-class TeacherProfileModel {
-  bool? status;
-  TeacherProfile? profile;
+class TeachersModel {
+  String? message;
+  List<Teacher>? data;
 
-  TeacherProfileModel({this.status, this.profile});
+  TeachersModel({this.message, this.data});
 
-  TeacherProfileModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    profile = json['profile'] != null
-        ? TeacherProfile.fromJson(json['profile'])
-        : null;
+  TeachersModel.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
+    if (json['data'] != null) {
+      data = <Teacher>[];
+      json['data'].forEach((v) {
+        data!.add(Teacher.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['status'] = status;
-    if (profile != null) {
-      data['profile'] = profile!.toJson();
+    data['message'] = message;
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class TeacherProfile {
+class Teacher {
   int? id;
   int? courseId;
   String? username;
@@ -34,8 +37,10 @@ class TeacherProfile {
   String? dateOfBirth;
   int? isPrinciple;
   String? gender;
+  String? createdAt;
+  String? updatedAt;
 
-  TeacherProfile({
+  Teacher({
     this.id,
     this.courseId,
     this.username,
@@ -48,9 +53,11 @@ class TeacherProfile {
     this.dateOfBirth,
     this.isPrinciple,
     this.gender,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  TeacherProfile.fromJson(Map<String, dynamic> json) {
+  Teacher.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     courseId = json['course_id'];
     username = json['username'];
@@ -63,6 +70,8 @@ class TeacherProfile {
     dateOfBirth = json['date_of_birth'];
     isPrinciple = json['is_principle'];
     gender = json['gender'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
@@ -79,6 +88,8 @@ class TeacherProfile {
     data['date_of_birth'] = dateOfBirth;
     data['is_principle'] = isPrinciple;
     data['gender'] = gender;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

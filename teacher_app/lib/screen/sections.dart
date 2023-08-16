@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher_app/constant/my_colors.dart';
 import 'package:teacher_app/controller/sections_controller.dart';
+import '../components/my_drawer.dart';
 import '../components/part_of_grid.dart';
 
 class Sections extends StatelessWidget {
@@ -12,7 +14,22 @@ class Sections extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Sections'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: MyColors.milkyWhite, // Change Custom Drawer Icon Color
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
       ),
+      drawer: const MyDrawer(),
       body: GetBuilder<SectionsController>(
         init: SectionsController(),
         builder: (controller) => controller.isLoading
@@ -23,8 +40,8 @@ class Sections extends StatelessWidget {
                 children: [
                   Container(
                     decoration: const BoxDecoration(
-                      color: Colors.deepPurpleAccent,
-                      backgroundBlendMode: BlendMode.colorDodge,
+                      color: MyColors.milkyWhite,
+                      // backgroundBlendMode: BlendMode.colorDodge,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -39,11 +56,7 @@ class Sections extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.headline6,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),
@@ -65,7 +78,7 @@ class Sections extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      // color: Colors.white,
+                      color: MyColors.milkyWhite,
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 30),
                       child: GridView.builder(
@@ -78,11 +91,11 @@ class Sections extends StatelessWidget {
                         ),
                         itemCount: controller.numberOfClassesInGrade.length,
                         itemBuilder: (BuildContext context, int index) {
+                          var item = controller.numberOfClassesInGrade[index];
                           return PartOfGrid(
-                            sectionId:
-                                controller.numberOfClassesInGrade[index].id!,
-                            sectionNumber: controller
-                                .numberOfClassesInGrade[index].number!,
+                            gradeId: item.gradeId!,
+                            sectionId: item.id!,
+                            sectionNumber: item.number!,
                             sectionIcon: const Icon(Icons.add),
                           );
                         },

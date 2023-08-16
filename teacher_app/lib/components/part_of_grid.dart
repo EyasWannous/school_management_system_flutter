@@ -1,18 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher_app/constant/my_colors.dart';
 
 import 'package:teacher_app/controller/part_of_grid_controller.dart';
+import 'package:teacher_app/screen/assignments.dart';
+import 'package:teacher_app/screen/marks.dart';
+import 'package:teacher_app/screen/show_posts.dart';
+import 'package:teacher_app/screen/students.dart';
 
 import '../common/my_text_button.dart';
 
 class PartOfGrid extends StatelessWidget {
+  final int gradeId;
   final int sectionId;
   final int sectionNumber;
   final Icon sectionIcon;
 
   const PartOfGrid({
     Key? key,
+    required this.gradeId,
     required this.sectionId,
     required this.sectionNumber,
     required this.sectionIcon,
@@ -21,13 +28,11 @@ class PartOfGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
-      // overlayColor: MaterialStateProperty.all<Color>(Colors.black),
-      // hoverColor: Colors.blue,
-      splashColor: Colors.red,
+      borderRadius: BorderRadius.circular(10),
+      splashColor: MyColors.color6,
       child: Ink(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
           // gradient: const LinearGradient(
           //   colors: [
           //     Colors.blueGrey,
@@ -38,23 +43,31 @@ class PartOfGrid extends StatelessWidget {
           // ),
         ),
         child: Card(
+          // shape: Border.all(color: MyColors.testColor, width: 3),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    border: Border.all(
+                        color: MyColors.claendarEventsColor, width: 3),
+                    // top: BorderSide(color: MyColors.testColor, width: 3),
+                    // left: BorderSide(color: MyColors.testColor, width: 3),
+                    // right: BorderSide(color: MyColors.testColor, width: 3),
+                    //   bottom: BorderSide.none,
+                    // ),
+                    gradient: const LinearGradient(
                       colors: [
-                        Colors.teal,
-                        Colors.teal.withOpacity(0.3),
+                        MyColors.milkyWhite,
+                        MyColors.milkyWhite,
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
                   ),
 
@@ -69,18 +82,19 @@ class PartOfGrid extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.blue,
-                      Colors.blue.withOpacity(0.3),
+                      MyColors.claendarEventsColor,
+                      MyColors.claendarEventsColor,
+                      // MyColors.color11.withOpacity(0.3),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
                   ),
                 ),
                 child: Center(
@@ -120,32 +134,55 @@ class PartOfGrid extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: MyTextButton(
-                      childWidget: const Text('Students'),
-                      onP: () => {},
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        child: const Text('Students'),
+                        onPressed: () => {
+                          Get.to(const Students(), arguments: [sectionId]),
+                        },
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: MyTextButton(
-                      childWidget: const Text('Marks'),
-                      onP: () => {},
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        child: const Text('Marks'),
+                        onPressed: () => {
+                          Get.to(
+                            const Marks(),
+                            arguments: [gradeId, sectionId],
+                          ),
+                        },
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: MyTextButton(
-                      childWidget: const Text('HomeWork'),
-                      onP: () => {},
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        child: const Text('Assignments'),
+                        onPressed: () => {
+                          Get.to(const Assignments(), arguments: [sectionId]),
+                        },
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: MyTextButton(
-                      childWidget: const Text('Posts'),
-                      onP: () => {},
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        child: const Text('Posts'),
+                        onPressed: () => {
+                          Get.to(const ShowPosts(), arguments: [sectionId]),
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -166,49 +203,3 @@ class PartOfGrid extends StatelessWidget {
     );
   }
 }
-
-// content: AnimatedContainer(
-//       duration: Duration(seconds: 1),
-//       width: 200,
-//       height: 200,
-//       color: Colors.blue,
-//     ),
-
-
-
-// Get.dialog(
-// AlertDialog(
-//   title: const Text("Title"),
-//   content: const Text("Content"),
-//   actions: [
-//     TextButton(
-//       onPressed: () => Get.back(),
-//       child: const Text("Close"),
-//     ),
-//   ],
-// ),
-// );
-
-
-
-// Get.dialog(
-//       GetBuilder<PartOfGridController>(
-//         init: PartOfGridController(),
-//         builder: (controller) {
-//           return AnimatedOpacity(
-//             opacity: controller.isDialogOpen ? 1.0 : 0.0,
-//             duration: const Duration(milliseconds: 300),
-//             child: AlertDialog(
-//               title: const Text("Title"),
-//               content: const Text("Content"),
-//               actions: [
-//                 TextButton(
-//                   onPressed: () => Get.back(),
-//                   child: const Text("Close"),
-//                 ),
-//               ],
-//             ),
-//           );
-//         },
-//       ),
-//     );

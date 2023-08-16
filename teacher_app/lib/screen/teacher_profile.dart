@@ -5,7 +5,7 @@ import 'package:teacher_app/animation/fadeanimation.dart';
 import 'package:teacher_app/components/part_of_profile.dart';
 
 import '../constant/my_colors.dart';
-import '../controller/profile_controller.dart';
+import '../controller/teacher_profile_controller.dart';
 
 class TeacherProfile extends StatelessWidget {
   const TeacherProfile({Key? key}) : super(key: key);
@@ -29,8 +29,8 @@ class TeacherProfile extends StatelessWidget {
           )
         ],
       ),
-      body: GetBuilder<ProfileController>(
-        init: ProfileController(),
+      body: GetBuilder<TeacherProfileController>(
+        init: TeacherProfileController(),
         builder: (profileController) => profileController.isLoading
             ? const Center(
                 child: CircularProgressIndicator(),

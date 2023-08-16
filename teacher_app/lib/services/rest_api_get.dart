@@ -1,20 +1,27 @@
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:teacher_app/model/assignments_model.dart';
 
 import 'package:teacher_app/model/event_model.dart';
 import 'package:teacher_app/model/grade_model.dart';
-import 'package:teacher_app/model/profile_model.dart';
+import 'package:teacher_app/model/posts_by_section_model.dart';
+import 'package:teacher_app/model/teacher_profile_model.dart';
 import 'package:teacher_app/model/schedule_model.dart';
 import 'package:teacher_app/model/students_model.dart';
+import 'package:teacher_app/model/teachers_model.dart';
 
 import '../constant/days.dart';
 import '../constant/my_url.dart';
 import '../model/courses_model.dart';
+import '../model/posts_model.dart';
 import '../model/sections_model.dart';
+import '../model/student_profile_model.dart';
 
 class RestAPIGet {
+  // GetStorage().read('token');
   static Future<Map<DateTime, List<Event>>> getevents() async {
     try {
       http.Response response =
@@ -67,7 +74,6 @@ class RestAPIGet {
 
   static Future<List<ScheduleModel>> getschedule(String day) async {
     List<ScheduleModel> lsm = [];
-    ScheduleModel sm;
     try {
       http.Response response = await http
           .get(Uri.parse('${MyURL.url}teachers/schedule?day=$day'), headers: {
@@ -76,26 +82,10 @@ class RestAPIGet {
         'Authorization': 'Bearer ${MyURL.token}'
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
-        // var res = ;
         lsm.addAll(ListScheduleModel.fromJson(jsonDecode(response.body))
             .scheduleModel!);
-        // print(res1);
-        // for (var item in res.scheduleModel!) {
-        //   sm = ScheduleModel(
-        //     order: item.order,
-        //     courseName: item.courseName,
-        //     day: item.day,
-        //     startAt: item.startAt,
-        //     endAt: item.endAt,
-        //     grade: item.grade,
-        //     section: item.section,
-        //   );
-        //   lsm.add(sm);
-        // }
         lsm.removeWhere((element) => element.order == null);
         lsm.sort((a, b) => a.order!.compareTo(b.order!));
-
         return lsm;
       } else if (response.statusCode == 400) {
         print('getschedule Funtion:');
@@ -138,9 +128,8 @@ class RestAPIGet {
     return [];
   }
 
-  static Future<List<Student>> getstudents(String sectionId) async {
-    List<Student> ls = [];
-    Student s;
+  static Future<StudentsModel> getstudents(String sectionId) async {
+    StudentsModel sm = StudentsModel();
     try {
       http.Response response = await http.get(
           Uri.parse('${MyURL.url}teachers/sections/$sectionId/students'),
@@ -150,29 +139,8 @@ class RestAPIGet {
             'Authorization': 'Bearer ${MyURL.token}'
           });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
-        // var res = StudentsModel.fromJson(jsonDecode(response.body));
-        ls.addAll(StudentsModel.fromJson(jsonDecode(response.body)).data!);
-        // print(jsonDecode(response.body));
-        // for (var item in res.data!) {
-        //   s = Student(
-        //     id: item.id,
-        //     address: item.address,
-        //     bio: item.bio,
-        //     dateOfBirth: item.dateOfBirth,
-        //     firstName: item.firstName,
-        //     gender: item.gender,
-        //     imageUrl: item.imageUrl,
-        //     lastName: item.lastName,
-        //     middleName: item.middleName,
-        //     phoneNumber: item.phoneNumber,
-        //     type: item.type,
-        //     username: item.username,
-        //     absence: item.absence,
-        //   );
-        //   ls.add(s);
-        // }
-        return ls;
+        sm = StudentsModel.fromJson(jsonDecode(response.body));
+        return sm;
       } else if (response.statusCode == 400) {
         print('getstudents Funtion in statusCode:');
         print(response);
@@ -181,7 +149,7 @@ class RestAPIGet {
       print('getstudents Funtion in catch:');
       print(error);
     }
-    return [];
+    return sm;
   }
 
   static Future<List<Section>> getsections(String gradeId) async {
@@ -323,8 +291,8 @@ class RestAPIGet {
     return [];
   }
 
-  static Future<Profile> getprofile() async {
-    Profile tpf = Profile();
+  static Future<TeacherProfile> getteacherprofile() async {
+    TeacherProfile tpf = TeacherProfile();
     try {
       http.Response response =
           await http.get(Uri.parse('${MyURL.url}teachers/profile'), headers: {
@@ -337,14 +305,113 @@ class RestAPIGet {
         tpf = res.profile!;
         return tpf;
       } else if (response.statusCode == 400) {
-        print('getprofile Funtion in statusCode :');
+        print('getteacherprofile Funtion in statusCode :');
         print(response);
       }
     } catch (error) {
-      print('getprofile Funtion in cathc :');
+      print('getteacherprofile Funtion in cathc :');
       print(error);
       // throw Exception((e) => print(e));
     }
     return tpf;
+  }
+
+  static Future<List<Teacher>> getteachers() async {
+    List<Teacher> lt = [];
+    try {
+      http.Response response = await http
+          .get(Uri.parse('${MyURL.url}teachers/attendance-teachers'), headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${MyURL.token}'
+      });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // print(response.body);
+        lt.addAll(TeachersModel.fromJson(jsonDecode(response.body)).data!);
+        return lt;
+      } else if (response.statusCode == 400) {
+        print('getteachers Funtion in statusCode:');
+        print(response);
+      }
+    } catch (error) {
+      print('getteachers Funtion in catch:');
+      print(error);
+    }
+    return [];
+  }
+
+  static Future<List<PostsTS>> getpoststoshow(String id) async {
+    List<PostsTS> pts = [];
+    try {
+      http.Response response = await http.get(
+        Uri.parse('${MyURL.url}teachers/grades/$id/posts'),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${MyURL.token}'
+        },
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // print(response.body);
+        pts.addAll(PostsBySections.fromJson(jsonDecode(response.body)).data!);
+        return pts;
+      } else if (response.statusCode == 400) {
+        print('getpoststoshow Funtion:');
+        print(response);
+      }
+    } catch (error) {
+      print('getpoststoshow Funtion in catch:');
+      print(error);
+    }
+    return [];
+  }
+
+  static Future<StudentProfile> getstudentprofile(String id) async {
+    StudentProfile sp = StudentProfile();
+    try {
+      http.Response response = await http
+          .get(Uri.parse('${MyURL.url}teachers/students/$id'), headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${MyURL.token}'
+      });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var res = StudentProfileModel.fromJson(jsonDecode(response.body));
+        sp = res.profile!;
+        return sp;
+      } else if (response.statusCode == 400) {
+        print('getstudentprofile Funtion in statusCode :');
+        print(response);
+      }
+    } catch (error) {
+      print('getstudentprofile Funtion in cathc :');
+      print(error);
+    }
+    return sp;
+  }
+
+  static Future<List<AssignmentsToShow>> getassignments(String id) async {
+    List<AssignmentsToShow> sp = [];
+    try {
+      http.Response response = await http.get(
+          Uri.parse('${MyURL.url}teachers/sections/$id/assignments'),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ${MyURL.token}'
+          });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        sp.addAll(AssignmentsModel.fromJson(jsonDecode(response.body)).data!);
+        return sp;
+      } else if (response.statusCode == 400) {
+        print('getassignments Funtion in statusCode :');
+        print(response);
+      }
+    } catch (error) {
+      print('getassignments Funtion in cathc :');
+      print(error);
+    }
+    return sp;
   }
 }

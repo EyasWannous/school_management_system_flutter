@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:teacher_app/controller/marks_controller.dart';
 import 'package:teacher_app/services/search_marks.dart';
 
+import '../constant/my_colors.dart';
 import '../model/students_model.dart';
 
 class Marks extends StatelessWidget {
@@ -11,11 +12,28 @@ class Marks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MarksController>(
-      init: MarksController(),
+      init: MarksController(
+        gradeId: Get.arguments != null ? Get.arguments[0] : null,
+        sectionId: Get.arguments != null ? Get.arguments[1] : null,
+      ),
       builder: (controller) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Marks'),
+          // leading: Builder(
+          //   builder: (BuildContext context) {
+          //     return IconButton(
+          //       icon: const Icon(
+          //         Icons.menu,
+          //         color: MyColors.milkyWhite, // Change Custom Drawer Icon Color
+          //       ),
+          //       onPressed: () {
+          //         Scaffold.of(context).openDrawer();
+          //       },
+          //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          //     );
+          //   },
+          // ),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -26,11 +44,15 @@ class Marks extends StatelessWidget {
                     delegate: SearchMarks(searchTerms: controller.searchList),
                   );
                 },
-                icon: const Icon(Icons.search_outlined),
+                icon: const Icon(
+                  Icons.search_outlined,
+                  color: MyColors.milkyWhite,
+                ),
               ),
             )
           ],
         ),
+        // drawer: const MyDrawer(),
         body: Column(
           children: [
             Container(
@@ -45,11 +67,7 @@ class Marks extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline6,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -70,11 +88,7 @@ class Marks extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline6,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -102,15 +116,23 @@ class Marks extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: ListTile(
-                      // selectedTileColor: Color.fromRGBO(233, 238, 252, 1),
-                      tileColor: Color.fromRGBO(233, 238, 252, 1),
+                      tileColor: MyColors.soLightBlue,
                       leading: CircleAvatar(
                         backgroundColor: Colors.deepPurple.shade900,
-                        backgroundImage: NetworkImage(item.imageUrl!),
+                        child: ClipOval(
+                          child: Image.network(
+                            item.imageUrl!,
+                            errorBuilder: (BuildContext context, Object object,
+                                StackTrace? stackTrace) {
+                              return Image.asset(
+                                  'assets/images/photo_2023-08-08_16-46-20.jpg');
+                            },
+                          ),
+                        ),
                       ), // Image of student
                       title: Text(
                           '${item.firstName!} ${item.middleName!} ${item.lastName!}'), // name fo students
-                      subtitle: Text('item'), // grade of student
+                      // subtitle: Text('item'), // grade of student
                       selected: true,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0),
@@ -132,11 +154,8 @@ class Marks extends StatelessWidget {
                                     iconSize: 24,
                                     elevation: 16,
                                     isExpanded: true,
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
                                     underline: const Text(''),
                                     dropdownColor:
                                         const Color.fromRGBO(233, 238, 252, 1),
@@ -159,11 +178,8 @@ class Marks extends StatelessWidget {
                                     iconSize: 24,
                                     elevation: 16,
                                     isExpanded: true,
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
                                     underline: const Text(''),
                                     dropdownColor:
                                         const Color.fromRGBO(233, 238, 252, 1),

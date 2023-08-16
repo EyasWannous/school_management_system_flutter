@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:teacher_app/components/my_drawer.dart';
 import 'package:teacher_app/components/part_of_schedule.dart';
+import 'package:teacher_app/constant/my_colors.dart';
 import 'package:teacher_app/controller/schedule_controller.dart';
 import 'package:teacher_app/model/schedule_model.dart';
-
-import '../custom/vertical_line_painter.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -17,11 +18,32 @@ class Homepage extends StatelessWidget {
         title: const Text(
           'Home Page',
         ),
-        actions: const [
-          Icon(Icons.notifications),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: MyColors.milkyWhite, // Change Custom Drawer Icon Color
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/icons/bell (1).png',
+              height: 30,
+              width: 30,
+            ),
+          ),
         ],
       ),
-      drawer: null,
+      drawer: const MyDrawer(),
       body: GetBuilder<ScheduleController>(
         init: ScheduleController(),
         builder: (controller) => controller.isLoading
@@ -43,11 +65,7 @@ class Homepage extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.headline6,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),
@@ -66,32 +84,29 @@ class Homepage extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     const Divider(),
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text('Time'),
-                          ),
-                          SizedBox(width: 40),
-                          Expanded(
-                            child: Text('Class'),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text('Day'),
-                          ),
-                        ],
+                    if (controller.scheduleItem.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Text('Time'),
+                            ),
+                            SizedBox(width: 40),
+                            Expanded(
+                              child: Text('Class'),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Text('Day'),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
 
-                    // CustomPaint(
-                    //   painter: VerticalLinePainter(),
-                    // child:
+                    ///
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -107,74 +122,21 @@ class Homepage extends StatelessWidget {
                         );
                       },
                     ),
-                    // ),
-
-                    /// [Delete] this
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     children: [
-                    //       Padding(
-                    //         padding: const EdgeInsets.all(8.0),
-                    //         child: Column(
-                    //           children: const [
-                    //             Text('Start'),
-                    //             SizedBox(height: 15),
-                    //             Text('End'),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Expanded(
-                    //         child: Container(
-                    //           width: 200,
-                    //           height: 80,
-                    //           decoration: BoxDecoration(
-                    //             gradient: LinearGradient(
-                    //               colors: [
-                    //                 Colors.deepPurpleAccent,
-                    //                 Colors.deepPurpleAccent.withOpacity(0.3),
-                    //               ],
-                    //               begin: Alignment.bottomRight,
-                    //               end: Alignment.topLeft,
-                    //             ),
-                    //             borderRadius: BorderRadius.circular(10.0),
-                    //           ),
-                    //           child: Column(
-                    //             children: [
-                    //               Padding(
-                    //                 padding: const EdgeInsets.all(10.0),
-                    //                 child: Row(
-                    //                   children: const [
-                    //                     Text('data'),
-                    //                     Expanded(child: SizedBox(width: 1)),
-                    //                     Text('data'),
-                    //                   ],
-                    //                 ),
-                    //               ),
-                    //               Padding(
-                    //                 padding: const EdgeInsets.only(left: 8.0),
-                    //                 child: Row(
-                    //                   children: const [
-                    //                     Padding(
-                    //                       padding:
-                    //                           EdgeInsets.symmetric(horizontal: 8.0),
-                    //                       child: Icon(Icons.add_a_photo),
-                    //                     ),
-                    //                     Text('data'),
-                    //                   ],
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-
                     if (controller.scheduleItem.isEmpty)
-                      const Text("You don't hava anything today"),
-                    const Text('Some text below the Row'),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'assets/icons/schedule (3).png',
+                            height: MediaQuery.of(context).size.height / 3,
+                          ),
+                          SizedBox(height: 40.h),
+                          const Text('Nothing special yet'),
+                        ],
+                      ),
+                    // const Text('Some text below the Row'),
                   ],
                 ),
               ),

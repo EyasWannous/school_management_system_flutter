@@ -6,7 +6,7 @@ import '../services/rest_api_get.dart';
 
 class SectionsController extends GetxController {
   String selectedValue = '9th grade';
-  List<String> dropdownItems = ['9th grade', 'two', 'Three', 'Four'];
+  List<String> dropdownItems = ['9th grade'];
   List<Grade> lg = [];
   List<Section> numberOfClassesInGrade = [];
   bool isLoading = false;

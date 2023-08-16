@@ -1,13 +1,13 @@
 class HomeworkSectionsModel {
-  List<Sections>? sections;
+  List<SectionsHomeworkModel>? sections;
 
   HomeworkSectionsModel({this.sections});
 
   HomeworkSectionsModel.fromJson(Map<String, dynamic> json) {
     if (json['sections'] != null) {
-      sections = <Sections>[];
+      sections = <SectionsHomeworkModel>[];
       json['sections'].forEach((v) {
-        sections!.add(Sections.fromJson(v));
+        sections!.add(SectionsHomeworkModel.fromJson(v));
       });
     }
   }
@@ -21,13 +21,16 @@ class HomeworkSectionsModel {
   }
 }
 
-class Sections {
+class SectionsHomeworkModel {
   int? id;
   bool? isSelected;
+  String? numberOfSection;
+  String? name;
 
-  Sections({this.id, this.isSelected});
+  SectionsHomeworkModel(
+      {this.id, this.isSelected, this.numberOfSection, this.name});
 
-  Sections.fromJson(Map<String, dynamic> json) {
+  SectionsHomeworkModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     isSelected = json['isSelected'];
   }

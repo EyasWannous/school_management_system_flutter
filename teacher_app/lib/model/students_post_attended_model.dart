@@ -1,13 +1,13 @@
 class StudentsPostAttendedModel {
-  List<StudentAttended>? students;
+  List<Attended>? students;
 
   StudentsPostAttendedModel({this.students});
 
   StudentsPostAttendedModel.fromJson(Map<String, dynamic> json) {
     if (json['students'] != null) {
-      students = <StudentAttended>[];
+      students = <Attended>[];
       json['students'].forEach((v) {
-        students!.add(StudentAttended.fromJson(v));
+        students!.add(Attended.fromJson(v));
       });
     }
   }
@@ -21,13 +21,36 @@ class StudentsPostAttendedModel {
   }
 }
 
-class StudentAttended {
+class TeachersPostAttendedModel {
+  List<Attended>? teachers;
+
+  TeachersPostAttendedModel({this.teachers});
+
+  TeachersPostAttendedModel.fromJson(Map<String, dynamic> json) {
+    if (json['teachers'] != null) {
+      teachers = <Attended>[];
+      json['teachers'].forEach((v) {
+        teachers!.add(Attended.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (teachers != null) {
+      data['teachers'] = teachers!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Attended {
   int? id;
   bool? attended;
 
-  StudentAttended({this.id, this.attended});
+  Attended({this.id, this.attended});
 
-  StudentAttended.fromJson(Map<String, dynamic> json) {
+  Attended.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attended = json['attended'];
   }

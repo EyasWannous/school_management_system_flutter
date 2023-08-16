@@ -11,6 +11,13 @@ import '../services/rest_api_get.dart';
 import '../services/rest_api_post.dart';
 
 class MarksController extends GetxController {
+  int? gradeId;
+  int? sectionId;
+  MarksController({
+    this.gradeId,
+    this.sectionId,
+  });
+
   String gradeSelectedValue = 'grade';
   List<String> gradeDropdownItems = ['grade'];
 
@@ -52,12 +59,26 @@ class MarksController extends GetxController {
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
       gradeSelectedValue = gradeDropdownItems[0];
+
+      isLoading = false;
       update();
       return;
     }
+
     gradeDropdownItems.clear();
     for (var element in gradesList) {
       gradeDropdownItems.add(element.name!);
+    }
+
+    if (gradeId != null) {
+      Grade grade = gradesList.firstWhere(
+        (element) => element.id == gradeId!,
+        orElse: () => Grade(),
+      );
+
+      gradeSelectedValue = grade.name!;
+      update();
+      return;
     }
     gradeSelectedValue = gradeDropdownItems[0];
     update();
@@ -82,13 +103,30 @@ class MarksController extends GetxController {
     if (sectionsList.isEmpty) {
       sectionDropdownItems = ["it's Empty"];
       sectionSelectedValue = sectionDropdownItems[0];
+
+      isLoading = false;
       update();
       return;
     }
+
     sectionDropdownItems.clear();
     for (var element in sectionsList) {
       sectionDropdownItems.add(element.name!);
     }
+
+    if (sectionId != null) {
+      Section section = sectionsList.firstWhere(
+        (element) => element.id == sectionId!,
+        orElse: () => Section(),
+      );
+
+      sectionSelectedValue = section.name!;
+
+      isLoading = false;
+      update();
+      return;
+    }
+
     sectionSelectedValue = sectionDropdownItems[0];
 
     isLoading = false;
@@ -107,8 +145,10 @@ class MarksController extends GetxController {
     // print('section.id');
     // print(section.id);
 
-    students = await RestAPIGet.getstudents('${section.id}');
-
+    var res = await RestAPIGet.getstudents('${section.id}');
+    if (res.data != null) {
+      students.addAll(res.data!);
+    }
     // for (var element in studentsList) {
     //   var temp = Student(
     //     id: element.id!,

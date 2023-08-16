@@ -18,8 +18,8 @@ class HomeworkController extends GetxController {
   String typeSelectedValue = 'homework';
   List<String> typeDropdownItems = ['homework', 'project'];
 
-  String gradeSelectedValue = 'grade';
-  List<String> gradeDropdownItems = ['grade'];
+  String gradeSelectedValue = 'Grade';
+  List<String> gradeDropdownItems = ['Grade'];
 
   TextEditingController titleController = TextEditingController();
   TextEditingController dateController = TextEditingController();
@@ -36,9 +36,9 @@ class HomeworkController extends GetxController {
   Color barColor = Colors.grey;
   // End BottomSheet Valuables
 
-  List<StudentAttendanceModel> studentsAttendance = [];
+  List<AttendanceModel> studentsAttendance = [];
   List<Grade> gradesList = [];
-  List<Sections> homeworkSectionsList = [];
+  List<SectionsHomeworkModel> homeworkSectionsList = [];
 
   @override
   void onInit() async {
@@ -89,7 +89,12 @@ class HomeworkController extends GetxController {
     }
     homeworkSectionsList.clear();
     for (var element in sectionsList) {
-      var temp = Sections(id: element.id, isSelected: false);
+      var temp = SectionsHomeworkModel(
+        id: element.id,
+        isSelected: false,
+        name: element.name,
+        numberOfSection: '${element.number}',
+      );
       homeworkSectionsList.add(temp);
     }
 
@@ -116,6 +121,21 @@ class HomeworkController extends GetxController {
       initialDate: Days.today,
       firstDate: Days.firstDay,
       lastDate: Days.lastDay,
+      builder: (context, child) => Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: const ColorScheme.light(
+            primary: MyColors.royalBlue, // <-- SEE HERE
+            onPrimary: MyColors.milkyWhite, // <-- SEE HERE
+            onSurface: MyColors.royalBlue, // <-- SEE HERE
+          ),
+          // textButtonTheme: TextButtonThemeData(
+          //   style: TextButton.styleFrom(
+          //     primary: Colors.red, // button text color
+          //   ),
+          // ),
+        ),
+        child: child!,
+      ),
     );
     if (pickedDate != null) {
       // print(pickedDate);

@@ -1,185 +1,205 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:teacher_app/animation/fadeanimation.dart';
 
-import '../animation/fadeanimation.dart';
+import '../constant/my_colors.dart';
+import '../controller/login_controller.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print('hieght: ${MediaQuery.of(context).size.height}');
-    print('width: ${MediaQuery.of(context).size.width}');
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 400,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background.png'),
-                  fit: BoxFit.fill,
+      body: GetBuilder<LoginController>(
+        init: LoginController(),
+        builder: (controller) => SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              FadeAnimation(
+                delay: 1,
+                widgetChild: SizedBox(
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: Image.asset("assets/icons/Teaching-login.png"),
                 ),
               ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 30,
-                    width: 80,
-                    height: 200,
-                    child: FadeAnimation(
-                      delay: 1,
-                      widgetChild: Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/light-1.png'),
-                          ),
-                        ),
-                      ),
+              SizedBox(height: 40.h),
+              FadeAnimation(
+                delay: 1.2,
+                widgetChild: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Welcome to",
+                      style: Theme.of(context).textTheme.headline4,
                     ),
-                  ),
-                  Positioned(
-                    left: 140,
-                    width: 80,
-                    height: 150,
-                    child: FadeAnimation(
-                      delay: 1.3,
-                      widgetChild: Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/light-2.png'),
-                          ),
-                        ),
-                      ),
+                    Text(
+                      " It's School !",
+                      style: Theme.of(context).textTheme.headline1,
                     ),
-                  ),
-                  Positioned(
-                    right: 40,
-                    top: 40,
-                    width: 80,
-                    height: 150,
-                    child: FadeAnimation(
-                      delay: 1.5,
-                      widgetChild: Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/clock.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    child: FadeAnimation(
-                      delay: 1.6,
-                      widgetChild: Container(
-                        margin: const EdgeInsets.only(top: 50),
-                        child: const Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                children: [
-                  FadeAnimation(
-                    delay: 1.8,
-                    widgetChild: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromRGBO(143, 148, 251, .2),
-                            blurRadius: 20.0,
-                            offset: Offset(0, 10),
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(color: Colors.grey.shade100),
-                              ),
-                            ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Email or Phone number",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[400],
+              SizedBox(height: 60.h),
+              FadeAnimation(
+                delay: 1.4,
+                widgetChild: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: StreamBuilder<Object>(
+                      stream: null,
+                      builder: (context, snapshot) {
+                        return FadeAnimation(
+                          delay: 1.4,
+                          widgetChild: Form(
+                            key: controller.formstate,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: controller.usernameController,
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: (text) {
+                                      return (text != null &&
+                                              text.trim().isNotEmpty)
+                                          ? null
+                                          : "please enter your username";
+                                    },
+                                    cursorColor:
+                                        Color.fromARGB(255, 141, 168, 209),
+                                    cursorHeight: 20,
+                                    decoration: InputDecoration(
+                                      counterStyle: const TextStyle(
+                                          color: MyColors.royalBlue),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                      label: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 14),
+                                        child: Text(
+                                          "Username",
+                                          style: TextStyle(
+                                            fontFamily: 'Montserrat',
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: MyColors.royalBlue,
+                                          ),
+                                        ),
+                                      ),
+                                      hintText: "Enter your username",
+                                      hintStyle: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 141, 168, 209),
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 12.sp,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                          color: MyColors.soLightBlue,
+                                        ),
+                                      ),
+                                      suffixIcon: const Icon(
+                                        Icons.person,
+                                        color: MyColors.royalBlue,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: controller.passwordController,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    obscureText: controller.passwordVisible,
+                                    cursorColor:
+                                        Color.fromARGB(255, 141, 168, 209),
+                                    cursorHeight: 20,
+                                    validator: (text) {
+                                      if (text!.length < 8) {
+                                        return "you have to enter 8 char";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      counterStyle: const TextStyle(
+                                          color: MyColors.royalBlue),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                      label: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 14),
+                                        child: Text(
+                                          "Password",
+                                          style: TextStyle(
+                                            fontFamily: 'Montserrat',
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: MyColors.royalBlue,
+                                          ),
+                                        ),
+                                      ),
+                                      hintText: "Enter your password",
+                                      hintStyle: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 141, 168, 209),
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 12.sp,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        borderSide: const BorderSide(
+                                            color: MyColors.royalBlue),
+                                      ),
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          controller.passwordVisible
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: MyColors.royalBlue,
+                                        ),
+                                        onPressed: () =>
+                                            controller.changeVisible(),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: SizedBox(
+                                    height: 35.h,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        controller.loginButton();
+                                      },
+                                      child: Text(
+                                        "login",
+                                        style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Password",
-                                hintStyle: TextStyle(color: Colors.grey[400]),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  FadeAnimation(
-                    delay: 2,
-                    widgetChild: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromRGBO(143, 148, 251, 1),
-                            Color.fromRGBO(143, 148, 251, .6),
-                          ],
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 70),
-                  const FadeAnimation(
-                    delay: 1.5,
-                    widgetChild: Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                        color: Color.fromRGBO(143, 148, 251, 1),
-                      ),
-                    ),
-                  ),
-                ],
+                        );
+                      }),
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

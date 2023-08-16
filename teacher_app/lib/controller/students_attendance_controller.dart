@@ -11,13 +11,12 @@ import '../services/rest_api_post.dart';
 
 class StudentsAttendanceController extends GetxController {
   bool isLoading = false;
+  bool isChecked = false;
 
-  List<StudentAttendanceModel> studentsAttendance = [];
+  List<AttendanceModel> studentsAttendance = [];
   List<Grade> gradesList = [];
   List<Section> sectionsList = [];
   List<Student> studentsList = [];
-
-  // List<bool> isSelected = [true, true, false, true, false, true, false, true];
 
   List<Color> colorsForUnselectedItem = MyColors.colorsForUnselectedItem;
   List<Color> colorsForSelectedItem = MyColors.colorsForSelectedItem;
@@ -32,15 +31,14 @@ class StudentsAttendanceController extends GetxController {
   void onInit() async {
     await fetchAllGradesData();
     await fetchSectionsData();
-    fetchStudentsData();
+    await fetchStudentsData();
+    if (isChecked) showMyDialog();
     super.onInit();
   }
 
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    print('gradesList');
-    print(gradesList);
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
       gradeSelectedValue = gradeDropdownItems[0];
@@ -64,13 +62,9 @@ class StudentsAttendanceController extends GetxController {
       (element) => element.name == gradeSelectedValue,
       orElse: () => Grade(),
     );
-    print('grade.id');
-    print(grade.id);
 
     sectionsList = await RestAPIGet.getsections('${grade.id}');
 
-    print('sectionsList');
-    print(sectionsList);
     if (sectionsList.isEmpty) {
       sectionDropdownItems = ["it's Empty"];
       sectionSelectedValue = sectionDropdownItems[0];
@@ -87,7 +81,7 @@ class StudentsAttendanceController extends GetxController {
     update();
   }
 
-  void fetchStudentsData() async {
+  fetchStudentsData() async {
     isLoading = true;
     update();
 
@@ -96,15 +90,20 @@ class StudentsAttendanceController extends GetxController {
       (element) => element.name == sectionSelectedValue,
       orElse: () => Section(),
     );
-    // print('section.id');
+    // print('---------');
     // print(section.id);
 
-    studentsList = await RestAPIGet.getstudents('${section.id}');
+    var res = await RestAPIGet.getstudents('${section.id}');
+    if (res.checked != null) isChecked = res.checked!;
+    if (res.data != null) {
+      studentsList.clear();
+      studentsList.addAll(res.data!);
+    }
 
     for (var element in studentsList) {
-      var temp = StudentAttendanceModel(
+      var temp = AttendanceModel(
         id: element.id!,
-        isAttendanceToday: true,
+        isAttendanceToday: isChecked ? element.todayAttendance! : true,
         name: '${element.firstName} ${element.middleName} ${element.lastName}',
         numberOfDays: element.absence!,
         imageUrl: element.imageUrl!,
@@ -120,14 +119,16 @@ class StudentsAttendanceController extends GetxController {
     if (gradeSelectedValue == value) return;
     gradeSelectedValue = value;
     await fetchSectionsData();
-    fetchStudentsData();
+    await fetchStudentsData();
+    if (isChecked) showMyDialog();
     update();
   }
 
-  void onSectionDropdownChanged(String value) {
+  void onSectionDropdownChanged(String value) async {
     if (sectionSelectedValue == value) return;
     sectionSelectedValue = value;
-    fetchStudentsData();
+    await fetchStudentsData();
+    if (isChecked) showMyDialog();
     update();
   }
 
@@ -139,5 +140,22 @@ class StudentsAttendanceController extends GetxController {
 
   sendData() {
     RestAPIPost.postAttendanceStudents(studentsAttendance);
+  }
+
+  void showMyDialog() {
+    Get.dialog(
+      AlertDialog(
+        title: const Text('My Dialog'),
+        content: const Text('This is the content of the dialog.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
   }
 }

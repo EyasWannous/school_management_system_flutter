@@ -5,6 +5,10 @@ import '../model/students_model.dart';
 import '../services/rest_api_get.dart';
 
 class StudentsController extends GetxController {
+  int sectionId;
+
+  StudentsController({required this.sectionId});
+
   List<Student> students = [];
   List<SearchModel> searchList = [];
 
@@ -13,6 +17,7 @@ class StudentsController extends GetxController {
   @override
   void onInit() async {
     fetchStudentsData();
+    // print(Get.arguments);
     super.onInit();
   }
 
@@ -21,7 +26,8 @@ class StudentsController extends GetxController {
     update();
 
     students.clear();
-    students = await RestAPIGet.getstudents('1');
+    var res = await RestAPIGet.getstudents('$sectionId');
+    students.addAll(res.data!);
 
     fillSerachList();
     isLoading = false;

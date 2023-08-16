@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher_app/controller/students_controller.dart';
 import 'package:teacher_app/model/students_model.dart';
+import 'package:teacher_app/screen/student_profile.dart';
 import 'package:teacher_app/services/serach_students.dart';
 
 class Students extends StatelessWidget {
@@ -10,7 +11,9 @@ class Students extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<StudentsController>(
-      init: StudentsController(),
+      init: StudentsController(
+        sectionId: Get.arguments[0],
+      ),
       builder: (controller) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -43,9 +46,15 @@ class Students extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: ListTile(
                       tileColor: const Color.fromRGBO(233, 238, 252, 1),
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.blue,
-                        // backgroundImage: NetworkImage(item.imageUrl!),
+                      leading: ClipOval(
+                        child: Image.network(
+                          item.imageUrl!,
+                          errorBuilder: (BuildContext context, Object object,
+                              StackTrace? stackTrace) {
+                            return Image.asset(
+                                'assets/images/photo_2023-08-08_16-46-20.jpg');
+                          },
+                        ),
                       ), // Image of student
                       title: Text(
                           '${item.firstName!} ${item.middleName!} ${item.lastName!}'), // name fo students
@@ -61,7 +70,9 @@ class Students extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0),
                       ),
-                      onTap: () {}, // go to student profile
+                      onTap: () {
+                        Get.to(const StudentProfile(), arguments: [item.id]);
+                      }, // go to student profile
                     ),
                   );
                 },

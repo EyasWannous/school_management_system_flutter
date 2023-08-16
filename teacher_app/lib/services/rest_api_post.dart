@@ -1,63 +1,61 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:teacher_app/common/my_snackbar.dart';
+import 'package:teacher_app/components/bottom_bar.dart';
+import 'package:teacher_app/screen/homepage.dart';
 
-import '../constant/myurl.dart';
+import '../constant/my_url.dart';
 import '../model/homework_section_model.dart';
 import '../model/student_attendance_model.dart';
 import '../model/students_post_attended_model.dart';
 
 class RestAPIPost {
-  // static Future<void> postAttendanceStudents(
-  //     List<StudentAttendanceModel> list) async {
-  //   List<StudentAttended> jsonList = list.map((student) {
-  //     return StudentAttended(
-  //       id: student.id,
-  //       attended: student.isAttendanceToday,
-  //     );
-  //   }).toList();
-  //   // print(jsonList);
+  static Future<void> postlogin(String name, String password) async {
+    try {
+      http.Response response = await http.post(
+        Uri.parse('${MyURL.url}teachers/login'),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(
+          <String, String>{
+            'username': name,
+            'password': password,
+          },
+        ),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var res = jsonDecode(response.body);
+        // print(res);
+        final box = GetStorage();
 
-  //   StudentsPostAttendedModel jsonObject =
-  //       StudentsPostAttendedModel(students: jsonList);
-  //   // print(jsonObject);
+        // do logic here
 
-  //   String jsonData = jsonEncode(jsonObject.toJson());
-  //   print(jsonData);
+        box.write('token', res["token"]);
+        box.write('is_principle', res["is_principle"]);
+        print(box.read('token'));
+        print(box.read('is_principle'));
+        Get.off(const BottomBar());
+        return;
+      } else if (response.statusCode == 400) {
+        print('postlogin Funtion:');
+        print(response);
+      }
+    } catch (error) {
+      print('postlogin Funtion in catch:');
+      print(error);
+    }
+    return;
+  }
 
-  //   try {
-  //     http.Response response = await http.post(
-  //       Uri.parse('$url/teachers/attendance'),
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'Authorization': 'Bearer ${MyURL.token}'
-  //       },
-  //       body: jsonData,
-  //     );
-  //     if (response.statusCode == 200 || response.statusCode == 201) {
-  //       var res = jsonDecode(response.body)['data'];
-  //       print('postAttendanceStudents :');
-  //       print(res);
-  //     } else if (response.statusCode == 400) {
-  //       print('postAttendanceStudents in statusCode:');
-  //       print(response);
-  //     }
-  //   } catch (error) {
-  //     print('postAttendanceStudents in catch:');
-  //     print(error);
-  //   }
-  //   return;
-  // }
-
-  static Future<void> postAttendanceStudents(
-      List<StudentAttendanceModel> list) async {
-    List<StudentAttended> jsonList = list.map((student) {
-      return StudentAttended(
+  static Future<void> postAttendanceStudents(List<AttendanceModel> list) async {
+    List<Attended> jsonList = list.map((student) {
+      return Attended(
         id: student.id,
         attended: student.isAttendanceToday,
       );
@@ -107,8 +105,8 @@ class RestAPIPost {
     }
   }
 
-  static Future<void> postHomework(List<Sections> list, String title,
-      String content, String type, String deadLine) async {
+  static Future<void> postHomework(List<SectionsHomeworkModel> list,
+      String title, String content, String type, String deadLine) async {
     List<int?> jsonList = list.map((student) {
       if (student.isSelected!) return student.id!;
     }).toList();
@@ -159,33 +157,6 @@ class RestAPIPost {
       print('postAttendanceStudents in catch:');
       print(error);
     }
-  }
-
-  static Future<void> postSchedule(String day) async {
-    try {
-      http.Response response = await http.post(
-        Uri.parse('${MyURL.url}calendar'),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'day': day,
-        }),
-      );
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        // var res = jsonDecode(response.body)['data'];
-        // print('postSchedule Funtion:');
-        // print(res);
-      } else if (response.statusCode == 400) {
-        print('postSchedule Funtion:');
-        print(response);
-      }
-    } catch (error) {
-      print('postSchedule Funtion:');
-      print(error);
-    }
-    return;
   }
 
   static Future<void> postMarks(
@@ -269,47 +240,46 @@ class RestAPIPost {
     }
   }
 
-  Future<void> postlogin(String email, String password) async {
-    http.Response response = await http.post(
-      Uri.parse('${MyURL.url}login'),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'email': email,
-        'password': password,
-      }),
-    );
+  static Future<void> postattendanceteachers(List<AttendanceModel> list) async {
+    List<Attended> jsonList = list.map((student) {
+      return Attended(
+        id: student.id,
+        attended: student.isAttendanceToday,
+      );
+    }).toList();
+    // print(jsonList);
+
+    TeachersPostAttendedModel jsonObject =
+        TeachersPostAttendedModel(teachers: jsonList);
+    // print(jsonObject);
+
+    String jsonData = jsonEncode(jsonObject.toJson());
+    // print(jsonData);
 
     try {
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        // if (jsonDecode(response.body)['is_expert'] == 0) {
-        //   Navigator.of(context).pushReplacementNamed('user homepage');
-        // } else {
-        //   Navigator.of(context).pushReplacementNamed('expert homepage');
-        // }
-        // await savetoken(jsonDecode(response.body)['access_token']);
-        // return;
-      } else if (response.statusCode == 401) {
-        print('postImagesInPost Funtion in StatusCode :');
-        print(response.body);
+      var headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${MyURL.token}'
+      };
 
-        // if (jsonDecode(response.body)['message'] == "Invalid Password") {
-        //   ScaffoldMessenger.of(context).showSnackBar(
-        //       SnackBar(content: Text(jsonDecode(response.body)['message'])));
-        // }
-        // if (jsonDecode(response.body)['message'] == "Account Not Found") {
-        //   ScaffoldMessenger.of(context)
-        //       .showSnackBar(const SnackBar(content: Text('Account Not Found')));
-        // }
-        // return;
-      } else {
-        print('postlogin Funtion:');
-        print(response.body);
+      var request = http.Request(
+          'POST', Uri.parse('${MyURL.url}teachers/attendance-teachers'));
+      request.body = jsonData;
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        String messageInSncak =
+            jsonDecode(await response.stream.bytesToString())['message'];
+        MySnackBar.showSnackBar(title: messageInSncak, message: messageInSncak);
+        // print(messageInSncak);
+      } else if (response.statusCode == 401) {
+        print('postattendanceteachers in statusCode:');
+        print(response.reasonPhrase);
       }
     } catch (error) {
-      print('postlogin Funtion in catch :');
+      print('postattendanceteachers in catch:');
       print(error);
     }
   }
