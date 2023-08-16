@@ -34,14 +34,16 @@ dependencies:
     sdk: flutter
   # firebase_core: ^2.15.0
   # firedart: ^0.9.0+1
-  file_picker: ^5.0.0
+  # file_picker: ^5.0.0
+  # shared_preferences: ^2.1.1
+  curved_navigation_bar: ^1.0.3
   flutter_screenutil: ^5.7.0
   get: ^4.6.5
   http: ^0.13.4
-  shared_preferences: ^2.1.1
   simple_animations: ^5.0.0
   table_calendar: ^3.0.9
   image_picker: ^1.0.2
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -58,11 +60,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/test.png
-    - assets/images/background.png
-    - assets/images/clock.png
-    - assets/images/light-1.png
-    - assets/images/light-2.png
+    - assets/images/
+    - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -72,7 +71,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+    - family: PermanentMarker
+      fonts:
+        - asset: assets/fonts/Permanent Marker/PermanentMarker-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
