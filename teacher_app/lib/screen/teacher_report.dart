@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher_app/controller/marks_controller.dart';
+import 'package:teacher_app/controller/teacher_report_controller.dart';
 import 'package:teacher_app/services/search_marks.dart';
 
 import '../constant/my_colors.dart';
 import '../model/students_model.dart';
 
-class Marks extends StatelessWidget {
-  const Marks({super.key});
+class TeacherReport extends StatelessWidget {
+  const TeacherReport({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MarksController>(
-      init: MarksController(
-        gradeId: Get.arguments != null ? Get.arguments[0] : null,
-        sectionId: Get.arguments != null ? Get.arguments[1] : null,
-      ),
+    return GetBuilder<TeacherReportController>(
+      init: TeacherReportController(),
       builder: (controller) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Marks'),
+          title: const Text('Report'),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -38,6 +35,7 @@ class Marks extends StatelessWidget {
             )
           ],
         ),
+        // drawer: const MyDrawer(),
         body: Column(
           children: [
             Container(
@@ -122,10 +120,9 @@ class Marks extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0),
                       ),
-                      onTap: () async => {
-                        await controller.fetchMarkOfStudent('${item.id}'),
+                      onTap: () => {
                         Get.dialog(
-                          GetBuilder<MarksController>(
+                          GetBuilder<TeacherReportController>(
                             builder: (sceondController) => AlertDialog(
                               title: const Text(
                                 "Title",
@@ -136,116 +133,79 @@ class Marks extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  DropdownButton(
-                                    iconSize: 24,
-                                    elevation: 16,
-                                    isExpanded: true,
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    underline: const Text(''),
-                                    dropdownColor:
-                                        const Color.fromRGBO(233, 238, 252, 1),
-                                    borderRadius: BorderRadius.circular(15),
-                                    items: sceondController
-                                        .markTypeDropdownItems
-                                        .map((String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        alignment: Alignment.center,
-                                        child: Text(value),
-                                      );
-                                    }).toList(),
-                                    value:
-                                        sceondController.markTypeSelectedValue,
-                                    onChanged: (value) => sceondController
-                                        .onMarkTypeDropdownChanged(
-                                            value!, '${item.id}'),
-                                  ),
-                                  DropdownButton(
-                                    iconSize: 24,
-                                    elevation: 16,
-                                    isExpanded: true,
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    underline: const Text(''),
-                                    dropdownColor:
-                                        const Color.fromRGBO(233, 238, 252, 1),
-                                    borderRadius: BorderRadius.circular(15),
-                                    items: sceondController.coursesDropdownItems
-                                        .map((String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        alignment: Alignment.center,
-                                        child: Text(value),
-                                      );
-                                    }).toList(),
-                                    value:
-                                        sceondController.coursesSelectedValue,
-                                    onChanged: (value) => sceondController
-                                        .onCoursesDropdownChanged(
-                                            value!, '${item.id}'),
-                                  ),
                                   Form(
                                     key: sceondController.formKey,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: Row(
-                                        children: [
-                                          const Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text('Mark'),
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Row(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text('Title'),
+                                              ),
+                                              Flexible(
+                                                child: TextFormField(
+                                                  controller: sceondController
+                                                      .titleController,
+                                                  validator: (value) {
+                                                    if (value == null ||
+                                                        value.trim().isEmpty) {
+                                                      return 'Title is required';
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  decoration: InputDecoration(
+                                                    filled: true,
+                                                    fillColor: Colors.grey[200],
+                                                    hintText:
+                                                        'Enter your text here',
+                                                    border:
+                                                        UnderlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          Flexible(
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Flexible(
                                             child: TextFormField(
                                               controller: sceondController
-                                                  .markController,
+                                                  .contentController,
                                               validator: (value) {
                                                 if (value == null ||
                                                     value.trim().isEmpty) {
-                                                  return 'Mark is required';
-                                                } else if (int.tryParse(
-                                                            value) !=
-                                                        null &&
-                                                    int.tryParse(value)! <=
-                                                        100 &&
-                                                    int.tryParse(value)! >= 0) {
-                                                  return null;
+                                                  return 'Content is required';
                                                 } else {
-                                                  return 'between 0 and 100';
+                                                  return null;
                                                 }
                                               },
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                 filled: true,
-                                                fillColor: Colors.grey[200],
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                                fillColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
                                                 hintText:
                                                     'Enter your text here',
-                                                border: UnderlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
                                               ),
+                                              maxLines: 3,
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  // SizedBox(
-                                  //   width: double.infinity,
-                                  //   child: TextButton(
-                                  //     onPressed: () => {
-                                  //       if (sceondController
-                                  //           .formKey.currentState!
-                                  //           .validate())
-                                  //         {
-                                  //           sceondController
-                                  //               .sendData('${item.id}')
-                                  //         }
-                                  //     },
-                                  //     child: const Text('Add'),
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                               actions: [
@@ -255,9 +215,10 @@ class Marks extends StatelessWidget {
                                         .validate())
                                       {
                                         sceondController.sendData('${item.id}'),
+                                        Get.back(),
                                       }
                                   },
-                                  child: const Text('Add'),
+                                  child: const Text('Send'),
                                 ),
                               ],
                             ),

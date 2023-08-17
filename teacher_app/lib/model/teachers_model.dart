@@ -1,11 +1,13 @@
 class TeachersModel {
   String? message;
+  bool? isChecked;
   List<Teacher>? data;
 
-  TeachersModel({this.message, this.data});
+  TeachersModel({this.message, this.isChecked, this.data});
 
   TeachersModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
+    isChecked = json['checked'];
     if (json['data'] != null) {
       data = <Teacher>[];
       json['data'].forEach((v) {
@@ -17,6 +19,8 @@ class TeachersModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['message'] = message;
+    data['checked'] = isChecked;
+
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }

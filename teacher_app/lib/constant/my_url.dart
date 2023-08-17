@@ -1,4 +1,4 @@
 class MyURL {
-  static const String url = "http://192.168.1.9:9000/api/";
-  static const String token = '3|we8VnYPSyIG25LkjKqRpwAfEGGXXEzusSGDjt3H6';
+  static const String url = "http://192.168.1.6:9000/api/";
+  static String token = '20|6yvwWI0SF9mf5miGmmz4kaTGhjadPA5hbhYiebfT';
 }

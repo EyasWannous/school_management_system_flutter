@@ -33,23 +33,23 @@ class MarksModel {
     hasFailed = json['has_failed'];
     courseName = json['course_name'];
     gradeCourse = json['grade_course'] != null
-        ? new GradeCourse.fromJson(json['grade_course'])
+        ? GradeCourse.fromJson(json['grade_course'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['student_id'] = this.studentId;
-    data['grade_course_id'] = this.gradeCourseId;
-    data['year'] = this.year;
-    data['first_term_score'] = this.firstTermScore;
-    data['second_term_score'] = this.secondTermScore;
-    data['final_score'] = this.finalScore;
-    data['has_failed'] = this.hasFailed;
-    data['course_name'] = this.courseName;
-    if (this.gradeCourse != null) {
-      data['grade_course'] = this.gradeCourse!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['student_id'] = studentId;
+    data['grade_course_id'] = gradeCourseId;
+    data['year'] = year;
+    data['first_term_score'] = firstTermScore;
+    data['second_term_score'] = secondTermScore;
+    data['final_score'] = finalScore;
+    data['has_failed'] = hasFailed;
+    data['course_name'] = courseName;
+    if (gradeCourse != null) {
+      data['grade_course'] = gradeCourse!.toJson();
     }
     return data;
   }
@@ -84,14 +84,14 @@ class GradeCourse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['grade_id'] = this.gradeId;
-    data['course_id'] = this.courseId;
-    data['description'] = this.description;
-    data['number of weekly classes'] = this.numberOfWeeklyClasses;
-    data['top_mark'] = this.topMark;
-    data['lower_mark'] = this.lowerMark;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['grade_id'] = gradeId;
+    data['course_id'] = courseId;
+    data['description'] = description;
+    data['number of weekly classes'] = numberOfWeeklyClasses;
+    data['top_mark'] = topMark;
+    data['lower_mark'] = lowerMark;
     return data;
   }
 }

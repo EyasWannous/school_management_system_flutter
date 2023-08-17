@@ -6,7 +6,6 @@ import 'package:teacher_app/model/posts_by_section_model.dart';
 
 import '../constant/my_url.dart';
 import '../controller/posts_controller.dart';
-import '../model/posts_model.dart';
 
 class ShowPosts extends StatelessWidget {
   const ShowPosts({Key? key}) : super(key: key);
@@ -15,13 +14,13 @@ class ShowPosts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Posts"),
+        title: const Text("Posts"),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 35,
                 width: 35,
                 child: Image.asset("assets/icons/bell (1).png"),
@@ -33,8 +32,8 @@ class ShowPosts extends StatelessWidget {
       // extendBody: true,
 
       backgroundColor: MyColors.milkyWhite,
-      body: GetBuilder<PostsController>(
-        init: PostsController(),
+      body: GetBuilder<ShowPostsController>(
+        init: ShowPostsController(),
         builder: (controller) => controller.isLoading
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -71,6 +70,7 @@ class ShowPosts extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 10),
                               child: Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   CircleAvatar(
                                     radius: 30,
@@ -101,8 +101,7 @@ class ShowPosts extends StatelessWidget {
                                               .headline6,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 50, top: 2),
+                                          padding: const EdgeInsets.all(8),
                                           child: Text(
                                             // "Physics Teacher",
                                             item.teacher!.course!.name!,
@@ -120,6 +119,37 @@ class ShowPosts extends StatelessWidget {
                                       print("go to his profile");
                                     },
                                   ),
+                                  const Spacer(),
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.delete_rounded,
+                                      color: MyColors.warning,
+                                    ),
+                                    onPressed: () {
+                                      Get.dialog(
+                                        AlertDialog(
+                                          title: const Text('Warning'),
+                                          content: const Text('Are you sure?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                controller.deletePost(
+                                                    item, '${item.id}');
+                                                Get.back();
+                                              },
+                                              child: const Text('Ok'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Get.back();
+                                              },
+                                              child: const Text('Close'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  )
                                 ],
                               ),
                             ),
@@ -172,8 +202,7 @@ class ShowPosts extends StatelessWidget {
                                               width: 330
                                                   .w, // Adjust the width as needed
                                               child: Image.network(
-                                                // '${MyURL.url.replaceAll('/api/', '')}
-                                                '${item.attachments![index].fileUrl!}',
+                                                '${MyURL.url.replaceAll('/api/', '')}${item.attachments![index].fileUrl!}',
                                                 fit: BoxFit.contain,
                                               ),
                                             );

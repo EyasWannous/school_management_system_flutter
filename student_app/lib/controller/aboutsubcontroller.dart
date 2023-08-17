@@ -28,7 +28,7 @@ class AboutSubController extends GetxController {
           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
-         aboutsub.value = AboutSubModel.fromJson(response['info']);
+        aboutsub.value = AboutSubModel.fromJson(response['info']);
 
         print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         update();

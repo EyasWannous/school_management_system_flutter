@@ -25,6 +25,7 @@ import 'package:student_app/view/screen/profile.dart';
 import 'package:student_app/parent/screen/report.dart';
 import 'package:student_app/view/screen/select.dart';
 import 'package:student_app/view/screen/subject.dart';
+import 'package:student_app/view/screen/test22.dart';
 import 'package:student_app/view/screen/tests.dart';
 import 'package:student_app/view/widget/schedule.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -32,8 +33,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 
 //SharedPreferences? sharedpref;
 
-void main()async {
-   await GetStorage.init();
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -50,22 +51,21 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-           initialBinding: MyBinding(),
-         initialRoute: "/",
+          initialBinding: MyBinding(),
+          // initialRoute: "/select",
           theme: themes.light,
           locale: Get.deviceLocale,
           translations: Mylocal(),
-         getPages: [
-          GetPage(name: "/", page: () => HomePage()),
-          GetPage(name: "/b", page: () => BottomBar()),
-         GetPage(name: "/select", page: () => const Select()),
-          GetPage(name: "/login", page: () => Loginst()),
-          GetPage(name: "/subject", page: () => Subject()),
-           GetPage(name: "/marks", page: () =>  Marks()),
-          GetPage(name: "/notify", page: () => Notify()),
+          getPages: [
+            GetPage(name: "/", page: () => HomePage()),
+            GetPage(name: "/b", page: () => BottomBar()),
+            GetPage(name: "/select", page: () => const Select()),
+            GetPage(name: "/login", page: () => Loginst()),
+            GetPage(name: "/subject", page: () => Subject()),
+            GetPage(name: "/marks", page: () => Marks()),
+            GetPage(name: "/notify", page: () => Notify()),
           ],
-
-          // home: Intro(),
+          home: BottomBar(),
         );
       },
     );

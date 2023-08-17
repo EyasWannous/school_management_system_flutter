@@ -33,21 +33,19 @@ class MarkSubFModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['student_id'] = this.studentId;
-    data['grade_course_id'] = this.gradeCourseId;
-    data['type'] = this.type;
-    data['score'] = this.score;
-    data['year'] = this.year;
-    data['term'] = this.term;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['student_id'] = studentId;
+    data['grade_course_id'] = gradeCourseId;
+    data['type'] = type;
+    data['score'] = score;
+    data['year'] = year;
+    data['term'] = term;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }
-
-
 
 class MarkSubSModel {
   int? id;
@@ -84,16 +82,16 @@ class MarkSubSModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['student_id'] = this.studentId;
-    data['grade_course_id'] = this.gradeCourseId;
-    data['type'] = this.type;
-    data['score'] = this.score;
-    data['year'] = this.year;
-    data['term'] = this.term;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['student_id'] = studentId;
+    data['grade_course_id'] = gradeCourseId;
+    data['type'] = type;
+    data['score'] = score;
+    data['year'] = year;
+    data['term'] = term;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

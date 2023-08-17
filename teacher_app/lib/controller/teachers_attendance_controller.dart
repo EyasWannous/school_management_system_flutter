@@ -10,6 +10,7 @@ import '../services/rest_api_post.dart';
 
 class TeachersAttendanceController extends GetxController {
   bool isLoading = false;
+  bool isChecked = false;
 
   List<AttendanceModel> teachersAttendance = [];
   List<Teacher> teachersList = [];
@@ -24,33 +25,36 @@ class TeachersAttendanceController extends GetxController {
   @override
   void onInit() async {
     await fetchTeachersData();
+    if (isChecked) showMyDialog();
     super.onInit();
   }
 
-  fetchAllCourses() async {
-    coursesList = await RestAPIGet.getgrades();
+  // fetchAllCourses() async {
+  //   coursesList = await RestAPIGet.getgrades();
 
-    if (coursesList.isEmpty) {
-      courseDropdownItems = ["it's Empty"];
-      courseSelectedValue = courseDropdownItems[0];
-      update();
-      return;
-    }
+  //   if (coursesList.isEmpty) {
+  //     courseDropdownItems = ["it's Empty"];
+  //     courseSelectedValue = courseDropdownItems[0];
+  //     update();
+  //     return;
+  //   }
 
-    courseDropdownItems.clear();
-    for (var element in coursesList) {
-      courseDropdownItems.add(element.name!);
-    }
-    courseSelectedValue = courseDropdownItems[0];
+  //   courseDropdownItems.clear();
+  //   for (var element in coursesList) {
+  //     courseDropdownItems.add(element.name!);
+  //   }
+  //   courseSelectedValue = courseDropdownItems[0];
 
-    update();
-  }
+  //   update();
+  // }
 
   fetchTeachersData() async {
     isLoading = true;
     update();
 
-    teachersList = await RestAPIGet.getteachers();
+    var res = TeachersModel.fromJson(await RestAPIGet.getteachers());
+    isChecked = res.isChecked!;
+    teachersList.addAll(res.data!);
 
     for (var element in teachersList) {
       var temp = AttendanceModel(
@@ -82,5 +86,22 @@ class TeachersAttendanceController extends GetxController {
 
   sendData() {
     RestAPIPost.postattendanceteachers(teachersAttendance);
+  }
+
+  void showMyDialog() {
+    Get.dialog(
+      AlertDialog(
+        title: const Text('Warning'),
+        content: const Text('This is the content of the dialog.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
   }
 }

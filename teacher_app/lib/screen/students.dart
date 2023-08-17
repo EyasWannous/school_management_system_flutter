@@ -71,7 +71,8 @@ class Students extends StatelessWidget {
                         borderRadius: BorderRadius.circular(0),
                       ),
                       onTap: () {
-                        Get.to(const StudentProfile(), arguments: [item.id]);
+                        Get.to(() => const StudentProfile(),
+                            arguments: [item.id]);
                       }, // go to student profile
                     ),
                   );

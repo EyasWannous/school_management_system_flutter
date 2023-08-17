@@ -16,7 +16,7 @@ class AboutSub extends StatelessWidget {
     return Scaffold(
         backgroundColor: darkblue,
         body: GetBuilder<AboutSubController>(builder: (controller) {
-          print(aboutsubcontroller.aboutsubList);
+          // print(aboutsubcontroller.aboutsubList);
           return Column(
             children: [
               Column(children: [
@@ -81,6 +81,7 @@ class AboutSub extends StatelessWidget {
                                 ),
                             title: Text(
                               "hhhk",
+                              // controller.showTotals,
                               //  "${controller.aboutsub.value!.gradeCourse}",
                               style: TextStyle(
                                   fontFamily: 'Montserrat',

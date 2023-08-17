@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:teacher_app/constant/my_colors.dart';
 
 class MySnackBar {
-  static void showSnackBar({required String title, required String message}) {
+  static void showSnackBar({required String message}) {
     Get.rawSnackbar(
       // title: title,
       message: message,

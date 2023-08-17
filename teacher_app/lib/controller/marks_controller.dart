@@ -149,22 +149,6 @@ class MarksController extends GetxController {
     if (res.data != null) {
       students.addAll(res.data!);
     }
-    // for (var element in studentsList) {
-    //   var temp = Student(
-    //     id: element.id!,
-    //     firstName: element.firstName,
-    //     middleName: element.middleName,
-    //     lastName: element.lastName,
-    //     absence: element.absence,
-    //     address: element.address,
-    //     bio: element.bio,
-    //     dateOfBirth: element.dateOfBirth,
-    //     gender: element.gender,
-    //     imageUrl: element.imageUrl,
-    //     phoneNumber:
-    //   );
-    //   students.add(temp);
-    // }
 
     fillSerachList();
     isLoading = false;
@@ -228,7 +212,19 @@ class MarksController extends GetxController {
     }
   }
 
-  /// Funtions
+  fetchMarkOfStudent(String id) async {
+    Courses course = coursesList.firstWhere(
+      (element) => element.name == coursesSelectedValue,
+      orElse: () => Courses(),
+    );
+
+    int? temp = await RestAPIGet.getmarkofstudent(
+        id, markTypeSelectedValue, '${course.id}');
+
+    markController.text = temp != null ? '$temp' : '';
+  }
+
+  /// Screen Funtions
   void onGradeDropdownChanged(String value) async {
     if (gradeSelectedValue == value) return;
     gradeSelectedValue = value;
@@ -244,15 +240,17 @@ class MarksController extends GetxController {
     update();
   }
 
-  void onMarkTypeDropdownChanged(String value) {
+  void onMarkTypeDropdownChanged(String value, String id) async {
     if (markTypeSelectedValue == value) return;
     markTypeSelectedValue = value;
+    await fetchMarkOfStudent(id);
     update();
   }
 
-  void onCoursesDropdownChanged(String value) {
+  void onCoursesDropdownChanged(String value, String id) async {
     if (coursesSelectedValue == value) return;
     coursesSelectedValue = value;
+    await fetchMarkOfStudent(id);
     update();
   }
 

@@ -18,13 +18,13 @@ class Assignments extends StatelessWidget {
       ),
       body: GetBuilder<AssignmentsController>(
         init: AssignmentsController(),
-        builder: (controller) => GridView.builder(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 400,
-            childAspectRatio: 1.9,
-            crossAxisSpacing: 30,
-            mainAxisSpacing: 1,
-          ),
+        builder: (controller) => ListView.builder(
+          // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          //   maxCrossAxisExtent: 400,
+          //   childAspectRatio: 1.9,
+          //   crossAxisSpacing: 30,
+          //   mainAxisSpacing: 1,
+          // ),
           itemCount: controller.assignments.length,
           itemBuilder: (BuildContext context, int index) {
             AssignmentsToShow item = controller.assignments[index];

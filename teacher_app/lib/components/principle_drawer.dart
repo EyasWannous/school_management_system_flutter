@@ -69,7 +69,7 @@ class PrincipleDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Get.to(const StudentsAttendance());
+                Get.to(() => const StudentsAttendance());
               },
               leading: Image.asset(
                 "assets/icons/absent.png",
@@ -79,7 +79,7 @@ class PrincipleDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "Students Attendance",
+                "Teacher Attendance",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
                   fontSize: 19.sp,
@@ -88,7 +88,7 @@ class PrincipleDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Get.to(const StudentsAttendance());
+                Get.to(() => const StudentsAttendance());
               },
               leading: Image.asset(
                 "assets/icons/training.png",
@@ -112,7 +112,7 @@ class PrincipleDrawer extends StatelessWidget {
                 width: 35.w,
               ),
               onTap: () {
-                Get.to(const Calendar());
+                Get.to(() => const Calendar());
               },
             ),
             ListTile(

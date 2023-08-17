@@ -15,17 +15,7 @@ class StudentsAttendance extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Attendance'),
-          actions: [
-            // if (!controller.isChecked)
-            //   const Padding(
-            //     padding: EdgeInsets.all(8.0),
-            //     child: Icon(
-            //       Icons.check,
-            //       color: Colors.green,
-            //     ),
-            //   ),
-            // Add other actions if needed
-          ],
+          // actions: [],
         ),
         body: controller.isLoading
             ? const Center(
@@ -130,8 +120,13 @@ class StudentsAttendance extends StatelessWidget {
                                   ),
                                 ),
                               ), // Image of student
-                              title: Text(item.name), // name fo students
-                              subtitle: Text('absence: ${item.numberOfDays}'),
+                              title: Text(item.name,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2), // name fo students
+                              subtitle: Text(
+                                'absence: ${item.numberOfDays}',
+                              ),
                               selected: item.isAttendanceToday,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(0),

@@ -28,45 +28,45 @@ class TeachersAttendance extends StatelessWidget {
               )
             : Column(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(233, 238, 252, 1),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          child: DropdownButton(
-                            iconSize: 24,
-                            elevation: 16,
-                            isExpanded: true,
-                            style: Theme.of(context).textTheme.headline6,
-                            underline: const Text(''),
-                            dropdownColor:
-                                const Color.fromRGBO(233, 238, 252, 1),
-                            borderRadius: BorderRadius.circular(15),
-                            items: controller.courseDropdownItems
-                                .map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                alignment: Alignment.center,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            value: controller.courseSelectedValue,
-                            onChanged: (value) =>
-                                controller.onCourseDropdownChanged(value!),
-                          ),
-                        ),
-                        Flexible(
-                          child: TextButton(
-                            child: const Text('Send'),
-                            onPressed: () => controller.sendData(),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   decoration: const BoxDecoration(
+                  //     color: Color.fromRGBO(233, 238, 252, 1),
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //     children: [
+                  //       Expanded(
+                  //         child: DropdownButton(
+                  //           iconSize: 24,
+                  //           elevation: 16,
+                  //           isExpanded: true,
+                  //           style: Theme.of(context).textTheme.headline6,
+                  //           underline: const Text(''),
+                  //           dropdownColor:
+                  //               const Color.fromRGBO(233, 238, 252, 1),
+                  //           borderRadius: BorderRadius.circular(15),
+                  //           items: controller.courseDropdownItems
+                  //               .map((String value) {
+                  //             return DropdownMenuItem<String>(
+                  //               value: value,
+                  //               alignment: Alignment.center,
+                  //               child: Text(value),
+                  //             );
+                  //           }).toList(),
+                  //           value: controller.courseSelectedValue,
+                  //           onChanged: (value) =>
+                  //               controller.onCourseDropdownChanged(value!),
+                  //         ),
+                  //       ),
+                  //       Flexible(
+                  //         child: TextButton(
+                  //           child: const Text('Send'),
+                  //           onPressed: () => controller.sendData(),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   Expanded(
                     child: ListView.builder(
                       itemCount: controller.teachersAttendance.length,

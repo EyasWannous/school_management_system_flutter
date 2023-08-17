@@ -35,23 +35,23 @@ class AssignModel {
     type = json['type'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    pivot = json['pivot'] != null ? new Pivot.fromJson(json['pivot']) : null;
+    pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['section_id'] = this.sectionId;
-    data['teacher_id'] = this.teacherId;
-    data['grade_course_id'] = this.gradeCourseId;
-    data['title'] = this.title;
-    data['content'] = this.content;
-    data['due_date'] = this.dueDate;
-    data['type'] = this.type;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.pivot != null) {
-      data['pivot'] = this.pivot!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['section_id'] = sectionId;
+    data['teacher_id'] = teacherId;
+    data['grade_course_id'] = gradeCourseId;
+    data['title'] = title;
+    data['content'] = content;
+    data['due_date'] = dueDate;
+    data['type'] = type;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (pivot != null) {
+      data['pivot'] = pivot!.toJson();
     }
     return data;
   }
@@ -69,9 +69,9 @@ class Pivot {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['student_id'] = this.studentId;
-    data['assignment_id'] = this.assignmentId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['student_id'] = studentId;
+    data['assignment_id'] = assignmentId;
     return data;
   }
 }

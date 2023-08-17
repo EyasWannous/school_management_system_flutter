@@ -316,19 +316,19 @@ class RestAPIGet {
     return tpf;
   }
 
-  static Future<List<Teacher>> getteachers() async {
-    List<Teacher> lt = [];
+  static Future<dynamic> getteachers() async {
+    // List<Teacher> lt = [];
     try {
       http.Response response = await http
-          .get(Uri.parse('${MyURL.url}teachers/attendance-teachers'), headers: {
+          .get(Uri.parse('${MyURL.url}teachers/teachers-attendance'), headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${MyURL.token}'
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
         // print(response.body);
-        lt.addAll(TeachersModel.fromJson(jsonDecode(response.body)).data!);
-        return lt;
+        // lt.addAll(TeachersModel.fromJson(jsonDecode(response.body)).data!);
+        return jsonDecode(response.body);
       } else if (response.statusCode == 400) {
         print('getteachers Funtion in statusCode:');
         print(response);
@@ -337,7 +337,7 @@ class RestAPIGet {
       print('getteachers Funtion in catch:');
       print(error);
     }
-    return [];
+    return;
   }
 
   static Future<List<PostsTS>> getpoststoshow(String id) async {
@@ -413,5 +413,31 @@ class RestAPIGet {
       print(error);
     }
     return sp;
+  }
+
+  static Future<int?> getmarkofstudent(
+      String studentID, String type, String courseID) async {
+    try {
+      http.Response response = await http.get(
+          Uri.parse(
+              '${MyURL.url}teachers/students/$studentID/mark?course_id=$courseID&type=$type'),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ${MyURL.token}'
+          });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var res = jsonDecode(response.body);
+        print(res);
+        return res['mark'];
+      } else if (response.statusCode == 400) {
+        print('getmarkofstudent Funtion in statusCode :');
+        print(response);
+      }
+    } catch (error) {
+      print('getmarkofstudent Funtion in cathc :');
+      print(error);
+    }
+    return null;
   }
 }

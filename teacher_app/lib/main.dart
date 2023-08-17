@@ -6,7 +6,12 @@ import 'package:teacher_app/components/bottom_bar.dart';
 import 'package:teacher_app/components/principle_bottom_bar.dart';
 import 'package:teacher_app/model/students_model.dart';
 import 'package:teacher_app/screen/calendar.dart';
+import 'package:teacher_app/screen/login.dart';
+import 'package:teacher_app/screen/marks.dart';
+import 'package:teacher_app/screen/post.dart';
+import 'package:teacher_app/screen/splash_screen.dart';
 import 'package:teacher_app/screen/students_attendance.dart';
+import 'package:teacher_app/screen/teacher_report.dart';
 
 import '../constant/routes.dart';
 import '../bindings/init_bindings.dart';
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
         // initialRoute: '/homepage',
         initialBinding: InitBinding(),
         getPages: MyRoutes.pages,
-        home: const BottomBar(),
+        home: const Login(),
       ),
     );
   }

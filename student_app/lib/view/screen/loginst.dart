@@ -10,7 +10,7 @@ import 'package:student_app/colors.dart';
 Color darkblue = Color.fromRGBO(65, 105, 225, 1);
 Color white = Color.fromRGBO(244, 241, 241, 1);
 Color lightblue = Color.fromRGBO(233, 238, 252, 1);
- 
+
 class Loginst extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -22,11 +22,10 @@ class LoginstState extends State<Loginst> {
   @override
   var email;
   var password;
-var emailcontroller = TextEditingController();
+  var emailcontroller = TextEditingController();
   var passcontroller = TextEditingController();
   bool icn1 = false;
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
-    
 
   Text x = Text("login",
       style: TextStyle(
@@ -34,7 +33,7 @@ var emailcontroller = TextEditingController();
         fontWeight: FontWeight.w600,
         fontSize: 16.sp,
       ));
-  
+
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -62,12 +61,14 @@ var emailcontroller = TextEditingController();
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
-                child: Text("Welcome to It's School !",style: Theme.of(context).textTheme.headline4,),
+                child: Text(
+                  "Welcome to It's School !",
+                  style: Theme.of(context).textTheme.headline4,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,vertical: 5
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Container(
                     height: 130.h,
                     width: 400.w,
@@ -229,7 +230,9 @@ var emailcontroller = TextEditingController();
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 5, ),
+                        padding: const EdgeInsets.only(
+                          left: 5,
+                        ),
                         child: Text(
                           "Don't have an account?",
                           style: TextStyle(

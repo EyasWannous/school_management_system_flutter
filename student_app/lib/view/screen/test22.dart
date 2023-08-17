@@ -276,19 +276,28 @@ class Test22 extends StatelessWidget {
                                       CellTime(timeInCell: '${7 + index}:00 '),
                                       CellWithShadow(
                                           textInCell: homeController.schedule
-                                              .sunday![index].courseName!),
+                                                  .sunday![index].courseName ??
+                                              ''),
                                       CellWithoutShadow(
                                           textInCell: homeController.schedule
-                                              .monday![index].courseName!),
+                                                  .monday![index].courseName ??
+                                              ''),
                                       CellWithShadow(
                                           textInCell: homeController.schedule
-                                              .tuesday![index].courseName!),
+                                                  .tuesday![index].courseName ??
+                                              ''),
                                       CellWithoutShadow(
-                                          textInCell: homeController.schedule
-                                              .wednesday![index].courseName!),
+                                          textInCell: homeController
+                                                  .schedule
+                                                  .wednesday![index]
+                                                  .courseName ??
+                                              ''),
                                       CellWithShadow(
-                                          textInCell: homeController.schedule
-                                              .thursday![index].courseName!),
+                                          textInCell: homeController
+                                                  .schedule
+                                                  .thursday![index]
+                                                  .courseName ??
+                                              ''),
                                     ],
                                   ),
                                 ),

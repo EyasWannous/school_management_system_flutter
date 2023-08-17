@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class StudentProfile {
@@ -57,23 +56,23 @@ class StudentProfile {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['grade_id'] = this.gradeId;
-    data['section_id'] = this.sectionId;
-    data['username'] = this.username;
-    data['first_name'] = this.firstName;
-    data['middle_name'] = this.middleName;
-    data['last_name'] = this.lastName;
-    data['date_of_birth'] = this.dateOfBirth;
-    data['address'] = this.address;
-    data['phone_number'] = this.phoneNumber;
-    data['bio'] = this.bio;
-    data['image_url'] = this.imageUrl;
-    data['gender'] = this.gender;
-    data['type'] = this.type;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['grade_id'] = gradeId;
+    data['section_id'] = sectionId;
+    data['username'] = username;
+    data['first_name'] = firstName;
+    data['middle_name'] = middleName;
+    data['last_name'] = lastName;
+    data['date_of_birth'] = dateOfBirth;
+    data['address'] = address;
+    data['phone_number'] = phoneNumber;
+    data['bio'] = bio;
+    data['image_url'] = imageUrl;
+    data['gender'] = gender;
+    data['type'] = type;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

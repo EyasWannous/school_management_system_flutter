@@ -33,16 +33,16 @@ class ScheduleModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['section_id'] = this.sectionId;
-    data['grade_course_id'] = this.gradeCourseId;
-    data['order'] = this.order;
-    data['start_at'] = this.startAt;
-    data['end_at'] = this.endAt;
-    data['day'] = this.day;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['section_id'] = sectionId;
+    data['grade_course_id'] = gradeCourseId;
+    data['order'] = order;
+    data['start_at'] = startAt;
+    data['end_at'] = endAt;
+    data['day'] = day;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

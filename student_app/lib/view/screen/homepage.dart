@@ -16,186 +16,201 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     HomePageController homecontroller = Get.put(HomePageController());
+    HomePageController homecontroller = Get.put(HomePageController());
     return Scaffold(
-        //drawer: ,
-         extendBody: true,
+        extendBody: true,
         appBar: AppBar(
           title: Text("1".tr),
-  actions: [
+          actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: InkWell( 
-                onTap: () =>Get.toNamed('/notify'),
-                child: Container(height: 35,width: 35,
-              child: Image.asset("assets/icons/bell (1).png"),),),
+              child: InkWell(
+                onTap: () => Get.toNamed('/notify'),
+                child: Container(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset("assets/icons/bell (1).png"),
+                ),
+              ),
             )
           ],
-
-
         ),
-       drawer: Drawer(
-        backgroundColor: white,
-child: Column(children: [
-UserAccountsDrawerHeader(accountName: Text("Sara Al Dalati" ,style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 18.sp,
-                                color: lightblue,
-                                fontWeight: FontWeight.bold,
-                              )), accountEmail: Text("@sarada",style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 10.sp,
-                                color: lightblue,
-                                fontWeight: FontWeight.bold,
-                              )),currentAccountPicture: CircleAvatar(backgroundColor: lightblue,),decoration: BoxDecoration(color: darkblue),),
-
-ListTile(title:  Text("Home page" ,style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 19.sp,
-                                color: blue,
-                                fontWeight: FontWeight.bold,
-                              )),onTap: ()=>print(""),
-                                leading:  Image.asset(
-              "assets/icons/homepage.png",
-              height: 35.h,
-              width: 40.w,
+        drawer: Drawer(
+          backgroundColor: white,
+          child: Column(children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("Sara Al Dalati",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 18.sp,
+                    color: lightblue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              accountEmail: Text("@sarada",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 10.sp,
+                    color: lightblue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: lightblue,
+              ),
+              decoration: BoxDecoration(color: darkblue),
             ),
-                              ),
-
-
-ListTile(title:  Text("Exams " ,style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 19.sp,
-                                color: blue,
-                                fontWeight: FontWeight.bold,
-                              )),onTap: ()=>print(""),
-                              leading:  Image.asset(
-              "assets/icons/homepage.png",
-              height: 35.h,
-              width: 40.w,
+            ListTile(
+              title: Text("Home page",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 19.sp,
+                    color: blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              onTap: () => print(""),
+              leading: Image.asset(
+                "assets/icons/homepage.png",
+                height: 35.h,
+                width: 40.w,
+              ),
             ),
-                              ),
-
-                              ListTile(title:  Text("Calender " ,style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 19.sp,
-                                color: blue,
-                                fontWeight: FontWeight.bold,
-                              )),onTap: ()=>print(""),
-                                leading:  Image.asset(
-              "assets/icons/homepage.png",
-              height: 35.h,
-              width: 40.w,
+            ListTile(
+              title: Text("Exams ",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 19.sp,
+                    color: blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              onTap: () => print(""),
+              leading: Image.asset(
+                "assets/icons/homepage.png",
+                height: 35.h,
+                width: 40.w,
+              ),
             ),
-                              ),
-                              ListTile(title:  Text("Settings " ,style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 19.sp,
-                                color: blue,
-                                fontWeight: FontWeight.bold,
-                              )),onTap: ()=>print(""),
-                                leading:  Image.asset(
-              "assets/icons/homepage.png",
-              height: 35.h,
-              width: 40.w,
+            ListTile(
+              title: Text("Calender ",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 19.sp,
+                    color: blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              onTap: () => print(""),
+              leading: Image.asset(
+                "assets/icons/homepage.png",
+                height: 35.h,
+                width: 40.w,
+              ),
             ),
-                              )
-]),
-
-
-
-       ),
-        body: GetBuilder<HomePageController>(builder:(homecontroller) 
-          => Container(
+            ListTile(
+              title: Text("Settings ",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 19.sp,
+                    color: blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              onTap: () => print(""),
+              leading: Image.asset(
+                "assets/icons/homepage.png",
+                height: 35.h,
+                width: 40.w,
+              ),
+            )
+          ]),
+        ),
+        body: GetBuilder<HomePageController>(
+          builder: (homecontroller) => Container(
             color: Color.fromRGBO(244, 241, 241, 1),
             child: Column(children: [
               Container(
-                  height: 150.h,
-                  width: 500.w,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Text(
-                            "  Assignments :                                           "
-                                .tr,
-                            style: Theme.of(context).textTheme.headline1),
-                      ),
-                      Container(
-        width: 400.w,
-        height: 96.h,
-                        child: GridView.builder(
-                            scrollDirection: Axis.horizontal,
-                            gridDelegate:
-                                const SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent:600,
-                              childAspectRatio: 1/2,
-                              crossAxisSpacing: 1,
-                              mainAxisSpacing: 2,
-                            ),
-                            itemCount: 8,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7),
-                                child: InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text(
-                                              " ",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: darkblue),
-                                            ),
-                                            // titlePadding: ,
-                                            backgroundColor: white,
-                                            scrollable: true,
-                                            content: Text(
-                                              "cgkdgjgkgdrkghkghigrhkgrhhghghhigtyyymyiu3ri3",
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                          );
-                                        });
-                                  },
-                                  child: Container(
-                                    height: 80.h,
-                                    width: 130.w,
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(244, 241, 241, 1),
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              Color.fromRGBO(65, 105, 225, 1)
-                                                  .withOpacity(0.5),
-                                          spreadRadius: 2,
-                                          blurRadius: 5,
-                                          //  offset: Offset(3, 3),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Column(children: [
-                                      Image.asset(
-                                        "assets/icons/push-pin (1).png",
-                                        height: 30,
-                                        width: 30,
+                height: 150.h,
+                width: 500.w,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                          "  Assignments :                                           "
+                              .tr,
+                          style: Theme.of(context).textTheme.headline1),
+                    ),
+                    Container(
+                      width: 400.w,
+                      height: 96.h,
+                      child: GridView.builder(
+                          scrollDirection: Axis.horizontal,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 600,
+                            childAspectRatio: 1 / 2,
+                            crossAxisSpacing: 1,
+                            mainAxisSpacing: 2,
+                          ),
+                          itemCount: 8,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 7),
+                              child: InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                            " ",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.w400,
+                                                color: darkblue),
+                                          ),
+                                          // titlePadding: ,
+                                          backgroundColor: white,
+                                          scrollable: true,
+                                          content: Text(
+                                            "cgkdgjgkgdrkghkghigrhkgrhhghghhigtyyymyiu3ri3",
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                        );
+                                      });
+                                },
+                                child: Container(
+                                  height: 80.h,
+                                  width: 130.w,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(244, 241, 241, 1),
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color.fromRGBO(65, 105, 225, 1)
+                                            .withOpacity(0.5),
+                                        spreadRadius: 2,
+                                        blurRadius: 5,
+                                        //  offset: Offset(3, 3),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                            " "),
-                                      )
-                                    ]),
+                                    ],
                                   ),
+                                  child: Column(children: [
+                                    Image.asset(
+                                      "assets/icons/push-pin (1).png",
+                                      height: 30,
+                                      width: 30,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(" "),
+                                    )
+                                  ]),
                                 ),
-                              );
-                            }),
-                      ),
-                    ],
-                  )),
+                              ),
+                            );
+                          }),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Container(
@@ -206,7 +221,8 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                     borderRadius: BorderRadius.circular(2),
                     boxShadow: [
                       BoxShadow(
-                        color: Color.fromARGB(255, 95, 109, 154).withOpacity(0.5),
+                        color:
+                            Color.fromARGB(255, 95, 109, 154).withOpacity(0.5),
                         spreadRadius: 6,
                         blurRadius: 7,
                         // offset: Offset(0, 3),
@@ -344,11 +360,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -381,11 +397,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -418,11 +434,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -465,11 +481,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -502,11 +518,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -539,11 +555,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -586,11 +602,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -623,11 +639,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -660,11 +676,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -707,11 +723,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -744,11 +760,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -782,11 +798,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                   BoxShadow(
                                     color: Color.fromRGBO(65, 105, 225, 1)
                                         .withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -829,11 +845,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -866,11 +882,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -903,11 +919,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -950,11 +966,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -987,11 +1003,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -1024,11 +1040,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -1071,11 +1087,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -1108,11 +1124,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],
@@ -1145,11 +1161,11 @@ ListTile(title:  Text("Exams " ,style: TextStyle(
                                 boxShadow: [
                                   BoxShadow(
                                     color: darkblue.withOpacity(0.5),
-        
+
                                     spreadRadius: 2,
-        
+
                                     // blurRadius: 5,
-        
+
                                     // offset: Offset(0, 3),
                                   ),
                                 ],

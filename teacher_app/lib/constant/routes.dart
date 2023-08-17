@@ -8,6 +8,7 @@ import 'package:teacher_app/screen/login.dart';
 import 'package:teacher_app/screen/marks.dart';
 import 'package:teacher_app/screen/post.dart';
 import 'package:teacher_app/screen/show_posts.dart';
+import 'package:teacher_app/screen/splash_screen.dart';
 import 'package:teacher_app/screen/student_profile.dart';
 import 'package:teacher_app/screen/teacher_profile.dart';
 import 'package:teacher_app/screen/sections.dart';
@@ -18,7 +19,8 @@ import '../components/principle_bottom_bar.dart';
 import '../screen/homepage.dart';
 
 class MyRoutes {
-  static const String login = '/';
+  static const String splashScreen = '/';
+  static const String login = '/login';
   static const String teacherBottomBar = '/teacherbottombar';
   static const String principleBottomBar = '/principlebottombar';
   static const String homepage = '/homepage';
@@ -36,6 +38,11 @@ class MyRoutes {
   static const String teachersAttendance = '/teachersAttendance';
 
   static final pages = [
+    GetPage(
+      name: MyRoutes.splashScreen,
+      page: () => const SplashScreen(),
+      // middlewares: [MyMiddleware()],
+    ),
     GetPage(
       name: MyRoutes.login,
       page: () => const Login(),

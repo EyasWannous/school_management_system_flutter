@@ -59,12 +59,14 @@ class SearchMarks extends SearchDelegate {
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
-        return ListTile(
-          title: Text(result.name),
-          onTap: () => {
-            Get.dialog(
-              GetBuilder<MarksController>(
-                builder: (sceondController) => AlertDialog(
+        return GetBuilder<MarksController>(
+          builder: (sceondController) => ListTile(
+            title: Text(result.name),
+            onTap: () async => {
+              await sceondController
+                  .fetchMarkOfStudent('${sceondController.students[index].id}'),
+              Get.dialog(
+                AlertDialog(
                   title: const Text(
                     "Title",
                     textAlign: TextAlign.start,
@@ -91,7 +93,8 @@ class SearchMarks extends SearchDelegate {
                         }).toList(),
                         value: sceondController.markTypeSelectedValue,
                         onChanged: (value) =>
-                            sceondController.onMarkTypeDropdownChanged(value!),
+                            sceondController.onMarkTypeDropdownChanged(value!,
+                                '${sceondController.students[index].id}'),
                       ),
                       DropdownButton(
                         iconSize: 24,
@@ -111,7 +114,8 @@ class SearchMarks extends SearchDelegate {
                         }).toList(),
                         value: sceondController.coursesSelectedValue,
                         onChanged: (value) =>
-                            sceondController.onCoursesDropdownChanged(value!),
+                            sceondController.onCoursesDropdownChanged(value!,
+                                '${sceondController.students[index].id}'),
                       ),
                       Form(
                         key: sceondController.formKey,
@@ -173,11 +177,11 @@ class SearchMarks extends SearchDelegate {
                   //   ),
                   // ],
                 ),
+                transitionCurve: Curves.easeInOut,
+                transitionDuration: const Duration(milliseconds: 450),
               ),
-              transitionCurve: Curves.easeInOut,
-              transitionDuration: const Duration(milliseconds: 450),
-            ),
-          },
+            },
+          ),
         );
       },
     );
@@ -196,12 +200,14 @@ class SearchMarks extends SearchDelegate {
     return ListView.builder(
       itemBuilder: (context, index) {
         var result = matchQuery[index];
-        return ListTile(
-          title: Text(result.name),
-          onTap: () => {
-            Get.dialog(
-              GetBuilder<MarksController>(
-                builder: (sceondController) => AlertDialog(
+        return GetBuilder<MarksController>(
+          builder: (sceondController) => ListTile(
+            title: Text(result.name),
+            onTap: () async => {
+              await sceondController
+                  .fetchMarkOfStudent('${sceondController.students[index].id}'),
+              Get.dialog(
+                AlertDialog(
                   title: const Text(
                     "Title",
                     textAlign: TextAlign.start,
@@ -228,7 +234,8 @@ class SearchMarks extends SearchDelegate {
                         }).toList(),
                         value: sceondController.markTypeSelectedValue,
                         onChanged: (value) =>
-                            sceondController.onMarkTypeDropdownChanged(value!),
+                            sceondController.onMarkTypeDropdownChanged(value!,
+                                '${sceondController.students[index].id}'),
                       ),
                       DropdownButton(
                         iconSize: 24,
@@ -248,7 +255,8 @@ class SearchMarks extends SearchDelegate {
                         }).toList(),
                         value: sceondController.coursesSelectedValue,
                         onChanged: (value) =>
-                            sceondController.onCoursesDropdownChanged(value!),
+                            sceondController.onCoursesDropdownChanged(value!,
+                                '${sceondController.students[index].id}'),
                       ),
                       Form(
                         key: sceondController.formKey,
@@ -288,33 +296,34 @@ class SearchMarks extends SearchDelegate {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: TextButton(
-                          onPressed: () => {
-                            if (sceondController.formKey.currentState!
-                                .validate())
-                              {sceondController.sendData('${result.id}')}
-                          },
-                          child: const Text('Add'),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: double.infinity,
+                      //   child: TextButton(
+                      //     onPressed: () => {
+                      //       if (sceondController.formKey.currentState!
+                      //           .validate())
+                      //         {sceondController.sendData('${result.id}')}
+                      //     },
+                      //     child: const Text('Add'),
+                      //   ),
+                      // ),
                     ],
                   ),
-                  // actions: [
-                  //   MyTextButton(
-                  //     onP: () {
-                  //       Get.back();
-                  //     },
-                  //     childWidget: const Text('Close'),
-                  //   ),
-                  // ],
+                  actions: [
+                    TextButton(
+                      onPressed: () => {
+                        if (sceondController.formKey.currentState!.validate())
+                          {sceondController.sendData('${result.id}')}
+                      },
+                      child: const Text('Add'),
+                    ),
+                  ],
                 ),
+                transitionCurve: Curves.easeInOut,
+                transitionDuration: const Duration(milliseconds: 450),
               ),
-              transitionCurve: Curves.easeInOut,
-              transitionDuration: const Duration(milliseconds: 450),
-            ),
-          },
+            },
+          ),
         );
       },
       itemCount: matchQuery.length,

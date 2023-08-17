@@ -141,7 +141,8 @@ class PartOfGrid extends StatelessWidget {
                       child: TextButton(
                         child: const Text('Students'),
                         onPressed: () => {
-                          Get.to(const Students(), arguments: [sectionId]),
+                          Get.to(() => const Students(),
+                              arguments: [sectionId]),
                         },
                       ),
                     ),
@@ -154,7 +155,7 @@ class PartOfGrid extends StatelessWidget {
                         child: const Text('Marks'),
                         onPressed: () => {
                           Get.to(
-                            const Marks(),
+                            () => const Marks(),
                             arguments: [gradeId, sectionId],
                           ),
                         },
@@ -168,7 +169,8 @@ class PartOfGrid extends StatelessWidget {
                       child: TextButton(
                         child: const Text('Assignments'),
                         onPressed: () => {
-                          Get.to(const Assignments(), arguments: [sectionId]),
+                          Get.to(() => const Assignments(),
+                              arguments: [sectionId]),
                         },
                       ),
                     ),
@@ -180,7 +182,8 @@ class PartOfGrid extends StatelessWidget {
                       child: TextButton(
                         child: const Text('Posts'),
                         onPressed: () => {
-                          Get.to(const ShowPosts(), arguments: [sectionId]),
+                          Get.to(() => const ShowPosts(),
+                              arguments: [sectionId]),
                         },
                       ),
                     ),

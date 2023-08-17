@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:teacher_app/model/posts_by_section_model.dart';
+import 'package:teacher_app/services/rest_api_post.dart';
 import '../model/posts_model.dart';
 import '../services/rest_api_get.dart';
 
-class PostsController extends GetxController {
+class ShowPostsController extends GetxController {
   bool isLoading = true;
 
   List<PostsTS> posts = [];
@@ -31,5 +32,12 @@ class PostsController extends GetxController {
 
     isLoading = false;
     update();
+  }
+
+  deletePost(PostsTS deletedPost, String id) async {
+    if (await RestAPIPost.postDelete(id)) {
+      posts.remove(deletedPost);
+      update();
+    }
   }
 }

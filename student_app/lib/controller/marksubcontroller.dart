@@ -7,7 +7,6 @@ import 'package:student_app/model/studentmodel.dart';
 import 'package:get/get.dart';
 
 class MarkSubController extends GetxController {
-
   late bool isLoading = true;
   var marksubfList = <MarkSubFModel>[];
   var marksubsList = <MarkSubSModel>[];
@@ -21,6 +20,7 @@ class MarkSubController extends GetxController {
     getSecondData();
     super.onInit();
   }
+
   void getfirstData() async {
     try {
       isLoading = true;
@@ -30,10 +30,10 @@ class MarkSubController extends GetxController {
       print(
           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
-     if (response["status"]) {
+      if (response["status"]) {
         for (var data in response["marks"]) {
-        marksubfList.add(MarkSubFModel.fromJson(data));
-         // print(data);
+          marksubfList.add(MarkSubFModel.fromJson(data));
+          // print(data);
         }
       }
     } catch (e) {
@@ -50,10 +50,10 @@ class MarkSubController extends GetxController {
       print(
           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
-     if (response["status"]) {
+      if (response["status"]) {
         for (var data in response["marks"]) {
-        marksubsList.add(MarkSubSModel.fromJson(data));
-         // print(data);
+          marksubsList.add(MarkSubSModel.fromJson(data));
+          // print(data);
         }
       }
     } catch (e) {
@@ -61,5 +61,3 @@ class MarkSubController extends GetxController {
     }
   }
 }
-
-
