@@ -9,8 +9,6 @@ import 'package:teacher_app/screen/marks.dart';
 import 'package:teacher_app/screen/show_posts.dart';
 import 'package:teacher_app/screen/students.dart';
 
-import '../common/my_text_button.dart';
-
 class PartOfGrid extends StatelessWidget {
   final int gradeId;
   final int sectionId;

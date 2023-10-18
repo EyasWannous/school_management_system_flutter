@@ -34,11 +34,11 @@ class Login extends StatelessWidget {
                   children: [
                     Text(
                       "Welcome to",
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     Text(
                       " It's School !",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                   ],
                 ),
@@ -70,7 +70,7 @@ class Login extends StatelessWidget {
                                           : "please enter your username";
                                     },
                                     cursorColor:
-                                        Color.fromARGB(255, 141, 168, 209),
+                                        const Color.fromARGB(255, 141, 168, 209),
                                     cursorHeight: 20,
                                     decoration: InputDecoration(
                                       counterStyle: const TextStyle(
@@ -94,7 +94,7 @@ class Login extends StatelessWidget {
                                       hintText: "Enter your username",
                                       hintStyle: TextStyle(
                                         color:
-                                            Color.fromARGB(255, 141, 168, 209),
+                                            const Color.fromARGB(255, 141, 168, 209),
                                         fontFamily: 'Montserrat',
                                         fontSize: 12.sp,
                                       ),
@@ -118,7 +118,7 @@ class Login extends StatelessWidget {
                                     keyboardType: TextInputType.visiblePassword,
                                     obscureText: controller.passwordVisible,
                                     cursorColor:
-                                        Color.fromARGB(255, 141, 168, 209),
+                                        const Color.fromARGB(255, 141, 168, 209),
                                     cursorHeight: 20,
                                     validator: (text) {
                                       if (text!.length < 8) {
@@ -149,7 +149,7 @@ class Login extends StatelessWidget {
                                       hintText: "Enter your password",
                                       hintStyle: TextStyle(
                                         color:
-                                            Color.fromARGB(255, 141, 168, 209),
+                                            const Color.fromARGB(255, 141, 168, 209),
                                         fontFamily: 'Montserrat',
                                         fontSize: 12.sp,
                                       ),

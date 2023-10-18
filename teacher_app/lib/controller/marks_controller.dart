@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:teacher_app/model/serach_model.dart';
@@ -45,17 +47,17 @@ class MarksController extends GetxController {
   void onInit() async {
     await fetchAllGradesData();
     await fetchSectionsData();
-    fetchStudentsData();
-    fetchCoursesData();
-    fetchMarksTypesData();
+    await fetchStudentsData();
+    await fetchCoursesData();
+    await fetchMarksTypesData();
     super.onInit();
   }
 
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    // print('gradesList');
-    // print(gradesList);
+    // log('gradesList');
+    // log(gradesList);
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
       gradeSelectedValue = gradeDropdownItems[0];
@@ -93,13 +95,13 @@ class MarksController extends GetxController {
       (element) => element.name == gradeSelectedValue,
       orElse: () => Grade(),
     );
-    // print('grade.id');
-    // print(grade.id);
+    // log('grade.id');
+    // log(grade.id);
 
     sectionsList = await RestAPIGet.getsections('${grade.id}');
 
-    // print('sectionsList');
-    // print(sectionsList);
+    // log('sectionsList');
+    // log(sectionsList);
     if (sectionsList.isEmpty) {
       sectionDropdownItems = ["it's Empty"];
       sectionSelectedValue = sectionDropdownItems[0];
@@ -133,7 +135,7 @@ class MarksController extends GetxController {
     update();
   }
 
-  void fetchStudentsData() async {
+  fetchStudentsData() async {
     isLoading = true;
     update();
 
@@ -142,8 +144,8 @@ class MarksController extends GetxController {
       (element) => element.name == sectionSelectedValue,
       orElse: () => Section(),
     );
-    // print('section.id');
-    // print(section.id);
+    // log('section.id');
+    // log(section.id);
 
     var res = await RestAPIGet.getstudents('${section.id}');
     if (res.data != null) {
@@ -155,15 +157,16 @@ class MarksController extends GetxController {
     update();
   }
 
-  void fetchCoursesData() async {
+  fetchCoursesData() async {
     Section section = sectionsList.firstWhere(
       (element) => element.name == sectionSelectedValue,
       orElse: () => Section(),
     );
-    // print('section.id');
-    // print(section.id);
+    // log('section.id');
+    // log(section.id);
 
     coursesList = await RestAPIGet.getcourses('${section.id}');
+    log('${coursesList[0].name}');
 
     if (coursesList.isEmpty) {
       coursesDropdownItems = ["it's Empty"];
@@ -182,7 +185,7 @@ class MarksController extends GetxController {
     update();
   }
 
-  void fetchMarksTypesData() async {
+  fetchMarksTypesData() async {
     List<String> ls = await RestAPIGet.getmarkstypes();
 
     if (ls.isEmpty) {
@@ -250,7 +253,7 @@ class MarksController extends GetxController {
   void onCoursesDropdownChanged(String value, String id) async {
     if (coursesSelectedValue == value) return;
     coursesSelectedValue = value;
-    await fetchMarkOfStudent(id);
+    fetchMarkOfStudent(id);
     update();
   }
 

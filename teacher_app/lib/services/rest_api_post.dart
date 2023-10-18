@@ -15,7 +15,8 @@ import '../model/student_attendance_model.dart';
 import '../model/students_post_attended_model.dart';
 
 class RestAPIPost {
-  static Future<void> postlogin(String name, String password) async {
+  static Future<void> postlogin(
+      String name, String password, String fcmToken) async {
     try {
       http.Response response = await http.post(
         Uri.parse('${MyURL.url}teachers/login'),
@@ -27,12 +28,19 @@ class RestAPIPost {
           <String, String>{
             'username': name,
             'password': password,
+            'fcm_token': fcmToken,
           },
         ),
       );
+      //log('----------------------------------------------------------------');
+      //log('----------------------------------------------------------------');
+      //log('----------------------------------------------------------------');
+      //log('----------------------------------------------------------------');
+      //log('----------------------------------------------------------------');
+      //log(fcmToken);
       if (response.statusCode == 200 || response.statusCode == 201) {
         var res = jsonDecode(response.body);
-        // print(res);
+        // //log(res);
 
         // do logic here
 
@@ -41,31 +49,31 @@ class RestAPIPost {
 
         MyURL.token = res["token"];
 
-        print(GetStorage().read('token'));
-        print(GetStorage().read('is_principle'));
+        //log(GetStorage().read('token'));
+        //log(GetStorage().read('is_principle'));
 
         MySnackBar.showSnackBar(message: res['message']);
 
         if (res["is_principle"]) {
-          Get.off(const PrincipleBottomBar());
+          Get.off(() => const PrincipleBottomBar());
         } else {
-          Get.off(const BottomBar());
+          Get.off(() => const BottomBar());
         }
 
         return;
       } else if (response.statusCode == 400) {
         var res = jsonDecode(response.body);
         MySnackBar.showSnackBar(message: res['message']);
-        print('postlogin Funtion:');
-        print(response);
+        //log('postlogin Funtion:');
+        //log(response);
       } else {
-        MySnackBar.showSnackBar(message: 'Check your internet connection');
+        MySnackBar.showSnackBar(message: jsonDecode(response.body)['message']);
       }
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
 
-      print('postlogin Funtion in catch:');
-      print(error);
+      //log('postlogin Funtion in catch:');
+      //log(error);
     }
     return;
   }
@@ -77,14 +85,14 @@ class RestAPIPost {
         attended: student.isAttendanceToday,
       );
     }).toList();
-    // print(jsonList);
+    // //log(jsonList);
 
     StudentsPostAttendedModel jsonObject =
         StudentsPostAttendedModel(students: jsonList);
-    // print(jsonObject);
+    // //log(jsonObject);
 
     String jsonData = jsonEncode(jsonObject.toJson());
-    // print(jsonData);
+    // //log(jsonData);
 
     try {
       var headers = {
@@ -107,14 +115,14 @@ class RestAPIPost {
         //   snackPosition: SnackPosition.BOTTOM, // Position of the snackbar
         //   duration: const Duration(seconds: 3),
         // );
-        // print('postAttendanceStudents :');
+        // //log('postAttendanceStudents :');
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        print(messageInSncak);
+        //log(messageInSncak);
       } else if (response.statusCode == 401) {
-        print('postAttendanceStudents in statusCode:');
-        print(response.reasonPhrase);
+        //log('postAttendanceStudents in statusCode:');
+        //log(response.reasonPhrase);
       } else {
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
@@ -124,8 +132,8 @@ class RestAPIPost {
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
 
-      print('postAttendanceStudents in catch:');
-      print(error);
+      //log('postAttendanceStudents in catch:');
+      //log(error);
     }
   }
 
@@ -138,17 +146,17 @@ class RestAPIPost {
     // = list.map((student) {
     //   if (student.isSelected!) return student.id!;
     // }).toList();
-    // print(jsonList);
+    // //log(jsonList);
 
     List<Map<String, int>> jsonObject = [];
     for (var element in jsonList) {
       jsonObject.add({'id': element!});
     }
 
-    // print(jsonObject);
+    // //log(jsonObject);
 
     // String jsonData = jsonEncode(jsonObject);
-    // print(jsonData);
+    // //log(jsonData);
 
     try {
       var headers = {
@@ -179,16 +187,16 @@ class RestAPIPost {
             jsonDecode(await response.stream.bytesToString())['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
       } else if (response.statusCode == 401) {
-        print('postAttendanceStudents in statusCode:');
-        print(response.reasonPhrase);
+        //log('postAttendanceStudents in statusCode:');
+        //log(response.reasonPhrase);
       } else {
         MySnackBar.showSnackBar(message: 'Check your internet connection');
       }
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
 
-      print('postAttendanceStudents in catch:');
-      print(error);
+      //log('postAttendanceStudents in catch:');
+      //log(error);
     }
   }
 
@@ -214,16 +222,16 @@ class RestAPIPost {
       } else if (response.statusCode == 400) {
         var res = jsonDecode(response.body);
         MySnackBar.showSnackBar(message: res['message']);
-        print('postMarks Funtion:');
-        print(response);
+        //log('postMarks Funtion:');
+        //log(response);
       } else {
         MySnackBar.showSnackBar(message: 'Check your internet connection');
       }
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
 
-      print('postMarks Funtion:');
-      print(error);
+      //log('postMarks Funtion:');
+      //log(error);
     }
     return;
   }
@@ -257,33 +265,32 @@ class RestAPIPost {
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
+      String responseBody = await response.stream.bytesToString();
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        String messageInSncak =
-            jsonDecode(await response.stream.bytesToString())['message'];
+        String messageInSncak = jsonDecode(responseBody)['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        print(await response.stream.bytesToString());
+        // //log(await response.stream.bytesToString());
 
         return;
       }
       if (response.statusCode == 401) {
-        String messageInSncak =
-            jsonDecode(await response.stream.bytesToString())['message'];
+        String messageInSncak = jsonDecode(responseBody)['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        print('postImagesInPost Funtion in StatusCode :');
-        print(await response.stream.bytesToString());
+        //log('postImagesInPost Funtion in StatusCode :');
+        // //log(await response.stream.bytesToString());
 
         return;
       } else {
         MySnackBar.showSnackBar(message: 'Check your internet connection');
-        print('postImagesInPost Funtion:');
-        print(response.reasonPhrase);
+        //log('postImagesInPost Funtion:');
+        //log(response.reasonPhrase);
       }
     } catch (error) {
-      MySnackBar.showSnackBar(message: 'Check your internet connection');
+      // MySnackBar.showSnackBar(message: 'Check your cccccc connection');
 
-      print('postImagesInPost Funtion in catch :');
-      print(error);
+      //log('postImagesInPost Funtion in catch :');
+      //log(error);
     }
   }
 
@@ -294,14 +301,14 @@ class RestAPIPost {
         attended: student.isAttendanceToday,
       );
     }).toList();
-    // print(jsonList);
+    // //log(jsonList);
 
     TeachersPostAttendedModel jsonObject =
         TeachersPostAttendedModel(teachers: jsonList);
-    // print(jsonObject);
+    // //log(jsonObject);
 
     String jsonData = jsonEncode(jsonObject.toJson());
-    // print(jsonData);
+    // //log(jsonData);
 
     try {
       var headers = {
@@ -320,11 +327,11 @@ class RestAPIPost {
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        // print(messageInSncak);
+        // //log(messageInSncak);
       } else if (response.statusCode == 401) {
         MySnackBar.showSnackBar(message: 'Check your internet connection');
-        print('postattendanceteachers in statusCode:');
-        print(response.reasonPhrase);
+        //log('postattendanceteachers in statusCode:');
+        //log(response.reasonPhrase);
       } else {
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
@@ -333,8 +340,8 @@ class RestAPIPost {
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
 
-      print('postattendanceteachers in catch:');
-      print(error);
+      //log('postattendanceteachers in catch:');
+      //log(error);
     }
   }
 
@@ -358,12 +365,18 @@ class RestAPIPost {
       http.StreamedResponse response = await request.send();
 
       if (response.statusCode == 200) {
-        print(await response.stream.bytesToString());
+        String messageInSncak =
+            jsonDecode(await response.stream.bytesToString())['message'];
+        MySnackBar.showSnackBar(message: messageInSncak);
+        //log(await response.stream.bytesToString());
       } else {
-        print(response.reasonPhrase);
+        String messageInSncak =
+            jsonDecode(await response.stream.bytesToString())['message'];
+        MySnackBar.showSnackBar(message: messageInSncak);
+        //log(response.reasonPhrase);
       }
     } catch (error) {
-      print(error);
+      //log(error);
     }
   }
 
@@ -390,8 +403,8 @@ class RestAPIPost {
 
   //       MyURL.token = res["token"];
 
-  //       print(GetStorage().read('token'));
-  //       print(GetStorage().read('is_principle'));
+  //       //log(GetStorage().read('token'));
+  //       //log(GetStorage().read('is_principle'));
 
   //       MySnackBar.showSnackBar(message: res['message']);
 
@@ -401,13 +414,13 @@ class RestAPIPost {
   //         Get.off(const BottomBar());
   //       }
 
-  //       print(response.body);
+  //       //log(response.body);
   //       return;
   //     } else {
-  //       print(response.body);
+  //       //log(response.body);
   //     }
   //   } catch (error) {
-  //     print(error);
+  //     //log(error);
   //   }
   // }
 
@@ -426,18 +439,18 @@ class RestAPIPost {
       http.StreamedResponse response = await request.send();
 
       if (response.statusCode == 200) {
-        // print('----');
+        // //log('----');
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
         GetStorage().remove('token');
         Get.offAll(const Login());
-        print(await response.stream.bytesToString());
+        //log(await response.stream.bytesToString());
       } else {
-        print(response.reasonPhrase);
+        //log(response.reasonPhrase);
       }
     } catch (error) {
-      print(error);
+      //log(error);
     }
   }
 
@@ -454,23 +467,22 @@ class RestAPIPost {
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
+      String responseBody = await response.stream.bytesToString();
 
       if (response.statusCode == 200) {
-        String messageInSncak =
-            jsonDecode(await response.stream.bytesToString())['message'];
+        String messageInSncak = jsonDecode(responseBody)['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        print(await response.stream.bytesToString());
+        // //log(await response.stream.bytesToString());
         return true;
       } else {
-        String messageInSncak =
-            jsonDecode(await response.stream.bytesToString())['message'];
+        String messageInSncak = jsonDecode(responseBody)['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        print(response.reasonPhrase);
+        //log(response.reasonPhrase);
         return false;
       }
     } catch (error) {
+      //log(error);
       return false;
-      print(error);
     }
   }
 }

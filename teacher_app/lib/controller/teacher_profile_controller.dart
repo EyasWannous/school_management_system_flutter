@@ -18,7 +18,7 @@ class TeacherProfileController extends GetxController {
     update();
 
     teacher = await RestAPIGet.getteacherprofile();
-    // print(teacher.address);
+    // log(teacher.address);
 
     isLoading = false;
     update();

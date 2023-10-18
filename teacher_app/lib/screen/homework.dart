@@ -50,7 +50,7 @@ class Homework extends StatelessWidget {
                               iconSize: 24,
                               elevation: 16,
                               isExpanded: true,
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                               underline: const Text(''),
                               hint: const Text('Type'),
                               dropdownColor:
@@ -74,7 +74,7 @@ class Homework extends StatelessWidget {
                               iconSize: 24,
                               elevation: 16,
                               isExpanded: true,
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                               underline: const Text(''),
                               hint: const Text('Grade'),
                               dropdownColor:
@@ -119,8 +119,8 @@ class Homework extends StatelessWidget {
                                       },
                                       decoration: InputDecoration(
                                         filled: true,
-                                        fillColor:
-                                            Color.fromRGBO(244, 241, 241, 1),
+                                        fillColor: const Color.fromRGBO(
+                                            244, 241, 241, 1),
                                         hintText: 'Enter your text here',
                                         border: UnderlineInputBorder(
                                           borderRadius:
@@ -159,8 +159,8 @@ class Homework extends StatelessWidget {
                                             const Icon(Icons.calendar_today),
                                         labelText: "Enter Date",
                                         filled: true,
-                                        fillColor:
-                                            Color.fromRGBO(244, 241, 241, 1),
+                                        fillColor: const Color.fromRGBO(
+                                            244, 241, 241, 1),
                                         border: UnderlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -195,12 +195,12 @@ class Homework extends StatelessWidget {
                       ),
 
                       // SizedBox(height: MediaQuery.of(context).size.height / 3),
-
-                      /// BottomSheet
                     ],
                   ),
                 ),
               ),
+
+              /// BottomSheet
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(

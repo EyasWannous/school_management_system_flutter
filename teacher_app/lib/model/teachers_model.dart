@@ -43,6 +43,7 @@ class Teacher {
   String? gender;
   String? createdAt;
   String? updatedAt;
+  bool? todayAttendance;
 
   Teacher({
     this.id,
@@ -59,6 +60,7 @@ class Teacher {
     this.gender,
     this.createdAt,
     this.updatedAt,
+    this.todayAttendance,
   });
 
   Teacher.fromJson(Map<String, dynamic> json) {
@@ -76,6 +78,7 @@ class Teacher {
     gender = json['gender'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    todayAttendance = json['today_attendance'];
   }
 
   Map<String, dynamic> toJson() {
@@ -94,6 +97,7 @@ class Teacher {
     data['gender'] = gender;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    data['today_attendance'] = todayAttendance;
     return data;
   }
 }

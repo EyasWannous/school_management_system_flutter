@@ -17,7 +17,7 @@ class StudentsController extends GetxController {
   @override
   void onInit() async {
     fetchStudentsData();
-    // print(Get.arguments);
+    // log(Get.arguments);
     super.onInit();
   }
 

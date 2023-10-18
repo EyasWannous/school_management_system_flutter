@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,10 +11,10 @@ class MyMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (box.read('is_principle')) {
-      print(box.read('is_principle'));
+      log(box.read('is_principle'));
       return const RouteSettings(name: '/calendar');
     } else {
-      print(box.read('is_principle'));
+      log(box.read('is_principle'));
       return const RouteSettings(name: '/homepage');
     }
     // Continue with the original navigation

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher_app/model/serach_model.dart';
+import 'package:teacher_app/model/search_in_attendance_model.dart';
 
 import '../screen/student_profile.dart';
 
-class SearchStudents extends SearchDelegate {
-  final List<SearchModel> searchTerms;
+class SearchInAttendance extends SearchDelegate {
+  final List<SearchInAttendanceModel> searchTerms;
 
-  SearchStudents({required this.searchTerms});
+  SearchInAttendance({required this.searchTerms});
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -36,7 +36,7 @@ class SearchStudents extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    List<SearchModel> matchQuery = [];
+    List<SearchInAttendanceModel> matchQuery = [];
 
     for (var fruit in searchTerms) {
       if (fruit.name.toLowerCase().contains(query.toLowerCase())) {
@@ -68,7 +68,7 @@ class SearchStudents extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<SearchModel> matchQuery = [];
+    List<SearchInAttendanceModel> matchQuery = [];
 
     for (var fruit in searchTerms) {
       if (fruit.name.toLowerCase().contains(query.toLowerCase())) {

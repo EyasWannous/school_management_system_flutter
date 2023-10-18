@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:teacher_app/model/posts_by_section_model.dart';
 import 'package:teacher_app/services/rest_api_post.dart';
-import '../model/posts_model.dart';
 import '../services/rest_api_get.dart';
 
 class ShowPostsController extends GetxController {
@@ -22,7 +23,7 @@ class ShowPostsController extends GetxController {
 
     posts.clear();
     posts = await RestAPIGet.getpoststoshow('${Get.arguments[0]}');
-    // print(posts[0].attachments![0].fileUrl);
+    // log(posts[0].attachments![0].fileUrl);
 
     if (posts.isEmpty) {
       posts = [];
@@ -35,8 +36,14 @@ class ShowPostsController extends GetxController {
   }
 
   deletePost(PostsTS deletedPost, String id) async {
-    if (await RestAPIPost.postDelete(id)) {
+    bool isDeleted = await RestAPIPost.postDelete(id);
+    log('$isDeleted');
+    if (isDeleted) {
+      // int ind = posts.indexOf(deletedPost);
+      // log(posts[ind].id);
       posts.remove(deletedPost);
+      // log(posts[ind].id);
+
       update();
     }
   }

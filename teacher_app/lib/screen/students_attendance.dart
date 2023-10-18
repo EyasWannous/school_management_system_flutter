@@ -15,7 +15,24 @@ class StudentsAttendance extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Attendance'),
-          // actions: [],
+          actions: const [
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: IconButton(
+            //     onPressed: () {
+            //       showSearch(
+            //         context: context,
+            //         delegate:
+            //             SearchInAttendance(searchTerms: controller.searchList),
+            //       );
+            //     },
+            //     icon: const Icon(
+            //       Icons.search_outlined,
+            //       color: MyColors.milkyWhite,
+            //     ),
+            //   ),
+            // )
+          ],
         ),
         body: controller.isLoading
             ? const Center(
@@ -35,7 +52,7 @@ class StudentsAttendance extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),
@@ -58,7 +75,7 @@ class StudentsAttendance extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),
@@ -108,7 +125,7 @@ class StudentsAttendance extends StatelessWidget {
                               // tileColor: Color.fromRGBO(233, 238, 252, 1),
                               leading: CircleAvatar(
                                 backgroundColor:
-                                    Color.fromRGBO(233, 238, 252, 1),
+                                    const Color.fromRGBO(233, 238, 252, 1),
                                 child: ClipOval(
                                   child: Image.network(
                                     item.imageUrl,
@@ -123,7 +140,7 @@ class StudentsAttendance extends StatelessWidget {
                               title: Text(item.name,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2), // name fo students
+                                      .bodyMedium), // name fo students
                               subtitle: Text(
                                 'absence: ${item.numberOfDays}',
                               ),

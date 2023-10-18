@@ -55,7 +55,7 @@ class Assignments extends StatelessWidget {
                           flex: 1,
                           child: Text(
                             "${item.title}",
-                            style: Theme.of(context).textTheme.headline1,
+                            style: Theme.of(context).textTheme.displayLarge,
                           ),
                         ),
                       ],
@@ -67,7 +67,7 @@ class Assignments extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Text(
                         "${item.content}",
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                   ),
@@ -77,7 +77,7 @@ class Assignments extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 175, top: 10),
                       child: Text(
                         "${item.dueDate}",
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                   )

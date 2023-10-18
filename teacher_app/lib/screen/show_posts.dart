@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:teacher_app/constant/my_colors.dart';
 import 'package:teacher_app/model/posts_by_section_model.dart';
 
-import '../constant/my_url.dart';
 import '../controller/posts_controller.dart';
 
 class ShowPosts extends StatelessWidget {
@@ -90,36 +89,33 @@ class ShowPosts extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  InkWell(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          // "Mr. Ahmed Mohsen",
-                                          "${item.teacher!.firstName!} ${item.teacher!.lastName!} ",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline6,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8),
-                                          child: Text(
-                                            // "Physics Teacher",
-                                            item.teacher!.course!.name!,
-                                            style: TextStyle(
-                                              fontFamily: 'Montserrat',
-                                              color: Colors.grey,
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w300,
-                                            ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        // "Mr. Ahmed Mohsen",
+                                        "${item.teacher!.firstName!} ${item.teacher!.lastName!} ",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Text(
+                                          // "Physics Teacher",
+                                          item.teacher!.course!.name!,
+                                          style: TextStyle(
+                                            fontFamily: 'Montserrat',
+                                            color: Colors.grey,
+                                            fontSize: 11.sp,
+                                            fontWeight: FontWeight.w300,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      print("go to his profile");
-                                    },
+                                      ),
+                                    ],
                                   ),
                                   const Spacer(),
+                                  // if (GetStorage().read('my_id') ==
+                                  //     '${item.teacherId}')
                                   IconButton(
                                     icon: const Icon(
                                       Icons.delete_rounded,
@@ -161,12 +157,12 @@ class ShowPosts extends StatelessWidget {
                                   Text(
                                     "Title : ",
                                     style:
-                                        Theme.of(context).textTheme.headline6,
+                                        Theme.of(context).textTheme.titleLarge,
                                   ),
                                   Text(
                                     item.title!,
                                     style:
-                                        Theme.of(context).textTheme.bodyText1,
+                                        Theme.of(context).textTheme.bodyLarge,
                                   ),
                                 ],
                               ),
@@ -181,7 +177,7 @@ class ShowPosts extends StatelessWidget {
                                     child: Text(
                                       item.content!,
                                       style:
-                                          Theme.of(context).textTheme.headline5,
+                                          Theme.of(context).textTheme.headlineSmall,
                                     ),
                                   ),
                                   if (item.attachments != null ||
@@ -189,20 +185,20 @@ class ShowPosts extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 10),
-                                      child: Container(
+                                      child: SizedBox(
                                         height: 260.h,
                                         width: 330.w,
                                         // color: MyColors.soLightBlue,
                                         child: ListView.builder(
-                                          scrollDirection: Axis
-                                              .horizontal, // Scroll horizontally
+                                          scrollDirection: Axis.horizontal,
                                           itemCount: item.attachments!.length,
                                           itemBuilder: (context, index) {
                                             return SizedBox(
-                                              width: 330
-                                                  .w, // Adjust the width as needed
+                                              width: 330.w,
                                               child: Image.network(
-                                                '${MyURL.url.replaceAll('/api/', '')}${item.attachments![index].fileUrl!}',
+                                                // '${MyURL.url.replaceAll('/api/', '')}'
+                                                item.attachments![index]
+                                                    .fileUrl!,
                                                 fit: BoxFit.contain,
                                               ),
                                             );
@@ -219,9 +215,9 @@ class ShowPosts extends StatelessWidget {
                               child: Text(
                                 // "7 hours ago",
                                 item.elapsedTime!,
-                                style: Theme.of(context).textTheme.headline6,
+                                style: Theme.of(context).textTheme.titleLarge,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

@@ -13,8 +13,8 @@ class LightDarkTheme {
       titleTextStyle: headline1,
     ),
     textTheme: TextTheme(
-      headline1: headline1,
-      bodyText1: bodyText1,
+      displayLarge: headline1,
+      bodyLarge: bodyText1,
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
@@ -47,8 +47,8 @@ class LightDarkTheme {
         .copyWith(secondary: Colors.orange, brightness: Brightness.dark),
     fontFamily: 'Montserrat',
     textTheme: TextTheme(
-      headline1: headline1,
-      bodyText1: bodyText1,
+      displayLarge: headline1,
+      bodyLarge: bodyText1,
     ),
     useMaterial3: false,
     // Add more attributes as needed
@@ -73,7 +73,7 @@ class LDT {
 
 // Colors like primaryColor and colorScheme
     primaryColor: Colors.blue,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: MyColors.royalBlue,
       secondary: Colors.red,
     ),
@@ -82,23 +82,23 @@ class LDT {
     appBarTheme: AppBarTheme(
       color: const Color(0x00fbe4d8),
       toolbarTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: Colors.white,
           fontSize: 18.0,
         ),
-      ).bodyText2,
+      ).bodyMedium,
       titleTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: Colors.white,
           fontSize: 18.0,
         ),
-      ).headline6,
+      ).titleLarge,
     ),
 
     textTheme: const TextTheme(
-      headline1: headline1,
-      headline6: headline6,
-      bodyText2: bodyText2,
+      displayLarge: headline1,
+      titleLarge: headline6,
+      bodyMedium: bodyText2,
     ),
 
 // Buttons themes
@@ -130,21 +130,21 @@ class LDT {
     appBarTheme: AppBarTheme(
       color: Colors.blue,
       toolbarTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: Colors.white,
           fontSize: 18.0,
         ),
-      ).bodyText2,
+      ).bodyMedium,
       titleTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: Colors.white,
           fontSize: 18.0,
         ),
-      ).headline6,
+      ).titleLarge,
     ),
 
     textTheme: const TextTheme(
-      headline1: headline1,
+      displayLarge: headline1,
     ),
 
 // Buttons themes

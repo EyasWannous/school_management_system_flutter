@@ -7,8 +7,8 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('hieght: ${MediaQuery.of(context).size.height}');
-    // print('width: ${MediaQuery.of(context).size.width}');
+    // log('hieght: ${MediaQuery.of(context).size.height}');
+    // log('width: ${MediaQuery.of(context).size.width}');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -153,7 +153,7 @@ class Test extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(10),
                             overlayColor: MaterialStateProperty.all<Color>(
-                                Color.fromRGBO(143, 148, 251, 1)
+                                const Color.fromRGBO(143, 148, 251, 1)
                                     .withOpacity(0.3)),
                             onTap: () {},
                             child: Ink(
@@ -187,7 +187,7 @@ class Test extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             onTap: () {},
                             overlayColor: MaterialStateProperty.all<Color>(
-                                Color.fromRGBO(143, 148, 251, 1)
+                                const Color.fromRGBO(143, 148, 251, 1)
                                     .withOpacity(0.3)),
                             child: Ink(
                               padding: const EdgeInsets.all(2),

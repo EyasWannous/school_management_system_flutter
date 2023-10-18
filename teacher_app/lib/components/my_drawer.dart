@@ -63,7 +63,7 @@ class MyDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       title: Text(
-                        "Home page",
+                        "My Profile",
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 19.sp,
@@ -71,7 +71,9 @@ class MyDrawer extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        // Get.to(() => const TeacherProfile());
+                      },
                       leading: Image.asset(
                         "assets/icons/homepage.png",
                         height: 35.h,
@@ -152,7 +154,7 @@ class MyDrawer extends StatelessWidget {
                         width: 35.w,
                       ),
                       onTap: () {
-                        Get.to(() => const TeacherReport());
+                        Get.to(() => const TeacherAlert());
                       },
                     ),
                     ListTile(
@@ -178,18 +180,18 @@ class MyDrawer extends StatelessWidget {
                     ListTile(
                       title: Text(
                         "Logout",
-                        // style: TextStyle(
-                        //   fontFamily: 'Montserrat',
-                        //   fontSize: 19.sp,
-                        //   color: MyColors.littleBlue,
-                        //   fontWeight: FontWeight.bold,
-                        // ),
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 19.sp,
+                          color: MyColors.littleBlue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       onTap: () async {
                         await RestAPIPost.postlogout();
                       },
                       leading: Image.asset(
-                        "assets/icons/gear.png",
+                        "assets/icons/logout.png",
                         height: 35.h,
                         width: 35.w,
                       ),

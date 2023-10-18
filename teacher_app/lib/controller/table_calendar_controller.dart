@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -31,7 +30,7 @@ class TableCalendarController extends GetxController {
     update();
 
     Map<DateTime, List<Event>> temporary = await RestAPIGet.getevents();
-    print(temporary);
+    // log(temporary);
 
     temporary.forEach(
       (key, value) {

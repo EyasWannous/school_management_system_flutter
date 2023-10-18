@@ -4,6 +4,7 @@ import 'package:teacher_app/services/rest_api_get.dart';
 import 'package:teacher_app/constant/my_colors.dart';
 
 import '../model/grade_model.dart';
+import '../model/search_in_attendance_model.dart';
 import '../model/sections_model.dart';
 import '../model/student_attendance_model.dart';
 import '../model/students_model.dart';
@@ -17,6 +18,7 @@ class StudentsAttendanceController extends GetxController {
   List<Grade> gradesList = [];
   List<Section> sectionsList = [];
   List<Student> studentsList = [];
+  List<SearchInAttendanceModel> searchList = [];
 
   List<Color> colorsForUnselectedItem = MyColors.colorsForUnselectedItem;
   List<Color> colorsForSelectedItem = MyColors.colorsForSelectedItem;
@@ -90,8 +92,8 @@ class StudentsAttendanceController extends GetxController {
       (element) => element.name == sectionSelectedValue,
       orElse: () => Section(),
     );
-    // print('---------');
-    // print(section.id);
+    // log('---------');
+    // log(section.id);
 
     var res = await RestAPIGet.getstudents('${section.id}');
     if (res.checked != null) isChecked = res.checked!;
@@ -111,6 +113,7 @@ class StudentsAttendanceController extends GetxController {
       studentsAttendance.add(temp);
     }
 
+    fillSerachList();
     isLoading = false;
     update();
   }
@@ -157,5 +160,18 @@ class StudentsAttendanceController extends GetxController {
         ],
       ),
     );
+  }
+
+  fillSerachList() {
+    searchList.clear();
+    for (var element in studentsAttendance) {
+      searchList.add(
+        SearchInAttendanceModel(
+          id: element.id,
+          name: element.name,
+          isAttendanceToday: element.isAttendanceToday,
+        ),
+      );
+    }
   }
 }

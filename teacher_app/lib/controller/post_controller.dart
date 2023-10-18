@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,7 +19,8 @@ class PostController extends GetxController {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final titleFormKey = GlobalKey<FormState>();
+  final contentFormKey = GlobalKey<FormState>();
 
   List<bool> fromTo = [false, false, true, true, true];
 
@@ -36,7 +39,7 @@ class PostController extends GetxController {
   pickImages() async {
     images!.addAll(await _picker.pickMultiImage());
     update();
-    // print(images);
+    // log(images);
   }
 
   @override
@@ -48,8 +51,8 @@ class PostController extends GetxController {
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    print('gradesList');
-    print(gradesList);
+    log('gradesList');
+    log('$gradesList');
 
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];

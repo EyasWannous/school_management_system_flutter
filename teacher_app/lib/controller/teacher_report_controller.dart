@@ -9,7 +9,7 @@ import '../model/students_model.dart';
 import '../services/rest_api_get.dart';
 import '../services/rest_api_post.dart';
 
-class TeacherReportController extends GetxController {
+class TeacherAlertController extends GetxController {
   String gradeSelectedValue = 'grade';
   List<String> gradeDropdownItems = ['grade'];
 
@@ -39,8 +39,8 @@ class TeacherReportController extends GetxController {
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    // print('gradesList');
-    // print(gradesList);
+    // log('gradesList');
+    // log(gradesList);
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
       gradeSelectedValue = gradeDropdownItems[0];
@@ -78,13 +78,13 @@ class TeacherReportController extends GetxController {
       (element) => element.name == gradeSelectedValue,
       orElse: () => Grade(),
     );
-    // print('grade.id');
-    // print(grade.id);
+    // log('grade.id');
+    // log(grade.id);
 
     sectionsList = await RestAPIGet.getsections('${grade.id}');
 
-    // print('sectionsList');
-    // print(sectionsList);
+    // log('sectionsList');
+    // log(sectionsList);
     if (sectionsList.isEmpty) {
       sectionDropdownItems = ["it's Empty"];
       sectionSelectedValue = sectionDropdownItems[0];
@@ -127,8 +127,8 @@ class TeacherReportController extends GetxController {
       (element) => element.name == sectionSelectedValue,
       orElse: () => Section(),
     );
-    // print('section.id');
-    // print(section.id);
+    // log('section.id');
+    // log(section.id);
 
     var res = await RestAPIGet.getstudents('${section.id}');
     if (res.data != null) {

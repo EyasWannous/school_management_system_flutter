@@ -12,13 +12,13 @@ class StudentProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: InkWell(
               onTap: () {},
-              child: Container(
+              child: SizedBox(
                 height: 35,
                 width: 35,
                 child: Image.asset("assets/icons/bell (1).png"),
@@ -45,7 +45,7 @@ class StudentProfile extends StatelessWidget {
                       Container(
                         height: 110.h,
                         width: 500.w,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: MyColors.royalBlue,
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(
@@ -122,7 +122,7 @@ class StudentProfile extends StatelessWidget {
                             "  Class   ",
                             style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -139,7 +139,7 @@ class StudentProfile extends StatelessWidget {
 
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromARGB(255, 141, 168, 209)
+                                    color: const Color.fromARGB(255, 141, 168, 209)
                                         .withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
@@ -170,7 +170,7 @@ class StudentProfile extends StatelessWidget {
                               " Section ",
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                color: Color.fromARGB(255, 141, 168, 209),
+                                color: const Color.fromARGB(255, 141, 168, 209),
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -185,7 +185,7 @@ class StudentProfile extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color.fromARGB(255, 141, 168, 209)
+                                      color: const Color.fromARGB(255, 141, 168, 209)
                                           .withOpacity(0.5),
                                       spreadRadius: 2,
                                       blurRadius: 5,
@@ -214,7 +214,7 @@ class StudentProfile extends StatelessWidget {
                             " Type ",
                             style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -229,7 +229,7 @@ class StudentProfile extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromARGB(255, 141, 168, 209)
+                                    color: const Color.fromARGB(255, 141, 168, 209)
                                         .withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
@@ -263,7 +263,7 @@ class StudentProfile extends StatelessWidget {
                           "  Birthday  ",
                           style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400,
                           ),
@@ -278,7 +278,7 @@ class StudentProfile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color.fromARGB(255, 141, 168, 209)
+                                  color: const Color.fromARGB(255, 141, 168, 209)
                                       .withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 5,
@@ -309,7 +309,7 @@ class StudentProfile extends StatelessWidget {
                             " Phone  ",
                             style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -324,7 +324,7 @@ class StudentProfile extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromARGB(255, 141, 168, 209)
+                                    color: const Color.fromARGB(255, 141, 168, 209)
                                         .withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
@@ -361,7 +361,7 @@ class StudentProfile extends StatelessWidget {
                             "  Address ",
                             style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -377,7 +377,7 @@ class StudentProfile extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromARGB(255, 141, 168, 209)
+                                    color: const Color.fromARGB(255, 141, 168, 209)
                                         .withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
@@ -412,7 +412,7 @@ class StudentProfile extends StatelessWidget {
                           Text(
                             "  About me ",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -428,7 +428,7 @@ class StudentProfile extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromARGB(255, 141, 168, 209)
+                                    color: const Color.fromARGB(255, 141, 168, 209)
                                         .withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,

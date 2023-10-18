@@ -20,7 +20,8 @@ class MyDrawerController extends GetxController {
     update();
 
     teacher = await RestAPIGet.getteacherprofile();
-    // print(teacher.address);
+    GetStorage().write('my_id', teacher.id);
+    // log(teacher.address);
 
     isLoading = false;
     update();

@@ -65,7 +65,7 @@ class Homepage extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),
@@ -86,10 +86,10 @@ class Homepage extends StatelessWidget {
                     ),
                     const Divider(),
                     if (controller.scheduleItem.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Text('Time'),

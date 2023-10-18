@@ -51,7 +51,7 @@ class Post extends StatelessWidget {
                               iconSize: 24,
                               elevation: 16,
                               isExpanded: true,
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                               // hint: const Text('Type'),
                               underline: const Text(''),
                               dropdownColor:
@@ -75,7 +75,7 @@ class Post extends StatelessWidget {
                               iconSize: 24,
                               elevation: 16,
                               isExpanded: true,
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                               underline: const Text(''),
                               dropdownColor:
                                   const Color.fromRGBO(233, 238, 252, 1),
@@ -97,7 +97,7 @@ class Post extends StatelessWidget {
                       ),
 
                       Form(
-                        key: controller.formKey,
+                        key: controller.titleFormKey,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
@@ -132,17 +132,26 @@ class Post extends StatelessWidget {
 
                       Flexible(
                         fit: FlexFit.loose,
-                        child: TextField(
-                          controller: controller.bodyController,
-                          decoration: const InputDecoration(
-                            filled: true,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            fillColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            hintText: 'Enter your text here',
+                        child: Form(
+                          key: controller.contentFormKey,
+                          child: TextFormField(
+                            controller: controller.bodyController,
+                            validator: (value) {
+                              if (value == null || value.trim().isEmpty) {
+                                return 'content is required';
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              filled: true,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              fillColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              hintText: 'Enter your text here',
+                            ),
+                            maxLines: 7,
                           ),
-                          maxLines: 7,
                         ),
                       ),
                       // Here will be images
@@ -200,9 +209,9 @@ class Post extends StatelessWidget {
                       controller.pickImages(),
                     },
                     // style: Theme.of(context).textButtonTheme.style,
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(Icons.add),
                         // SizedBox(width: 15),
                         Text('Image'),
@@ -211,7 +220,8 @@ class Post extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () => {
-                      if (controller.formKey.currentState!.validate())
+                      if (controller.titleFormKey.currentState!.validate() &&
+                          controller.contentFormKey.currentState!.validate())
                         {
                           controller.sendData(),
                         },

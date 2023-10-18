@@ -56,7 +56,7 @@ class Sections extends StatelessWidget {
                             iconSize: 24,
                             elevation: 16,
                             isExpanded: true,
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                             underline: const Text(''),
                             dropdownColor:
                                 const Color.fromRGBO(233, 238, 252, 1),

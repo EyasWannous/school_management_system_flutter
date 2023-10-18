@@ -47,10 +47,11 @@ android {
         applicationId "com.example.teacher_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -60,12 +61,24 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    namespace 'com.example.teacher_app'
 }
 
 flutter {
     source '../..'
 }
 
+// plugins {
+//     id 'com.android.application' version '8.1.0' apply false
+//     id 'com.android.library' version '8.1.0' apply false
+// }
+
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    // classpath 'org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler'
 }
+
+apply plugin: 'com.google.gms.google-services'

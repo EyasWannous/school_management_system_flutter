@@ -52,7 +52,7 @@ class Marks extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -73,7 +73,7 @@ class Marks extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -128,7 +128,7 @@ class Marks extends StatelessWidget {
                           GetBuilder<MarksController>(
                             builder: (sceondController) => AlertDialog(
                               title: const Text(
-                                "Title",
+                                "Add marks",
                                 textAlign: TextAlign.start,
                               ),
                               content: Column(
@@ -141,7 +141,7 @@ class Marks extends StatelessWidget {
                                     elevation: 16,
                                     isExpanded: true,
                                     style:
-                                        Theme.of(context).textTheme.headline6,
+                                        Theme.of(context).textTheme.titleLarge,
                                     underline: const Text(''),
                                     dropdownColor:
                                         const Color.fromRGBO(233, 238, 252, 1),
@@ -166,7 +166,7 @@ class Marks extends StatelessWidget {
                                     elevation: 16,
                                     isExpanded: true,
                                     style:
-                                        Theme.of(context).textTheme.headline6,
+                                        Theme.of(context).textTheme.titleLarge,
                                     underline: const Text(''),
                                     dropdownColor:
                                         const Color.fromRGBO(233, 238, 252, 1),

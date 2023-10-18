@@ -6,17 +6,17 @@ import 'package:teacher_app/services/search_marks.dart';
 import '../constant/my_colors.dart';
 import '../model/students_model.dart';
 
-class TeacherReport extends StatelessWidget {
-  const TeacherReport({super.key});
+class TeacherAlert extends StatelessWidget {
+  const TeacherAlert({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<TeacherReportController>(
-      init: TeacherReportController(),
+    return GetBuilder<TeacherAlertController>(
+      init: TeacherAlertController(),
       builder: (controller) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Report'),
+          title: const Text('Alert'),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -50,7 +50,7 @@ class TeacherReport extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -71,7 +71,7 @@ class TeacherReport extends StatelessWidget {
                       iconSize: 24,
                       elevation: 16,
                       isExpanded: true,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       underline: const Text(''),
                       dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                       borderRadius: BorderRadius.circular(15),
@@ -122,10 +122,10 @@ class TeacherReport extends StatelessWidget {
                       ),
                       onTap: () => {
                         Get.dialog(
-                          GetBuilder<TeacherReportController>(
+                          GetBuilder<TeacherAlertController>(
                             builder: (sceondController) => AlertDialog(
                               title: const Text(
-                                "Title",
+                                "Alert",
                                 textAlign: TextAlign.start,
                               ),
                               content: Column(

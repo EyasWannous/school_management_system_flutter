@@ -23,7 +23,7 @@ class PartOfProfile extends StatelessWidget {
             textInTitle,
             style: TextStyle(
               fontFamily: 'Montserrat',
-              color: Color.fromARGB(255, 141, 168, 209),
+              color: const Color.fromARGB(255, 141, 168, 209),
               fontSize: 18.sp,
               fontWeight: FontWeight.w400,
             ),
@@ -38,7 +38,7 @@ class PartOfProfile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
+                    color: const Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
                   ),

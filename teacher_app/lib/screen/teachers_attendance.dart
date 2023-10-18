@@ -88,7 +88,7 @@ class TeachersAttendance extends StatelessWidget {
                             child: ListTile(
                               leading: CircleAvatar(
                                 backgroundColor:
-                                    Color.fromRGBO(233, 238, 252, 1),
+                                    const Color.fromRGBO(233, 238, 252, 1),
                                 child: ClipOval(
                                   child: Image.network(
                                     item.imageUrl,

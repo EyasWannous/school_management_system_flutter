@@ -14,6 +14,7 @@ import 'package:teacher_app/screen/teacher_profile.dart';
 import 'package:teacher_app/screen/sections.dart';
 import 'package:teacher_app/screen/students.dart';
 import 'package:teacher_app/screen/students_attendance.dart';
+import 'package:teacher_app/screen/teacher_report.dart';
 import 'package:teacher_app/screen/teachers_attendance.dart';
 import '../components/principle_bottom_bar.dart';
 import '../screen/homepage.dart';
@@ -36,6 +37,7 @@ class MyRoutes {
   static const String students = '/students';
   static const String studentsAttendance = '/studentsattendance';
   static const String teachersAttendance = '/teachersAttendance';
+  static const String teachersAlert = '/teachersAlert';
 
   static final pages = [
     GetPage(
@@ -103,7 +105,6 @@ class MyRoutes {
       transition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 300),
     ),
-    // Here will be Student Profile
     GetPage(
       name: MyRoutes.sections,
       page: () => const Sections(),
@@ -123,6 +124,12 @@ class MyRoutes {
     GetPage(
       name: MyRoutes.teachersAttendance,
       page: () => const TeachersAttendance(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: MyRoutes.teachersAlert,
+      page: () => const TeacherAlert(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 300),
     ),

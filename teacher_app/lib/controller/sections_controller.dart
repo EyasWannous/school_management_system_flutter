@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:teacher_app/model/grade_model.dart';
 
@@ -20,8 +22,8 @@ class SectionsController extends GetxController {
 
   fetchGradesData() async {
     lg = await RestAPIGet.getgrades();
-    // print('lg');
-    // print(lg);
+    // log('lg');
+    // log(lg);
     if (lg.isEmpty) {
       dropdownItems = ["it's Empty"];
       selectedValue = dropdownItems[0];
@@ -45,8 +47,8 @@ class SectionsController extends GetxController {
       (element) => element.name == selectedValue,
       orElse: () => Grade(),
     );
-    print('grade.id');
-    print(grade.id);
+    log('grade.id');
+    log('${grade.id}');
     numberOfClassesInGrade = await RestAPIGet.getsections('${grade.id}');
 
     isLoading = false;

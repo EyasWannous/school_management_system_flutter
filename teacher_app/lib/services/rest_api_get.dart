@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
 
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:teacher_app/model/assignments_model.dart';
@@ -11,12 +11,10 @@ import 'package:teacher_app/model/posts_by_section_model.dart';
 import 'package:teacher_app/model/teacher_profile_model.dart';
 import 'package:teacher_app/model/schedule_model.dart';
 import 'package:teacher_app/model/students_model.dart';
-import 'package:teacher_app/model/teachers_model.dart';
 
 import '../constant/days.dart';
 import '../constant/my_url.dart';
 import '../model/courses_model.dart';
-import '../model/posts_model.dart';
 import '../model/sections_model.dart';
 import '../model/student_profile_model.dart';
 
@@ -30,18 +28,18 @@ class RestAPIGet {
         'Content-Type': 'application/json; charset=UTF-8',
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
+        // log('-------------');
         Map<DateTime, List<Event>> convertedMap = {};
 
         var res = jsonDecode(response.body)['data'];
-        // print(res);
+        // log(res);
 
         res.forEach((key, value) {
           try {
             DateTime dateTimeAfterParsing = DateTime.parse(key);
             DateTime dateTime = DateTime.utc(dateTimeAfterParsing.year,
                 dateTimeAfterParsing.month, dateTimeAfterParsing.day);
-            print(dateTime);
+            log('$dateTime');
             List<Event> events = (value as List)
                 .map(
                   (e) => Event(
@@ -54,20 +52,20 @@ class RestAPIGet {
                 .toList();
             convertedMap[dateTime] = events;
           } catch (err) {
-            // print('object');
-            print('getevents Funtion:');
-            print(err);
+            // log('object');
+            log('getevents Funtion:');
+            log('$err');
           }
         });
 
         return convertedMap;
       } else if (response.statusCode == 400) {
-        print('getevents Funtion:');
-        print(response);
+        log('getevents Funtion:');
+        log('$response');
       }
     } catch (error) {
-      print('getevents Funtion:');
-      print(error);
+      log('getevents Funtion:');
+      log('$error');
     }
     return {Days.today: []};
   }
@@ -88,12 +86,12 @@ class RestAPIGet {
         lsm.sort((a, b) => a.order!.compareTo(b.order!));
         return lsm;
       } else if (response.statusCode == 400) {
-        print('getschedule Funtion:');
-        print(response);
+        log('getschedule Funtion:');
+        log('$response');
       }
     } catch (error) {
-      print('getschedule Funtion:');
-      print(error);
+      log('getschedule Funtion:');
+      log('$error');
     }
     return [];
   }
@@ -108,22 +106,22 @@ class RestAPIGet {
         'Authorization': 'Bearer ${MyURL.token}'
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
+        // log('-------------');
         // var res = jsonDecode(response.body)['data'];
-        // print(jsonDecode(response.body)['data']);
+        // log(jsonDecode(response.body)['data']);
         // ls.addAll(jsonDecode(response.body)['data']);
         for (var item in jsonDecode(response.body)['data']) {
           ls.add(item);
         }
         return ls;
       } else if (response.statusCode == 400) {
-        print('getdays Funtion in statusCode :');
-        print(response);
+        log('getdays Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getdays Funtion in cathc :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getdays Funtion in cathc :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return [];
   }
@@ -142,12 +140,12 @@ class RestAPIGet {
         sm = StudentsModel.fromJson(jsonDecode(response.body));
         return sm;
       } else if (response.statusCode == 400) {
-        print('getstudents Funtion in statusCode:');
-        print(response);
+        log('getstudents Funtion in statusCode:');
+        log('$response');
       }
     } catch (error) {
-      print('getstudents Funtion in catch:');
-      print(error);
+      log('getstudents Funtion in catch:');
+      log('$error');
     }
     return sm;
   }
@@ -162,11 +160,11 @@ class RestAPIGet {
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': 'Bearer ${MyURL.token}'
           });
-      // print('-------------');
+      // log('-------------');
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
+        // log('-------------');
         // var res = SectionsModel.fromJson(jsonDecode(response.body));
-        // print(jsonDecode(response.body));
+        // log(jsonDecode(response.body));
         ls.addAll(SectionsModel.fromJson(jsonDecode(response.body)).data!);
         // for (var item in res.data!) {
         //   s = Section(
@@ -179,13 +177,13 @@ class RestAPIGet {
         // }
         return ls;
       } else if (response.statusCode == 400) {
-        print('getsections Funtion in statusCode :');
-        print(response);
+        log('getsections Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getsections Funtion in catch :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getsections Funtion in catch :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return [];
   }
@@ -200,9 +198,9 @@ class RestAPIGet {
         'Authorization': 'Bearer ${MyURL.token}'
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
+        // log('-------------');
         // var res = GradeModel.fromJson(jsonDecode(response.body));
-        // print(jsonDecode(response.body));
+        // log(jsonDecode(response.body));
         lg.addAll(GradeModel.fromJson(jsonDecode(response.body)).data!);
         // for (var item in res.data!) {
         //   s = Grade(
@@ -215,13 +213,13 @@ class RestAPIGet {
         // }
         return lg;
       } else if (response.statusCode == 400) {
-        print('getgrades Funtion in statusCode :');
-        print(response);
+        log('getgrades Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getgrades Funtion in cathc :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getgrades Funtion in cathc :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return [];
   }
@@ -237,9 +235,9 @@ class RestAPIGet {
             'Authorization': 'Bearer ${MyURL.token}'
           });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print('-------------');
+        // log('-------------');
         // var res = GradeModel.fromJson(jsonDecode(response.body));
-        // print(jsonDecode(response.body));
+        // log(jsonDecode(response.body));
         lc.addAll(CoursesListModel.fromJson(jsonDecode(response.body)).data!);
         // for (var item in res.data!) {
         //   s = Grade(
@@ -252,13 +250,13 @@ class RestAPIGet {
         // }
         return lc;
       } else if (response.statusCode == 400) {
-        print('getcourses Funtion in statusCode :');
-        print(response);
+        log('getcourses Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getcourses Funtion in cathc :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getcourses Funtion in cathc :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return [];
   }
@@ -274,19 +272,19 @@ class RestAPIGet {
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
         var res = jsonDecode(response.body)['data'];
-        // print(jsonDecode(response.body));
+        // log(jsonDecode(response.body));
         for (var item in res) {
           ls.add(item);
         }
         return ls;
       } else if (response.statusCode == 400) {
-        print('getcourses Funtion in statusCode :');
-        print(response);
+        log('getcourses Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getcourses Funtion in cathc :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getcourses Funtion in cathc :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return [];
   }
@@ -305,13 +303,13 @@ class RestAPIGet {
         tpf = res.profile!;
         return tpf;
       } else if (response.statusCode == 400) {
-        print('getteacherprofile Funtion in statusCode :');
-        print(response);
+        log('getteacherprofile Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getteacherprofile Funtion in cathc :');
-      print(error);
-      // throw Exception((e) => print(e));
+      log('getteacherprofile Funtion in cathc :');
+      log('$error');
+      // throw Exception((e) => log(e));
     }
     return tpf;
   }
@@ -326,16 +324,16 @@ class RestAPIGet {
         'Authorization': 'Bearer ${MyURL.token}'
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print(response.body);
+        // log(response.body);
         // lt.addAll(TeachersModel.fromJson(jsonDecode(response.body)).data!);
         return jsonDecode(response.body);
       } else if (response.statusCode == 400) {
-        print('getteachers Funtion in statusCode:');
-        print(response);
+        log('getteachers Funtion in statusCode:');
+        log('$response');
       }
     } catch (error) {
-      print('getteachers Funtion in catch:');
-      print(error);
+      log('getteachers Funtion in catch:');
+      log('$error');
     }
     return;
   }
@@ -353,16 +351,16 @@ class RestAPIGet {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // print(response.body);
+        // log(response.body);
         pts.addAll(PostsBySections.fromJson(jsonDecode(response.body)).data!);
         return pts;
       } else if (response.statusCode == 400) {
-        print('getpoststoshow Funtion:');
-        print(response);
+        log('getpoststoshow Funtion:');
+        log('$response');
       }
     } catch (error) {
-      print('getpoststoshow Funtion in catch:');
-      print(error);
+      log('getpoststoshow Funtion in catch:');
+      log('$error');
     }
     return [];
   }
@@ -381,12 +379,12 @@ class RestAPIGet {
         sp = res.profile!;
         return sp;
       } else if (response.statusCode == 400) {
-        print('getstudentprofile Funtion in statusCode :');
-        print(response);
+        log('getstudentprofile Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getstudentprofile Funtion in cathc :');
-      print(error);
+      log('getstudentprofile Funtion in cathc :');
+      log('$error');
     }
     return sp;
   }
@@ -405,12 +403,12 @@ class RestAPIGet {
         sp.addAll(AssignmentsModel.fromJson(jsonDecode(response.body)).data!);
         return sp;
       } else if (response.statusCode == 400) {
-        print('getassignments Funtion in statusCode :');
-        print(response);
+        log('getassignments Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getassignments Funtion in cathc :');
-      print(error);
+      log('getassignments Funtion in cathc :');
+      log('$error');
     }
     return sp;
   }
@@ -428,15 +426,15 @@ class RestAPIGet {
           });
       if (response.statusCode == 200 || response.statusCode == 201) {
         var res = jsonDecode(response.body);
-        print(res);
+        log(res);
         return res['mark'];
       } else if (response.statusCode == 400) {
-        print('getmarkofstudent Funtion in statusCode :');
-        print(response);
+        log('getmarkofstudent Funtion in statusCode :');
+        log('$response');
       }
     } catch (error) {
-      print('getmarkofstudent Funtion in cathc :');
-      print(error);
+      log('getmarkofstudent Funtion in cathc :');
+      log('$error');
     }
     return null;
   }

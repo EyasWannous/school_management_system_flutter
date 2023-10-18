@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:teacher_app/services/rest_api_post.dart';
 
 class LoginController extends GetxController {
@@ -15,7 +16,10 @@ class LoginController extends GetxController {
     update();
   }
 
-  loginButton() {
-    RestAPIPost.postlogin(usernameController.text, passwordController.text);
+  loginButton() async {
+    // String tokenForFirebase = await NtificationConfig().notificationconfig();
+    // log(tokenForFirebase);
+    RestAPIPost.postlogin(usernameController.text, passwordController.text,
+        GetStorage().read('fire_token'));
   }
 }

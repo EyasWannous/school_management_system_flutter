@@ -59,7 +59,7 @@ class TeachersAttendanceController extends GetxController {
     for (var element in teachersList) {
       var temp = AttendanceModel(
         id: element.id!,
-        isAttendanceToday: true,
+        isAttendanceToday: isChecked ? element.todayAttendance! : true,
         name: '${element.firstName} ${element.lastName}',
         numberOfDays: 0,
         imageUrl: element.imageUrl!,

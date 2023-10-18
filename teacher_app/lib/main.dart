@@ -1,26 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:teacher_app/components/bottom_bar.dart';
-import 'package:teacher_app/components/principle_bottom_bar.dart';
-import 'package:teacher_app/model/students_model.dart';
-import 'package:teacher_app/screen/calendar.dart';
+import 'package:teacher_app/firebase_options.dart';
 import 'package:teacher_app/screen/login.dart';
-import 'package:teacher_app/screen/marks.dart';
-import 'package:teacher_app/screen/post.dart';
-import 'package:teacher_app/screen/splash_screen.dart';
-import 'package:teacher_app/screen/students_attendance.dart';
-import 'package:teacher_app/screen/teacher_report.dart';
+import 'package:teacher_app/services/my_firebase_services.dart';
 
 import '../constant/routes.dart';
 import '../bindings/init_bindings.dart';
-import '../screen/sections.dart';
 import '../themes/light_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
+
+  await Future.wait([
+    GetStorage.init(),
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+  ]);
+
+  await NtificationConfig().notificationconfig();
+
   runApp(const MyApp());
 }
 

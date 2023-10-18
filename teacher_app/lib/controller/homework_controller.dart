@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +10,6 @@ import '../model/grade_model.dart';
 import '../model/homework_section_model.dart';
 import '../model/sections_model.dart';
 import '../model/student_attendance_model.dart';
-import '../model/students_model.dart';
 import '../services/rest_api_get.dart';
 import '../services/rest_api_post.dart';
 
@@ -50,8 +51,8 @@ class HomeworkController extends GetxController {
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    // print('gradesList');
-    // print(gradesList);
+    // log('gradesList');
+    // log(gradesList);
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
       gradeSelectedValue = gradeDropdownItems[0];
@@ -76,13 +77,13 @@ class HomeworkController extends GetxController {
       (element) => element.name == gradeSelectedValue,
       orElse: () => Grade(),
     );
-    print('grade.id');
-    print(grade.id);
+    log('grade.id');
+    log('${grade.id}');
 
     sectionsList = await RestAPIGet.getsections('${grade.id}');
 
-    print('sectionsList');
-    print(sectionsList);
+    log('sectionsList');
+    log('$sectionsList');
     if (sectionsList.isEmpty) {
       homeworkSectionsList = [];
       return;
@@ -138,13 +139,13 @@ class HomeworkController extends GetxController {
       ),
     );
     if (pickedDate != null) {
-      // print(pickedDate);
+      // log(pickedDate);
       String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-      // print(formattedDate);
+      // log(formattedDate);
 
       dateController.text = formattedDate;
     } else {
-      print("Date is not selected");
+      log("Date is not selected");
     }
   }
 

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:teacher_app/constant/my_colors.dart';
 
-import '../controller/bottom_bar_controller.dart';
 import '../controller/principle_bottom_bar_controller.dart';
 
 PrincipleBottomBarController principleBottomBarController = Get.find();

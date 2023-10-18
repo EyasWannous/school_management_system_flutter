@@ -113,55 +113,55 @@ class DarkTheme {
     textTheme: TextTheme(
       // The default text style for the app.
 
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         color: MyColors.royalBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w700,
         fontSize: 21.sp,
       ),
 
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         color: MyColors.soLightBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w700,
         fontSize: 19.sp,
       ),
 
-      headline3: TextStyle(
+      displaySmall: TextStyle(
         color: MyColors.soLightBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         fontSize: 18.sp,
       ),
 
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         color: MyColors.royalBlue,
         fontFamily: 'Montserrat',
         fontSize: 19.sp,
       ),
 
-      headline5: TextStyle(
+      headlineSmall: TextStyle(
         color: MyColors.littleBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w400,
         fontSize: 17.sp,
       ),
 
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: MyColors.royalBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         fontSize: 15.sp,
       ),
 
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         color: MyColors.royalBlue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600,
         fontSize: 16.sp,
       ),
 
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: MyColors.textColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
