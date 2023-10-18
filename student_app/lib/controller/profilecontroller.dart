@@ -1,8 +1,8 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:student_app/data/remote/profiledata.dart';
 import 'package:student_app/model/studentmodel.dart';
-
-import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
   var categoriesList = <StudentProfile>[];
@@ -20,19 +20,18 @@ class ProfileController extends GetxController {
     try {
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await profileData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
-         studentprofile.value = StudentProfile.fromJson(response['profile']);
+        studentprofile.value = StudentProfile.fromJson(response['profile']);
 
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         update();
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 }

@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:student_app/controller/bottombarcontroller.dart';
-import 'package:student_app/view/screen/assignsub.dart';
 import 'package:student_app/view/screen/courses.dart';
 import 'package:student_app/view/screen/homepage.dart';
 import 'package:student_app/view/screen/marks.dart';
 import 'package:student_app/view/screen/posts.dart';
 import 'package:student_app/view/screen/profile.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 BottomBarController controller = Get.find();
 
 class BottomBar extends StatelessWidget {
@@ -22,6 +21,8 @@ class BottomBar extends StatelessWidget {
     Marks(),
     const Profile(),
   ];
+
+  BottomBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,10 +61,10 @@ class BottomBar extends StatelessWidget {
             width: 50,
           )
         ],
-        backgroundColor: Color.fromRGBO(244, 241, 241, 1),
+        backgroundColor: const Color.fromRGBO(244, 241, 241, 1),
         height: 70,
-        color: Color.fromRGBO(65, 105, 225, 1),
-        animationDuration: Duration(milliseconds: 200),
+        color: const Color.fromRGBO(65, 105, 225, 1),
+        animationDuration: const Duration(milliseconds: 200),
         onTap: (index) {
           controller.currentIndex.value = index;
           //  Get.find<BottomBarController>().updateIndex(index);

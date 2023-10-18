@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:student_app/view/screen/intro.dart';
 
 /*
 class MyMiddleware extends GetMiddleware {

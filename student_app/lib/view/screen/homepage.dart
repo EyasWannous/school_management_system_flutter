@@ -1,22 +1,21 @@
-import 'dart:ui';
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:student_app/colors.dart';
 import 'package:student_app/controller/schedulecontroller.dart';
 
 int index = 2;
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    HomePageController homecontroller = Get.put(HomePageController());
     return Scaffold(
         extendBody: true,
         appBar: AppBar(
@@ -26,7 +25,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20),
               child: InkWell(
                 onTap: () => Get.toNamed('/notify'),
-                child: Container(
+                child: SizedBox(
                   height: 35,
                   width: 35,
                   child: Image.asset("assets/icons/bell (1).png"),
@@ -66,7 +65,7 @@ class HomePage extends StatelessWidget {
                     color: blue,
                     fontWeight: FontWeight.bold,
                   )),
-              onTap: () => print(""),
+              onTap: () => log(""),
               leading: Image.asset(
                 "assets/icons/homepage.png",
                 height: 35.h,
@@ -81,7 +80,7 @@ class HomePage extends StatelessWidget {
                     color: blue,
                     fontWeight: FontWeight.bold,
                   )),
-              onTap: () => print(""),
+              onTap: () => log(""),
               leading: Image.asset(
                 "assets/icons/homepage.png",
                 height: 35.h,
@@ -96,7 +95,7 @@ class HomePage extends StatelessWidget {
                     color: blue,
                     fontWeight: FontWeight.bold,
                   )),
-              onTap: () => print(""),
+              onTap: () => log(""),
               leading: Image.asset(
                 "assets/icons/homepage.png",
                 height: 35.h,
@@ -111,7 +110,7 @@ class HomePage extends StatelessWidget {
                     color: blue,
                     fontWeight: FontWeight.bold,
                   )),
-              onTap: () => print(""),
+              onTap: () => log(""),
               leading: Image.asset(
                 "assets/icons/homepage.png",
                 height: 35.h,
@@ -122,9 +121,9 @@ class HomePage extends StatelessWidget {
         ),
         body: GetBuilder<HomePageController>(
           builder: (homecontroller) => Container(
-            color: Color.fromRGBO(244, 241, 241, 1),
+            color: const Color.fromRGBO(244, 241, 241, 1),
             child: Column(children: [
-              Container(
+              SizedBox(
                 height: 150.h,
                 width: 500.w,
                 child: Column(
@@ -134,9 +133,9 @@ class HomePage extends StatelessWidget {
                       child: Text(
                           "  Assignments :                                           "
                               .tr,
-                          style: Theme.of(context).textTheme.headline1),
+                          style: Theme.of(context).textTheme.displayLarge),
                     ),
-                    Container(
+                    SizedBox(
                       width: 400.w,
                       height: 96.h,
                       child: GridView.builder(
@@ -169,7 +168,7 @@ class HomePage extends StatelessWidget {
                                           // titlePadding: ,
                                           backgroundColor: white,
                                           scrollable: true,
-                                          content: Text(
+                                          content: const Text(
                                             "cgkdgjgkgdrkghkghigrhkgrhhghghhigtyyymyiu3ri3",
                                             style: TextStyle(fontSize: 20),
                                           ),
@@ -180,11 +179,13 @@ class HomePage extends StatelessWidget {
                                   height: 80.h,
                                   width: 130.w,
                                   decoration: BoxDecoration(
-                                    color: Color.fromRGBO(244, 241, 241, 1),
+                                    color:
+                                        const Color.fromRGBO(244, 241, 241, 1),
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color.fromRGBO(65, 105, 225, 1)
+                                        color: const Color.fromRGBO(
+                                                65, 105, 225, 1)
                                             .withOpacity(0.5),
                                         spreadRadius: 2,
                                         blurRadius: 5,
@@ -198,8 +199,8 @@ class HomePage extends StatelessWidget {
                                       height: 30,
                                       width: 30,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text(" "),
                                     )
                                   ]),
@@ -217,12 +218,12 @@ class HomePage extends StatelessWidget {
                   height: 360.h,
                   width: 500.w,
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(233, 238, 252, 1),
+                    color: const Color.fromRGBO(233, 238, 252, 1),
                     borderRadius: BorderRadius.circular(2),
                     boxShadow: [
                       BoxShadow(
-                        color:
-                            Color.fromARGB(255, 95, 109, 154).withOpacity(0.5),
+                        color: const Color.fromARGB(255, 95, 109, 154)
+                            .withOpacity(0.5),
                         spreadRadius: 6,
                         blurRadius: 7,
                         // offset: Offset(0, 3),
@@ -236,7 +237,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(11),
-                            child: Container(
+                            child: SizedBox(
                               height: 50.h,
                               width: 46.w,
                               child: Image.asset(
@@ -258,7 +259,8 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "3".tr,
-                                style: Theme.of(context).textTheme.headline2,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               )),
                             ),
                           ),
@@ -274,7 +276,8 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "4".tr,
-                                style: Theme.of(context).textTheme.headline2,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               )),
                             ),
                           ),
@@ -290,7 +293,8 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "5".tr,
-                                style: Theme.of(context).textTheme.headline2,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               )),
                             ),
                           ),
@@ -306,7 +310,8 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "6".tr,
-                                style: Theme.of(context).textTheme.headline2,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               )),
                             ),
                           ),
@@ -322,7 +327,8 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "7".tr,
-                                style: Theme.of(context).textTheme.headline2,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                               )),
                             ),
                           ),
@@ -345,7 +351,7 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 "7:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -355,7 +361,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -370,7 +376,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -379,11 +387,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -392,44 +402,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -444,7 +417,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -460,13 +476,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "8:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -476,7 +492,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -491,7 +507,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -500,11 +518,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -513,44 +533,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -565,7 +548,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -581,13 +607,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "9:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -597,7 +623,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -612,7 +638,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -621,11 +649,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -634,44 +664,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -686,7 +679,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -702,13 +738,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "10:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -718,7 +754,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -733,7 +769,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -742,11 +780,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -755,7 +795,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -770,7 +810,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -779,11 +821,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -792,11 +836,11 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color.fromRGBO(65, 105, 225, 1)
+                                    color: const Color.fromRGBO(65, 105, 225, 1)
                                         .withOpacity(0.5),
 
                                     spreadRadius: 2,
@@ -808,7 +852,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -824,13 +870,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "11:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -840,7 +886,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -855,7 +901,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -864,11 +912,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -877,44 +927,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -929,7 +942,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -945,13 +1001,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "12:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -961,7 +1017,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -976,7 +1032,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -985,11 +1043,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -998,44 +1058,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -1050,7 +1073,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],
@@ -1066,13 +1132,13 @@ class HomePage extends StatelessWidget {
                               height: 23.h,
                               width: 61.w,
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(65, 105, 225, 1),
+                                color: const Color.fromRGBO(65, 105, 225, 1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                   child: Text(
                                 "1:00",
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               )),
                             ),
                           ),
@@ -1082,7 +1148,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -1097,7 +1163,9 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -1106,11 +1174,13 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                           Padding(
@@ -1119,44 +1189,7 @@ class HomePage extends StatelessWidget {
                               height: 22.h,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkblue.withOpacity(0.5),
-
-                                    spreadRadius: 2,
-
-                                    // blurRadius: 5,
-
-                                    // offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              height: 22.h,
-                              width: 50.w,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 248, 248, 248),
+                                color: const Color.fromARGB(255, 248, 248, 248),
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
@@ -1171,7 +1204,50 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                               child: Text(" Math",
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 22.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 248, 248, 248),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: darkblue.withOpacity(0.5),
+
+                                    spreadRadius: 2,
+
+                                    // blurRadius: 5,
+
+                                    // offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(" Math",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
                             ),
                           ),
                         ],

@@ -1,8 +1,10 @@
+// ignore: file_names
 class AssignModel {
   int? id;
   int? sectionId;
   int? teacherId;
-  Null? gradeCourseId;
+  // ignore: prefer_void_to_null
+  Null gradeCourseId;
   String? title;
   String? content;
   String? dueDate;

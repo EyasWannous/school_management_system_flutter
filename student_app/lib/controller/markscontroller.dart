@@ -1,17 +1,12 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
-import 'package:student_app/data/remote/aboutsubdata.dart';
 import 'package:student_app/data/remote/marksdata.dart';
-import 'package:student_app/data/remote/profiledata.dart';
 import 'package:student_app/model/marksmodel.dart';
-import 'package:student_app/model/studentmodel.dart';
-
-import 'package:get/get.dart';
-
-import '../model/AboutsubModel.dart';
 
 class MarksController extends GetxController {
   var marksList = <MarksModel>[];
- String schoolyear = 'School year';
+  String schoolyear = 'School year';
   List<String> schoolyearItems = [
     'School year',
     '2022-2023',
@@ -36,19 +31,18 @@ class MarksController extends GetxController {
       //aboutsubList.clear();
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await marksData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
         for (var data in response["marks"]) {
           marksList.add(MarksModel.fromJson(data));
-          // print(data);
+          // log(data);
         }
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 
@@ -57,7 +51,6 @@ class MarksController extends GetxController {
     schoolyear = value;
     update();
   }
-
 
   void onDropdownChangedTerm(String value) {
     if (term == value) return;

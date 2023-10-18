@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:student_app/applink.dart';
-import 'package:student_app/view/screen/profile.dart';
 
 import '../../core/crud.dart';
 
@@ -9,9 +10,9 @@ class ProfileData {
   ProfileData(this.crud);
 
   getData() async {
-    print("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+    log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
     var response = await crud.GetData(AppLink.profile, "");
-    print('afterllllllllllllllllllllllllllllllllllllllllllllllllllllll');
+    log('afterllllllllllllllllllllllllllllllllllllllllllllllllllllll');
     return response;
   }
 }

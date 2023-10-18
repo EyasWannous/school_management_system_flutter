@@ -1,17 +1,16 @@
 import 'dart:developer';
-//import 'controller/fun.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:student_app/colors.dart';
-import 'package:student_app/view/screen/aboutsub.dart';
-import 'package:student_app/colors.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
- 
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
+
 class LoginParent extends StatefulWidget {
+  const LoginParent({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return LoginparentState();
@@ -19,14 +18,12 @@ class LoginParent extends StatefulWidget {
 }
 
 class LoginparentState extends State<LoginParent> {
-  @override
-  var email;
-  var password;
-var emailcontroller = TextEditingController();
+  var email = "";
+  var password = "";
+  var emailcontroller = TextEditingController();
   var passcontroller = TextEditingController();
   bool icn1 = false;
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
-    
 
   Text x = Text("login",
       style: TextStyle(
@@ -34,12 +31,13 @@ var emailcontroller = TextEditingController();
         fontWeight: FontWeight.w600,
         fontSize: 16.sp,
       ));
-  
+
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: height,
         //  color: Color(color2),
         child: SingleChildScrollView(
@@ -47,28 +45,28 @@ var emailcontroller = TextEditingController();
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Container(
-                  child: Container(
-                    height: 300.h,
-                    width: width,
-                    //   color: darkblue,
-                    child: Image.asset(
-                      "assets/icons/Studying-cuate (1).png",
-                      height: 280.h,
-                      width: 600.w,
-                    ),
+                child: SizedBox(
+                  height: 300.h,
+                  width: width,
+                  //   color: darkblue,
+                  child: Image.asset(
+                    "assets/icons/Studying-cuate (1).png",
+                    height: 280.h,
+                    width: 600.w,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
-                child: Text("Welcome to It's School !",style: Theme.of(context).textTheme.headline4,),
+                child: Text(
+                  "Welcome to It's School !",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,vertical: 5
-                ),
-                child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: SizedBox(
                     height: 130.h,
                     width: 400.w,
                     child: Form(
@@ -78,7 +76,7 @@ var emailcontroller = TextEditingController();
                             padding: const EdgeInsets.all(8),
                             child: TextFormField(
                               onSaved: (text) {
-                                email = text;
+                                email = text!;
                               },
                               keyboardType: TextInputType.emailAddress,
                               validator: (text) {
@@ -86,14 +84,16 @@ var emailcontroller = TextEditingController();
                                     ? null
                                     : "you dont use the @ char";
                               },
-                              cursorColor: Color.fromARGB(255, 141, 168, 209),
+                              cursorColor:
+                                  const Color.fromARGB(255, 141, 168, 209),
                               cursorHeight: 20,
                               decoration: InputDecoration(
                                 counterStyle: TextStyle(color: darkblue),
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 20),
                                 label: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 14),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 14),
                                   child: Text(
                                     "Username",
                                     style: TextStyle(
@@ -106,7 +106,8 @@ var emailcontroller = TextEditingController();
 
                                 hintText: "Enter your username",
                                 hintStyle: TextStyle(
-                                  color: Color.fromARGB(255, 141, 168, 209),
+                                  color:
+                                      const Color.fromARGB(255, 141, 168, 209),
                                   fontFamily: 'Montserrat',
                                   fontSize: 12.sp,
                                 ),
@@ -130,26 +131,28 @@ var emailcontroller = TextEditingController();
                             padding: const EdgeInsets.all(8),
                             child: TextFormField(
                                 onSaved: (text) {
-                                  password = text;
+                                  password = text!;
                                 },
                                 keyboardType: TextInputType.visiblePassword,
                                 obscureText: icn1,
-                                cursorColor: Color.fromARGB(255, 141, 168, 209),
+                                cursorColor:
+                                    const Color.fromARGB(255, 141, 168, 209),
                                 cursorHeight: 20,
                                 validator: (text) {
                                   if (text!.length < 8) {
                                     return "you have to enter 8 char";
-                                  } else
+                                  } else {
                                     return null;
+                                  }
                                 },
                                 //  maxLength: 8,
                                 decoration: InputDecoration(
                                     counterStyle: TextStyle(color: darkblue),
-                                    contentPadding: EdgeInsets.symmetric(
+                                    contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 20, vertical: 20),
                                     label: Container(
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 14),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 14),
                                       child: Text(
                                         "Password",
                                         style: TextStyle(
@@ -161,7 +164,8 @@ var emailcontroller = TextEditingController();
                                     ),
                                     hintText: "Enter your password",
                                     hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 141, 168, 209),
+                                      color: const Color.fromARGB(
+                                          255, 141, 168, 209),
                                       fontFamily: 'Montserrat',
                                       fontSize: 12.sp,
                                     ),
@@ -200,7 +204,7 @@ var emailcontroller = TextEditingController();
               // ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Container(
+                child: SizedBox(
                   height: 35.h,
                   width: 300.w,
                   child: ElevatedButton(
@@ -222,14 +226,16 @@ var emailcontroller = TextEditingController();
                       child: x),
                 ),
               ),
-              Container(
+              SizedBox(
                   height: height * 0.08,
                   width: width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, ),
+                      const Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
                         child: Text(
                           "Don't have an account?",
                           style: TextStyle(
@@ -243,7 +249,7 @@ var emailcontroller = TextEditingController();
                             foregroundColor:
                                 MaterialStateProperty.all(darkblue),
                           ),
-                          child: Text(
+                          child: const Text(
                             "website",
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
@@ -251,7 +257,7 @@ var emailcontroller = TextEditingController();
                                 fontWeight: FontWeight.bold),
                           ),
                           onPressed: () {
-                            print("hhfjh");
+                            log("hhfjh");
                             //  Navigator.of(context).pushNamed('sign up');
                           })
                     ],

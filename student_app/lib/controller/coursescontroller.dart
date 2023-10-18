@@ -1,13 +1,8 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
-import 'package:student_app/data/remote/aboutsubdata.dart';
 import 'package:student_app/data/remote/coursesdata.dart';
-import 'package:student_app/data/remote/profiledata.dart';
 import 'package:student_app/model/coursesmodel.dart';
-import 'package:student_app/model/studentmodel.dart';
-
-import 'package:get/get.dart';
-
-import '../model/AboutsubModel.dart';
 
 class CoursesController extends GetxController {
   List coursesList = <CoursesModel>[];
@@ -26,21 +21,20 @@ class CoursesController extends GetxController {
       //aboutsubList.clear();
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await coursesData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
         for (var data in response["courses"]) {
           coursesList.add(CoursesModel.fromJson(data));
-          print(data);
+          log(data);
         }
-        
-        print("//////////////////////////////////////${coursesList[0].name}");
+
+        log("//////////////////////////////////////${coursesList[0].name}");
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:student_app/applink.dart';
 import '../../core/crud.dart';
 
@@ -7,9 +9,9 @@ class AboutsubData {
   AboutsubData(this.crud);
 
   getData() async {
-    print("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+    log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
     var response = await crud.GetData(AppLink.aboutsub, "");
-    print('afterllllllllllllllllllllllllllllllllllllllllllllllllllllll');
+    log('afterllllllllllllllllllllllllllllllllllllllllllllllllllllll');
     return response;
   }
 }

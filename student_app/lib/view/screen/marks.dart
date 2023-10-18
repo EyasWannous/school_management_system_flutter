@@ -3,18 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:student_app/colors.dart';
 import 'package:student_app/controller/markscontroller.dart';
-import 'package:student_app/controller/marksubcontroller.dart';
 
 class Marks extends StatelessWidget {
-  
+  const Marks({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MarksController markscontroller = Get.put(MarksController());
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           " Marks",
         ),
         actions: [
@@ -22,7 +20,7 @@ class Marks extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20),
             child: InkWell(
               onTap: () => Get.toNamed('/notify'),
-              child: Container(
+              child: SizedBox(
                 height: 35,
                 width: 35,
                 child: Image.asset("assets/icons/bell (1).png"),
@@ -44,33 +42,29 @@ class Marks extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: DropdownButton(
-                        iconSize: 35,
-                        iconEnabledColor: darkblue,
-                        elevation: 16,
-                       
-                    
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 19.sp,
-                          color: darkblue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        underline: const Text(''),
-                        dropdownColor: lightblue,
-                        borderRadius: BorderRadius.circular(15),
-                        items:
-                           markscontroller .schoolyearItems.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            alignment: Alignment.center,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        value: markscontroller .schoolyear,
-                        onChanged: (value) => 
-                          markscontroller.onDropdownChangedSchoolyear('$value')
-                      
-                      ),
+                          iconSize: 35,
+                          iconEnabledColor: darkblue,
+                          elevation: 16,
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 19.sp,
+                            color: darkblue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          underline: const Text(''),
+                          dropdownColor: lightblue,
+                          borderRadius: BorderRadius.circular(15),
+                          items: markscontroller.schoolyearItems
+                              .map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              alignment: Alignment.center,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          value: markscontroller.schoolyear,
+                          onChanged: (value) => markscontroller
+                              .onDropdownChangedSchoolyear('$value')),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 50),
@@ -98,7 +92,7 @@ class Marks extends StatelessWidget {
                         underline: const Text(''),
                         dropdownColor: const Color.fromRGBO(233, 238, 252, 1),
                         borderRadius: BorderRadius.circular(15),
-                        items:  markscontroller.termItems.map((String value) {
+                        items: markscontroller.termItems.map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             alignment: Alignment.center,
@@ -107,10 +101,8 @@ class Marks extends StatelessWidget {
                         }).toList(),
 
                         value: markscontroller.term,
-                        onChanged: (value) => {
-                   markscontroller.onDropdownChangedTerm('$value')
-
-                        },
+                        onChanged: (value) =>
+                            {markscontroller.onDropdownChangedTerm('$value')},
                       ),
                     ),
                   ],
@@ -142,7 +134,7 @@ class Marks extends StatelessWidget {
 
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(255, 141, 168, 209)
+                                color: const Color.fromARGB(255, 141, 168, 209)
                                     .withOpacity(0.5),
 
                                 spreadRadius: 4,
@@ -170,8 +162,9 @@ class Marks extends StatelessWidget {
                                   child: Text(
                                     "Math",
                                     //  "${controllermarks.marks.value!.courseName}",
-                                    style:
-                                        Theme.of(context).textTheme.headline1,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge,
                                   ),
                                   onPressed: () {
                                     Get.toNamed('/subject');
@@ -192,9 +185,9 @@ class Marks extends StatelessWidget {
 
                                     boxShadow: [
                                       BoxShadow(
-                                        color:
-                                            Color.fromARGB(255, 161, 177, 201)
-                                                .withOpacity(0.5),
+                                        color: const Color.fromARGB(
+                                                255, 161, 177, 201)
+                                            .withOpacity(0.5),
 
                                         // spreadRadius: 4,
 

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,16 +11,15 @@ import 'package:student_app/components/cell_without_shadow.dart';
 import 'package:student_app/components/cell_with_shadow.dart';
 
 int index = 2;
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class Test22 extends StatelessWidget {
   const Test22({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    HomePageController homecontroller = Get.put(HomePageController());
     return Scaffold(
       //drawer: ,
       extendBody: true,
@@ -29,7 +30,7 @@ class Test22 extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20),
             child: InkWell(
               onTap: () => Get.toNamed('/notify'),
-              child: Container(
+              child: SizedBox(
                 height: 35,
                 width: 35,
                 child: Image.asset("assets/icons/bell (1).png"),
@@ -69,7 +70,7 @@ class Test22 extends StatelessWidget {
                   color: blue,
                   fontWeight: FontWeight.bold,
                 )),
-            onTap: () => print(""),
+            onTap: () => log(""),
             leading: Image.asset(
               "assets/icons/homepage.png",
               height: 35.h,
@@ -84,7 +85,7 @@ class Test22 extends StatelessWidget {
                   color: blue,
                   fontWeight: FontWeight.bold,
                 )),
-            onTap: () => print(""),
+            onTap: () => log(""),
             leading: Image.asset(
               "assets/icons/homepage.png",
               height: 35.h,
@@ -99,7 +100,7 @@ class Test22 extends StatelessWidget {
                   color: blue,
                   fontWeight: FontWeight.bold,
                 )),
-            onTap: () => print(""),
+            onTap: () => log(""),
             leading: Image.asset(
               "assets/icons/homepage.png",
               height: 35.h,
@@ -114,7 +115,7 @@ class Test22 extends StatelessWidget {
                   color: blue,
                   fontWeight: FontWeight.bold,
                 )),
-            onTap: () => print(""),
+            onTap: () => log(""),
             leading: Image.asset(
               "assets/icons/homepage.png",
               height: 35.h,
@@ -129,10 +130,10 @@ class Test22 extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : Container(
-                color: Color.fromRGBO(244, 241, 241, 1),
+                color: const Color.fromRGBO(244, 241, 241, 1),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 150.h,
                       width: 500.w,
                       child: Column(
@@ -142,9 +143,10 @@ class Test22 extends StatelessWidget {
                             child: Text(
                                 "  Assignments :                                           "
                                     .tr,
-                                style: Theme.of(context).textTheme.headline1),
+                                style:
+                                    Theme.of(context).textTheme.displayLarge),
                           ),
-                          Container(
+                          SizedBox(
                             width: 400.w,
                             height: 96.h,
                             child: GridView.builder(
@@ -177,7 +179,7 @@ class Test22 extends StatelessWidget {
                                             // titlePadding: ,
                                             backgroundColor: white,
                                             scrollable: true,
-                                            content: Text(
+                                            content: const Text(
                                               "cgkdgjgkgdrkghkghigrhkgrhhghghhigtyyymyiu3ri3",
                                               style: TextStyle(fontSize: 20),
                                             ),
@@ -189,13 +191,14 @@ class Test22 extends StatelessWidget {
                                       height: 80.h,
                                       width: 130.w,
                                       decoration: BoxDecoration(
-                                        color: Color.fromRGBO(244, 241, 241, 1),
+                                        color: const Color.fromRGBO(
+                                            244, 241, 241, 1),
                                         borderRadius: BorderRadius.circular(10),
                                         boxShadow: [
                                           BoxShadow(
-                                            color:
-                                                Color.fromRGBO(65, 105, 225, 1)
-                                                    .withOpacity(0.5),
+                                            color: const Color.fromRGBO(
+                                                    65, 105, 225, 1)
+                                                .withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 5,
                                             //  offset: Offset(3, 3),
@@ -208,8 +211,8 @@ class Test22 extends StatelessWidget {
                                           height: 30,
                                           width: 30,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
                                           child: Text(" "),
                                         )
                                       ]),
@@ -228,11 +231,11 @@ class Test22 extends StatelessWidget {
                         height: 360.h,
                         width: 500.w,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(233, 238, 252, 1),
+                          color: const Color.fromRGBO(233, 238, 252, 1),
                           borderRadius: BorderRadius.circular(2),
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 95, 109, 154)
+                              color: const Color.fromARGB(255, 95, 109, 154)
                                   .withOpacity(0.5),
                               spreadRadius: 6,
                               blurRadius: 7,
@@ -247,7 +250,7 @@ class Test22 extends StatelessWidget {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(11),
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 50.h,
                                       width: 46.w,
                                       child: Image.asset(

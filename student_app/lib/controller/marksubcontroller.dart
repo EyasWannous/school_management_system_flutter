@@ -1,10 +1,8 @@
-import 'package:get/get.dart';
-import 'package:student_app/data/remote/marksubdata.dart';
-import 'package:student_app/data/remote/profiledata.dart';
-import 'package:student_app/model/marksubmodel.dart';
-import 'package:student_app/model/studentmodel.dart';
+import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:student_app/data/remote/marksubdata.dart';
+import 'package:student_app/model/marksubmodel.dart';
 
 class MarkSubController extends GetxController {
   late bool isLoading = true;
@@ -25,19 +23,18 @@ class MarkSubController extends GetxController {
     try {
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await marksubfData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
         for (var data in response["marks"]) {
           marksubfList.add(MarkSubFModel.fromJson(data));
-          // print(data);
+          // log(data);
         }
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 
@@ -45,19 +42,18 @@ class MarkSubController extends GetxController {
     try {
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await marksubsData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
         for (var data in response["marks"]) {
           marksubsList.add(MarkSubSModel.fromJson(data));
-          // print(data);
+          // log(data);
         }
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 }

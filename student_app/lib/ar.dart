@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:student_app/controller/localecontroller.dart';
 
 /*class Ar extends StatelessWidget {
   @override

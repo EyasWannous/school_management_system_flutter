@@ -1,4 +1,5 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,9 +7,10 @@ import 'package:student_app/colors.dart';
 import 'package:student_app/controller/coursescontroller.dart';
 
 class CoursesParent extends StatelessWidget {
+  const CoursesParent({super.key});
+
   @override
   Widget build(BuildContext context) {
-    CoursesController coursesController =Get.put(CoursesController());
     return Scaffold(
         backgroundColor: white,
         appBar: AppBar(
@@ -18,7 +20,7 @@ class CoursesParent extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20),
               child: InkWell(
                 onTap: () => Get.toNamed('/notify'),
-                child: Container(
+                child: SizedBox(
                   height: 35,
                   width: 35,
                   child: Image.asset("assets/icons/bell (1).png"),
@@ -41,12 +43,26 @@ class CoursesParent extends StatelessWidget {
               // ),
               itemCount: coursescontroller.coursesList.length,
               itemBuilder: (BuildContext context, int index) {
-                print("+++++++++++++++++++++++++++++++++++++");
+                log("+++++++++++++++++++++++++++++++++++++");
                 return InkWell(
                   child: Container(
                     height: 140.h,
                     width: 145.w,
-                    child: Column(children:  [
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(233, 238, 252, 1),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 95, 109, 154)
+                              .withOpacity(0.5),
+                          spreadRadius: 6,
+                          blurRadius: 7,
+
+                          // offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Column(children: [
                       Padding(
                         padding: const EdgeInsets.all(15),
                         child: Image.asset(
@@ -58,27 +74,14 @@ class CoursesParent extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(4),
                         child: Text(
-                            "{coursescontroller.coursesList[index].name}",
-                            style: Theme.of(context).textTheme.headline1),
+                          "{coursescontroller.coursesList[index].name}",
+                          style: Theme.of(context).textTheme.displayLarge,
+                        ),
                       )
                     ]),
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(233, 238, 252, 1),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 95, 109, 154)
-                              .withOpacity(0.5),
-                          spreadRadius: 6,
-                          blurRadius: 7,
-
-                          // offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
                   ),
                   onTap: () {
-                    print("jfjf");
+                    log("jfjf");
                   },
                 );
               })),

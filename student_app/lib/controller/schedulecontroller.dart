@@ -1,17 +1,7 @@
 import 'package:get/get.dart';
-import 'package:student_app/data/remote/aboutsubdata.dart';
-import 'package:student_app/data/remote/coursesdata.dart';
-import 'package:student_app/data/remote/profiledata.dart';
-import 'package:student_app/data/remote/scheduledata.dart';
-import 'package:student_app/model/coursesmodel.dart';
-import 'package:student_app/model/schedulemodel.dart';
-import 'package:student_app/model/studentmodel.dart';
 
-import 'package:get/get.dart';
 import 'package:student_app/models/program_model.dart';
-import 'package:student_app/parent/screen/report.dart';
 
-import '../model/AboutsubModel.dart';
 import '../services/rest_api_get.dart';
 
 class HomePageController extends GetxController {

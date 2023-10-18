@@ -1,8 +1,5 @@
 import 'package:get/get.dart';
-import 'package:student_app/data/remote/assigndata.dart';
-import 'package:student_app/model/AssignModel.dart';
 
-import '../model/AboutsubModel.dart';
 import '../models/assignments_model.dart';
 import '../services/rest_api_get.dart';
 

@@ -5,20 +5,20 @@ import 'package:student_app/view/screen/introscreen/firstscreen.dart';
 import 'package:student_app/view/screen/introscreen/fourthscreen.dart';
 import 'package:student_app/view/screen/introscreen/secondscreen.dart';
 import 'package:student_app/view/screen/introscreen/thirdscreen.dart';
-import 'package:student_app/view/screen/mainscreen.dart';
-
 
 bool onLastPage = false;
 //MyServices myServices = Get.find();
 
 class Intro extends StatefulWidget {
+  const Intro({super.key});
+
   @override
   IntroState createState() => IntroState();
 }
 
 class IntroState extends State<Intro> {
   PageController controller = PageController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class IntroState extends State<Intro> {
             });
           },
           controller: controller,
-          children: [
+          children: const [
             firstScreen(),
             SecondScreen(),
             ThirdScreen(),
@@ -39,14 +39,14 @@ class IntroState extends State<Intro> {
           ],
         ),
         Container(
-          alignment: Alignment(0, 0.75),
+          alignment: const Alignment(0, 0.75),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(
                 child: Text(
                   "skip",
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 onTap: () {
                   controller.jumpToPage(3);
@@ -60,21 +60,21 @@ class IntroState extends State<Intro> {
                   ? GestureDetector(
                       child: Text(
                         "done",
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       onTap: () {
-                      //  myServices.sharedPreferences.setString("onLastPage", "1");
+                        //  myServices.sharedPreferences.setString("onLastPage", "1");
                         Get.offNamed('/select');
                       },
                     )
                   : GestureDetector(
                       child: Text(
                         "next",
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       onTap: () {
                         controller.nextPage(
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeIn);
                       },
                     )

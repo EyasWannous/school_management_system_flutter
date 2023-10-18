@@ -1,22 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controller/aboutsubcontroller.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class AboutSub extends StatelessWidget {
   const AboutSub({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    AboutSubController aboutsubcontroller = Get.put(AboutSubController());
     return Scaffold(
         backgroundColor: darkblue,
         body: GetBuilder<AboutSubController>(builder: (controller) {
-          // print(aboutsubcontroller.aboutsubList);
+          // log(aboutsubcontroller.aboutsubList);
           return Column(
             children: [
               Column(children: [
@@ -36,7 +37,7 @@ class AboutSub extends StatelessWidget {
 
                   decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(60)),
+                          const BorderRadius.vertical(top: Radius.circular(60)),
                       color: lightblue),
 
                   child: Column(children: [
@@ -85,16 +86,17 @@ class AboutSub extends StatelessWidget {
                               //  "${controller.aboutsub.value!.gradeCourse}",
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
-                                  color: Color.fromARGB(255, 141, 168, 209),
+                                  color:
+                                      const Color.fromARGB(255, 141, 168, 209),
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w500),
                             ),
                             trailing: IconButton(
                                 onPressed: () {
-                                  print("jhgsdj");
+                                  log("jhgsdj");
                                   // Navigator.of(context).pushReplacementNamed("book");
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.navigate_next_sharp,
                                   size: 35,
                                 ),
@@ -135,7 +137,8 @@ class AboutSub extends StatelessWidget {
                           child: Text("",
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
-                                  color: Color.fromARGB(255, 141, 168, 209),
+                                  color:
+                                      const Color.fromARGB(255, 141, 168, 209),
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500))),
                     ),
@@ -179,7 +182,7 @@ class AboutSub extends StatelessWidget {
                                       child: Text("400",
                                           style: TextStyle(
                                               fontFamily: 'Montserrat',
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 141, 168, 209),
                                               fontSize: 20.sp,
                                               fontWeight: FontWeight.w500))),
@@ -209,7 +212,8 @@ class AboutSub extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color.fromARGB(255, 249, 32, 16)
+                                        color: const Color.fromARGB(
+                                                255, 249, 32, 16)
                                             .withOpacity(0.5),
 
                                         spreadRadius: 1,
@@ -224,7 +228,7 @@ class AboutSub extends StatelessWidget {
                                       child: Text("190",
                                           style: TextStyle(
                                               fontFamily: 'Montserrat',
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 141, 168, 209),
                                               fontSize: 20.sp,
                                               fontWeight: FontWeight.w500))),

@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
-import 'package:student_app/controller/assigncontroller.dart';
 import 'package:student_app/controller/checkboxassigncontroller.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
-
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class AssignParent extends StatelessWidget {
- 
+  const AssignParent({super.key});
 
   @override
   Widget build(BuildContext context) {
-     AssignController assigncontroller = Get.put(AssignController());
-     CheckBoxController checkBoxcontroller = Get.find();
     return Scaffold(
       backgroundColor: white,
       body: GridView.builder(

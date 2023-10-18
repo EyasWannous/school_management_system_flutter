@@ -1,9 +1,4 @@
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:student_app/core/handlingdataview.dart';
-
-import '../../controller/testcontroller.dart'; 
 /*
 class Tests extends StatelessWidget {
   const Tests({Key? key}) : super(key: key);

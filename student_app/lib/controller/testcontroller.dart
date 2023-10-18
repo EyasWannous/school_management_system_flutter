@@ -1,8 +1,3 @@
- 
-import 'package:get/get.dart';
-import 'package:student_app/core/handingdatacontroller.dart';
-import 'package:student_app/core/statusrequest.dart';
-import 'package:student_app/data/remote/testdata.dart';
 /*
 class TestController extends GetxController {
   TestData testData = TestData(Get.find());

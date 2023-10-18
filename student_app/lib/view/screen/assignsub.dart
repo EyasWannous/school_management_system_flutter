@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 import 'package:student_app/controller/assigncontroller.dart';
-import 'package:student_app/controller/checkboxassigncontroller.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class AssignSub extends StatelessWidget {
   const AssignSub({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // AssignController assigncontroller = Get.put(AssignController());
-    CheckBoxController checkBoxcontroller = Get.find();
     return Scaffold(
       backgroundColor: white,
       body: GetBuilder<AssignController>(
@@ -56,7 +52,7 @@ class AssignSub extends StatelessWidget {
                           Text(
                             // "  Homework Name",
                             controller.assignments[index].title!,
-                            style: Theme.of(context).textTheme.headline1,
+                            style: Theme.of(context).textTheme.displayLarge,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 100),
@@ -100,7 +96,7 @@ class AssignSub extends StatelessWidget {
                       child: Text(
                         // "beo beo ahmad mohsen beo beo ahmad mohsenbeo beo ahmad mohsenbeo beo ahmad mohsenbeo beo ahmad mohsen",
                         controller.assignments[index].content!,
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                     Padding(
@@ -108,7 +104,7 @@ class AssignSub extends StatelessWidget {
                       child: Text(
                         // " Date : 10/7/2022",
                         controller.assignments[index].dueDate!,
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     )
                   ],

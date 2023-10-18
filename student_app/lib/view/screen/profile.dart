@@ -11,7 +11,6 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileController profilecontroller = Get.put(ProfileController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -20,7 +19,7 @@ class Profile extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20),
             child: InkWell(
               onTap: () => Get.toNamed('/notify'),
-              child: Container(
+              child: SizedBox(
                 height: 35,
                 width: 35,
                 child: Image.asset("assets/icons/bell (1).png"),
@@ -49,9 +48,9 @@ class Profile extends StatelessWidget {
 
                   decoration: BoxDecoration(
                     color: darkblue,
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(200)),
-                    boxShadow: [
+                    borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(200)),
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
 
@@ -104,7 +103,7 @@ class Profile extends StatelessWidget {
                     Text("  Class   ",
                         style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400)),
                     Padding(
@@ -119,7 +118,7 @@ class Profile extends StatelessWidget {
 
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 141, 168, 209)
+                              color: const Color.fromARGB(255, 141, 168, 209)
                                   .withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
@@ -146,7 +145,7 @@ class Profile extends StatelessWidget {
                       Text(" Section ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400)),
                       Padding(
@@ -159,7 +158,7 @@ class Profile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(255, 141, 168, 209)
+                                color: const Color.fromARGB(255, 141, 168, 209)
                                     .withOpacity(0.5),
                                 spreadRadius: 2,
                                 blurRadius: 5,
@@ -185,7 +184,7 @@ class Profile extends StatelessWidget {
                     Text(" Type ",
                         style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400)),
                     Padding(
@@ -198,7 +197,7 @@ class Profile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 141, 168, 209)
+                              color: const Color.fromARGB(255, 141, 168, 209)
                                   .withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
@@ -228,7 +227,7 @@ class Profile extends StatelessWidget {
                   Text("  Birthday  ",
                       style: TextStyle(
                           fontFamily: 'Montserrat',
-                          color: Color.fromARGB(255, 141, 168, 209),
+                          color: const Color.fromARGB(255, 141, 168, 209),
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w400)),
                   Padding(
@@ -243,7 +242,7 @@ class Profile extends StatelessWidget {
 
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(255, 141, 168, 209)
+                            color: const Color.fromARGB(255, 141, 168, 209)
                                 .withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
@@ -270,7 +269,7 @@ class Profile extends StatelessWidget {
                     Text(" Phone  ",
                         style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400)),
                     Padding(
@@ -285,7 +284,7 @@ class Profile extends StatelessWidget {
 
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 141, 168, 209)
+                              color: const Color.fromARGB(255, 141, 168, 209)
                                   .withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
@@ -318,7 +317,7 @@ class Profile extends StatelessWidget {
                     Text("  Address ",
                         style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400)),
                     Padding(
@@ -335,7 +334,7 @@ class Profile extends StatelessWidget {
 
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 141, 168, 209)
+                              color: const Color.fromARGB(255, 141, 168, 209)
                                   .withOpacity(0.5),
 
                               spreadRadius: 2,
@@ -364,7 +363,7 @@ class Profile extends StatelessWidget {
                       Text("  Bus  ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Color.fromARGB(255, 141, 168, 209),
+                              color: const Color.fromARGB(255, 141, 168, 209),
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400)),
                       Padding(
@@ -381,7 +380,7 @@ class Profile extends StatelessWidget {
 
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(255, 141, 168, 209)
+                                color: const Color.fromARGB(255, 141, 168, 209)
                                     .withOpacity(0.5),
 
                                 spreadRadius: 2,
@@ -416,7 +415,7 @@ class Profile extends StatelessWidget {
                   children: [
                     Text("  About me ",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 141, 168, 209),
+                            color: const Color.fromARGB(255, 141, 168, 209),
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w400)),
                     Padding(
@@ -433,7 +432,7 @@ class Profile extends StatelessWidget {
 
                           boxShadow: [
                             BoxShadow(
-                              color: Color.fromARGB(255, 141, 168, 209)
+                              color: const Color.fromARGB(255, 141, 168, 209)
                                   .withOpacity(0.5),
 
                               spreadRadius: 2,
@@ -471,7 +470,10 @@ class Profile extends StatelessWidget {
                   width: 200.w,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color.fromARGB(255, 149, 177, 219), darkblue],
+                      colors: [
+                        const Color.fromARGB(255, 149, 177, 219),
+                        darkblue
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -482,7 +484,7 @@ class Profile extends StatelessWidget {
 
                     // color: Color.fromRGBO(169, 33, 33, 1),
 
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
 

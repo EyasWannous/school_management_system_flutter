@@ -1,10 +1,8 @@
-import 'package:get/get.dart';
-import 'package:student_app/data/remote/aboutsubdata.dart';
-import 'package:student_app/data/remote/profiledata.dart';
-import 'package:student_app/model/AboutsubModel.dart';
-import 'package:student_app/model/studentmodel.dart';
+import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:student_app/data/remote/aboutsubdata.dart';
+import 'package:student_app/model/AboutsubModel.dart';
 
 class AboutSubController extends GetxController {
   var aboutsubList = <AboutSubModel>[];
@@ -22,19 +20,18 @@ class AboutSubController extends GetxController {
     try {
       isLoading = true;
       update();
-      print("cccccccccccccccccccccccccccccccccccccccc");
+      log("cccccccccccccccccccccccccccccccccccccccc");
       var response = await aboutsubData.getData();
-      print(
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       isLoading = false;
       if (response["status"]) {
         aboutsub.value = AboutSubModel.fromJson(response['info']);
 
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         update();
       }
     } catch (e) {
-      print(e);
+      log(e as String);
     }
   }
 }

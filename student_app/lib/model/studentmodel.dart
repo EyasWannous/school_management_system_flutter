@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class StudentProfile {
   int? id;
   int? gradeId;
