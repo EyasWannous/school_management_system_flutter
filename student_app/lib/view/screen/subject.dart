@@ -3,10 +3,12 @@ import 'package:student_app/view/screen/aboutsub.dart';
 import 'package:student_app/view/screen/assignsub.dart';
 import 'package:student_app/view/screen/marksub.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-Color darkblue= Color.fromRGBO(65, 105, 225,1);
-Color white= Color.fromRGBO(244, 241, 241,1);
-Color  lightblue= Color.fromRGBO(233, 238, 252,1);
+Color darkblue= const Color.fromRGBO(65, 105, 225,1);
+Color white= const Color.fromRGBO(244, 241, 241,1);
+Color  lightblue= const Color.fromRGBO(233, 238, 252,1);
 class Subject extends StatelessWidget {
+  const Subject({super.key});
+
   @override
 
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class Subject extends StatelessWidget {
       child: Scaffold(
         backgroundColor: white,
       appBar: AppBar(
-      title: Text("Physics"),
+      title: const Text("Physics"),
       bottom: 
        TabBar(
        isScrollable:true,
@@ -23,7 +25,7 @@ class Subject extends StatelessWidget {
        indicatorColor: lightblue,
        labelColor: lightblue,
        labelStyle: TextStyle( fontSize: 20.sp,fontWeight: FontWeight.w300),
-       labelPadding: EdgeInsets.symmetric(horizontal: 30,vertical: 5),
+       labelPadding: const EdgeInsets.symmetric(horizontal: 30,vertical: 5),
               tabs: [
                 Tab(
 
@@ -71,7 +73,7 @@ class Subject extends StatelessWidget {
       
       ),
       
-      body: TabBarView(
+      body: const TabBarView(
               children: [
                 AboutSub(),
                 AssignSub(),

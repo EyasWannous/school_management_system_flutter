@@ -16,9 +16,9 @@ BottomBarController controller = Get.find();
 class BottomBar extends StatelessWidget {
   final List<Widget> _pages = [
     const Posts(),
-    Courses(),
+    const Courses(),
     const HomePage(),
-    Marks(),
+    const Marks(),
     const Profile(),
   ];
 

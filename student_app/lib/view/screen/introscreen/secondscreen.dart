@@ -15,7 +15,7 @@ Padding(
   padding: const EdgeInsets.symmetric(vertical: 10),
   child:   Image.asset("assets/icons/Post-cuate.png",height:500.h,width: 500.w,),
 ),
-Text("Support your knowledge by posts",style: Theme.of(context).textTheme.headline1,)
+Text("Support your knowledge by posts",style: Theme.of(context).textTheme.displayLarge,)
 
 ]),
     );

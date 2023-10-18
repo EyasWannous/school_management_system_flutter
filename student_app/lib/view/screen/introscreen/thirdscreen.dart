@@ -15,7 +15,7 @@ Padding(
   padding: const EdgeInsets.symmetric(vertical: 10),
   child:   Image.asset("assets/icons/Grades-pana (1).png",height: 500.h,width: 500.w,),
 ),
-Text("Show your marks !",style: Theme.of(context).textTheme.headline1,)
+Text("Show your marks !",style: Theme.of(context).textTheme.displayLarge,)
 
 ]),
     );

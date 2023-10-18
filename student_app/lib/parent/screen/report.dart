@@ -19,7 +19,7 @@ class Report extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-appBar: AppBar(title: Text(" Report")),
+appBar: AppBar(title: const Text(" Report")),
 
 body:Padding(
   padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20),
@@ -71,7 +71,7 @@ body:Padding(
       
                                     Text(
                                               "From : ",
-                                              style: Theme.of(context).textTheme.headline6,
+                                              style: Theme.of(context).textTheme.titleLarge,
                                             ),
      /*  Form(
         key: formstate,
@@ -104,7 +104,7 @@ body:Padding(
       
                                       "Soso   ",
       
-                                      style: Theme.of(context).textTheme.bodyText1,
+                                      style: Theme.of(context).textTheme.bodyLarge,
       
                                     ),
       
@@ -126,7 +126,7 @@ body:Padding(
       
                                             "To: ",
       
-                                            style: Theme.of(context).textTheme.headline6,
+                                            style: Theme.of(context).textTheme.titleLarge,
       
                                           ),
       
@@ -134,7 +134,7 @@ body:Padding(
       
                                     "  ",
       
-                                    style: Theme.of(context).textTheme.bodyText1,
+                                    style: Theme.of(context).textTheme.bodyLarge,
       
                                   ),
       
@@ -155,7 +155,7 @@ body:Padding(
       
                                             "On : ",
       
-                                            style: Theme.of(context).textTheme.headline6,
+                                            style: Theme.of(context).textTheme.titleLarge,
       
                                           ),
       
@@ -163,7 +163,7 @@ body:Padding(
       
                                     " ",
       
-                                    style: Theme.of(context).textTheme.bodyText1,
+                                    style: Theme.of(context).textTheme.bodyLarge,
       
                                   ),
       
@@ -184,7 +184,7 @@ Padding(
       
                                             "Subject: ",
       
-                                            style: Theme.of(context).textTheme.headline6,
+                                            style: Theme.of(context).textTheme.titleLarge,
       
                                           ),
       
@@ -192,7 +192,7 @@ Padding(
       
                                     "   ",
       
-                                    style: Theme.of(context).textTheme.bodyText1,
+                                    style: Theme.of(context).textTheme.bodyLarge,
       
                                   ),
       
@@ -231,7 +231,7 @@ Padding(
                           decoration: BoxDecoration(
   
      gradient: LinearGradient(
-      colors: [Color.fromARGB(255, 149, 177, 219),darkblue ],
+      colors: [const Color.fromARGB(255, 149, 177, 219),darkblue ],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),
@@ -252,7 +252,7 @@ Padding(
   
     
   
-                      boxShadow: [
+                      boxShadow: const [
   
     
   

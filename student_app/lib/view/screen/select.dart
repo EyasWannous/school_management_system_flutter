@@ -42,7 +42,7 @@ Padding(
                             decoration: BoxDecoration(
   
      gradient: LinearGradient(
-        colors: [Color.fromARGB(255, 149, 177, 219),darkblue ],
+        colors: [const Color.fromARGB(255, 149, 177, 219),darkblue ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
     ),
@@ -63,7 +63,7 @@ Padding(
   
     
   
-                        boxShadow: [
+                        boxShadow: const [
   
     
   
@@ -153,7 +153,7 @@ Padding(
                             decoration: BoxDecoration(
   
      gradient: LinearGradient(
-        colors: [Color.fromARGB(255, 149, 177, 219),darkblue ],
+        colors: [const Color.fromARGB(255, 149, 177, 219),darkblue ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
     ),
@@ -174,7 +174,7 @@ Padding(
   
     
   
-                        boxShadow: [
+                        boxShadow: const [
   
     
   

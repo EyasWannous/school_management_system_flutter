@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class NotifyParent extends StatelessWidget {
+  const NotifyParent({super.key});
+
   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notifications"),
+        title: const Text("Notifications"),
       ),
       backgroundColor: white,
       body: GridView.builder(
@@ -32,7 +34,7 @@ class NotifyParent extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
+                    color: const Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
                     spreadRadius: 5,
                     // blurRadius: 7,
                     // offset: Offset(0, 3),
@@ -50,13 +52,13 @@ class NotifyParent extends StatelessWidget {
                       children: [
                         Text(
                           "It's school",
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.displayLarge,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 160),
                           child: Text(
                             " 7 hours ago",
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                         )
                       ],
@@ -67,7 +69,7 @@ class NotifyParent extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Text(
                     "beo beo ahmad mohsen beo beo ahmad mohsenbeo beo ahmad mohsenbeo ",
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
                 /*Padding(

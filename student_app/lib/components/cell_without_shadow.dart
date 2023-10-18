@@ -16,10 +16,10 @@ class CellWithoutShadow extends StatelessWidget {
         height: 22.h,
         width: 50.w,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 248, 248, 248),
+          color: const Color.fromARGB(255, 248, 248, 248),
           borderRadius: BorderRadius.circular(3),
         ),
-        child: Text(textInCell, style: Theme.of(context).textTheme.headline4),
+        child: Text(textInCell, style: Theme.of(context).textTheme.headlineMedium),
       ),
     );
   }

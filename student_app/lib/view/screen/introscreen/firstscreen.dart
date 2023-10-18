@@ -14,7 +14,7 @@ Padding(
   padding: const EdgeInsets.symmetric(vertical: 70,horizontal: 10),
   child:   Image.asset("assets/icons/college project-cuate.png",height: 400.h,width: 600.w,),
 ),
-Text("Welcome to It's School !",style: Theme.of(context).textTheme.headline1,)
+Text("Welcome to It's School !",style: Theme.of(context).textTheme.displayLarge,)
 
 ]),
     );

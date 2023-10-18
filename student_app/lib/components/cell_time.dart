@@ -17,13 +17,13 @@ class CellTime extends StatelessWidget {
         height: 23.h,
         width: 61.w,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(65, 105, 225, 1),
+          color: const Color.fromRGBO(65, 105, 225, 1),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
           child: Text(
             timeInCell,
-            style: Theme.of(context).textTheme.headline3,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
       ),

@@ -49,7 +49,7 @@ class AssignParent extends StatelessWidget {
                       children: [
                         Text(
                           "  Homework Name",
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.displayLarge,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 100),
@@ -94,14 +94,14 @@ class AssignParent extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       "beo beo ahmad mohsen beo beo ahmad mohsenbeo beo ahmad mohsenbeo beo ahmad mohsenbeo beo ahmad mohsen",
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 175, top: 10),
                     child: Text(
                       " Date : 10/7/2022",
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   )
                 ]),

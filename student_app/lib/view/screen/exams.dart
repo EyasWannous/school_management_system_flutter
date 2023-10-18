@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
-Color blue = Color.fromARGB(255, 141, 168, 209);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
+Color blue = const Color.fromARGB(255, 141, 168, 209);
 
 class Exams extends StatelessWidget {
   const Exams({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class Exams extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Exams"),
+        title: const Text("Exams"),
       ),
       backgroundColor: white,
       body: Column(
@@ -30,7 +30,7 @@ alignment: Alignment.center,
   
                                     "Date",
   
-                                    style: Theme.of(context).textTheme.headline1,
+                                    style: Theme.of(context).textTheme.displayLarge,
   
                                   ),
   
@@ -44,7 +44,7 @@ alignment: Alignment.center,
   
                                     "Times",
   
-                                    style: Theme.of(context).textTheme.headline1,
+                                    style: Theme.of(context).textTheme.displayLarge,
   
                                   ),
   
@@ -57,7 +57,7 @@ alignment: Alignment.center,
   
                                     "Subject",
   
-                                    style: Theme.of(context).textTheme.headline1,
+                                    style: Theme.of(context).textTheme.displayLarge,
   
                                   ),
   
@@ -83,7 +83,7 @@ alignment: Alignment.center,
                       borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
+                          color: const Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
                           spreadRadius: 5,
                           // blurRadius: 7,
                           // offset: Offset(0, 3),
@@ -101,27 +101,27 @@ alignment: Alignment.center,
                             children: [
                               Text(
                                 "Sun",
-                                style: Theme.of(context).textTheme.bodyText1,
+                                style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8),
                                 child: Text(
                                   " 12/12/2022",
-                                  style: Theme.of(context).textTheme.bodyText1,
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 35),
                                 child: Text(
                                   "9:00 ",
-                                  style: Theme.of(context).textTheme.headline1,
+                                  style: Theme.of(context).textTheme.displayLarge,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 75),
                                 child: Text(
                                   "Math ",
-                                  style: Theme.of(context).textTheme.headline1,
+                                  style: Theme.of(context).textTheme.displayLarge,
                                 ),
                               )
                             ],

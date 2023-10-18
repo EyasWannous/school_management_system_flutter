@@ -18,44 +18,44 @@ class themes {
           fontSize: 32,
         )),
     textTheme: TextTheme(
-      headline1: TextStyle(
-        color: Color.fromRGBO(65, 105, 225, 1),
+      displayLarge: TextStyle(
+        color: const Color.fromRGBO(65, 105, 225, 1),
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w700,
         fontSize: 21.sp,
       ),
-      headline2: TextStyle(
-        color: Color.fromRGBO(233, 238, 252, 1),
+      displayMedium: TextStyle(
+        color: const Color.fromRGBO(233, 238, 252, 1),
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w700,
         fontSize: 19.sp,
       ),
-      headline3: TextStyle(
-        color: Color.fromRGBO(233, 238, 252, 1),
+      displaySmall: TextStyle(
+        color: const Color.fromRGBO(233, 238, 252, 1),
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         fontSize: 18.sp,
       ),
-      headline4: TextStyle(
-        color: Color.fromRGBO(65, 105, 225, 1),
+      headlineMedium: TextStyle(
+        color: const Color.fromRGBO(65, 105, 225, 1),
         fontFamily: 'Montserrat',
         // fontWeight: FontWeight,
         fontSize: 19.sp,
       ),
-      headline5: TextStyle(
-        color: Color.fromARGB(255, 141, 168, 209),
+      headlineSmall: TextStyle(
+        color: const Color.fromARGB(255, 141, 168, 209),
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w400,
         fontSize: 17.sp,
       ),
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: darkblue,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         fontSize: 15.sp,
       ),
-      bodyText1: TextStyle(
-        color: Color.fromARGB(255, 141, 168, 209),
+      bodyLarge: TextStyle(
+        color: const Color.fromARGB(255, 141, 168, 209),
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.bold,
         fontSize: 15.sp,
@@ -68,7 +68,7 @@ class themes {
       textTheme: ButtonTextTheme.primary,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(primary: Colors.red),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.green,
@@ -105,7 +105,7 @@ class themes {
       textTheme: ButtonTextTheme.primary,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(primary: Colors.red),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.green,

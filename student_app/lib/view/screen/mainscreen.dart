@@ -43,8 +43,8 @@ class mainscreen extends StatelessWidget {
           )
         ],
         backgroundColor: Colors.white,
-        color: Color.fromARGB(255, 54, 50, 138),
-        animationDuration: Duration(milliseconds: 500),
+        color: const Color.fromARGB(255, 54, 50, 138),
+        animationDuration: const Duration(milliseconds: 500),
       ),
       body: Container(
         child: getSelectedWidget(index:index),

@@ -6,17 +6,17 @@ class AboutSubModel {
 
   AboutSubModel.fromJson(Map<String, dynamic> json) {
     teacher =
-        json['teacher'] != null ? new Teacher.fromJson(json['teacher']) : null;
-    about = json['about'] != null ? new About.fromJson(json['about']) : null;
+        json['teacher'] != null ? Teacher.fromJson(json['teacher']) : null;
+    about = json['about'] != null ? About.fromJson(json['about']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.teacher != null) {
-      data['teacher'] = this.teacher!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (teacher != null) {
+      data['teacher'] = teacher!.toJson();
     }
-    if (this.about != null) {
-      data['about'] = this.about!.toJson();
+    if (about != null) {
+      data['about'] = about!.toJson();
     }
     return data;
   }
@@ -34,16 +34,16 @@ class Teacher {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
-    pivot = json['pivot'] != null ? new Pivot.fromJson(json['pivot']) : null;
+    pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    if (this.pivot != null) {
-      data['pivot'] = this.pivot!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    if (pivot != null) {
+      data['pivot'] = pivot!.toJson();
     }
     return data;
   }
@@ -61,9 +61,9 @@ class Pivot {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['section_id'] = this.sectionId;
-    data['teacher_id'] = this.teacherId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['section_id'] = sectionId;
+    data['teacher_id'] = teacherId;
     return data;
   }
 }
@@ -97,14 +97,14 @@ class About {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['grade_id'] = this.gradeId;
-    data['course_id'] = this.courseId;
-    data['description'] = this.description;
-    data['number of weekly classes'] = this.numberOfWeeklyClasses;
-    data['top_mark'] = this.topMark;
-    data['lower_mark'] = this.lowerMark;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['grade_id'] = gradeId;
+    data['course_id'] = courseId;
+    data['description'] = description;
+    data['number of weekly classes'] = numberOfWeeklyClasses;
+    data['top_mark'] = topMark;
+    data['lower_mark'] = lowerMark;
     return data;
   }
 }

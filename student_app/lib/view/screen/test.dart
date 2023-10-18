@@ -7,7 +7,7 @@ class Test extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: [ListTile()],
+        children: const [ListTile()],
       ),
     );
   }

@@ -14,7 +14,7 @@ Padding(
   padding: const EdgeInsets.symmetric(vertical:1,),
   child:   Image.asset("assets/icons/Events-cuate.png",height: 500.h,width: 500.w,),
 ),
-Text("View your Schedule!",style: Theme.of(context).textTheme.headline1,)
+Text("View your Schedule!",style: Theme.of(context).textTheme.displayLarge,)
 
 ]),
     );

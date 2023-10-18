@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Color darkblue = Color.fromRGBO(65, 105, 225, 1);
-Color white = Color.fromRGBO(244, 241, 241, 1);
-Color lightblue = Color.fromRGBO(233, 238, 252, 1);
+Color darkblue = const Color.fromRGBO(65, 105, 225, 1);
+Color white = const Color.fromRGBO(244, 241, 241, 1);
+Color lightblue = const Color.fromRGBO(233, 238, 252, 1);
 
 class CellWithShadow extends StatelessWidget {
   final String textInCell;
@@ -21,7 +21,7 @@ class CellWithShadow extends StatelessWidget {
         height: 22.h,
         width: 50.w,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 248, 248, 248),
+          color: const Color.fromARGB(255, 248, 248, 248),
           borderRadius: BorderRadius.circular(3),
           boxShadow: [
             BoxShadow(
@@ -30,7 +30,7 @@ class CellWithShadow extends StatelessWidget {
             ),
           ],
         ),
-        child: Text(textInCell, style: Theme.of(context).textTheme.headline4),
+        child: Text(textInCell, style: Theme.of(context).textTheme.headlineMedium),
       ),
     );
   }
