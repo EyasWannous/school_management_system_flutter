@@ -4,11 +4,11 @@
 The School Management System is a comprehensive application designed to streamline interactions within the educational ecosystem, benefiting students, teachers, and administrators alike. By automating essential tasks, this system enhances operational efficiency and ensures a seamless experience for all stakeholders.
 
 ## Key Features
-**Real-time Notifications**: Leveraging Firebase, the system provides instant notifications to keep users informed of important updates.
+**Real-time Notifications**: Leveraging **Firebase**, the system provides instant **notifications** to keep users informed of important updates.
 
-**Robust State Management**: Implemented using GetX, the application maintains a solid foundation for managing state throughout the user interface.
+**Robust State Management**: Implemented using **GetX**, the application maintains a solid foundation for managing state throughout the user interface.
 
-**Efficient MVC Architecture**: The codebase follows a Model-View-Controller (MVC) architecture, promoting clean, maintainable code for easy scalability.
+**Efficient MVC Architecture**: The codebase follows a **Model-View-Controller (MVC) architecture**, promoting clean, maintainable code for easy scalability.
 
 **Dedicated UI/UX Focus**: As the Flutter developer, I took on the role of a UI/UX developer to ensure an intuitive and user-friendly experience.
 
