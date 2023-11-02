@@ -35,17 +35,18 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Teacher App',
-        themeMode: ThemeMode.light,
-        theme: LigthTheme.light,
-        // darkTheme: LightDarkTheme.darkTheme,
-        // initialRoute: '/homepage',
-        initialBinding: InitBinding(),
-        getPages: MyRoutes.pages,
-        home: const Login(),
-      ),
+      builder: (context, child) =>
+          GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Teacher App',
+            themeMode: ThemeMode.light,
+            theme: LigthTheme.light,
+            // darkTheme: LightDarkTheme.darkTheme,
+            // initialRoute: '/homepage',
+            initialBinding: InitBinding(),
+            getPages: MyRoutes.pages,
+            home: const Login(),
+          ),
     );
   }
 }

@@ -45,43 +45,45 @@ class Assignments extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            "${item.title}",
-                            style: Theme.of(context).textTheme.displayLarge,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Text(
+                              "${item.title}",
+                              style: Theme.of(context).textTheme.displayLarge,
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          "${item.content}",
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text(
-                        "${item.content}",
-                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 175, top: 10),
-                      child: Text(
-                        "${item.dueDate}",
-                        style: Theme.of(context).textTheme.titleLarge,
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 175, top: 10),
+                        child: Text(
+                          "${item.dueDate}",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
-                    ),
-                  )
-                ]),
+                    )
+                  ],
+                ),
               ),
             );
           },

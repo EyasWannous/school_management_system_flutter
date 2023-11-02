@@ -49,153 +49,152 @@ class Login extends StatelessWidget {
                 widgetChild: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: StreamBuilder<Object>(
-                      stream: null,
-                      builder: (context, snapshot) {
-                        return FadeAnimation(
-                          delay: 1.4,
-                          widgetChild: Form(
-                            key: controller.formstate,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: TextFormField(
-                                    controller: controller.usernameController,
-                                    keyboardType: TextInputType.emailAddress,
-                                    validator: (text) {
-                                      return (text != null &&
-                                              text.trim().isNotEmpty)
-                                          ? null
-                                          : "please enter your username";
-                                    },
-                                    cursorColor:
-                                        const Color.fromARGB(255, 141, 168, 209),
-                                    cursorHeight: 20,
-                                    decoration: InputDecoration(
-                                      counterStyle: const TextStyle(
-                                          color: MyColors.royalBlue),
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 20, vertical: 20),
-                                      label: Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 14),
-                                        child: Text(
-                                          "Username",
-                                          style: TextStyle(
-                                            fontFamily: 'Montserrat',
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.bold,
-                                            color: MyColors.royalBlue,
-                                          ),
-                                        ),
-                                      ),
-                                      hintText: "Enter your username",
-                                      hintStyle: TextStyle(
-                                        color:
-                                            const Color.fromARGB(255, 141, 168, 209),
-                                        fontFamily: 'Montserrat',
-                                        fontSize: 12.sp,
-                                      ),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        borderSide: const BorderSide(
-                                          color: MyColors.soLightBlue,
-                                        ),
-                                      ),
-                                      suffixIcon: const Icon(
-                                        Icons.person,
-                                        color: MyColors.royalBlue,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: TextFormField(
-                                    controller: controller.passwordController,
-                                    keyboardType: TextInputType.visiblePassword,
-                                    obscureText: controller.passwordVisible,
-                                    cursorColor:
-                                        const Color.fromARGB(255, 141, 168, 209),
-                                    cursorHeight: 20,
-                                    validator: (text) {
-                                      if (text!.length < 8) {
-                                        return "you have to enter 8 char";
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    decoration: InputDecoration(
-                                      counterStyle: const TextStyle(
-                                          color: MyColors.royalBlue),
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 20, vertical: 20),
-                                      label: Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 14),
-                                        child: Text(
-                                          "Password",
-                                          style: TextStyle(
-                                            fontFamily: 'Montserrat',
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.bold,
-                                            color: MyColors.royalBlue,
-                                          ),
-                                        ),
-                                      ),
-                                      hintText: "Enter your password",
-                                      hintStyle: TextStyle(
-                                        color:
-                                            const Color.fromARGB(255, 141, 168, 209),
-                                        fontFamily: 'Montserrat',
-                                        fontSize: 12.sp,
-                                      ),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        borderSide: const BorderSide(
-                                            color: MyColors.royalBlue),
-                                      ),
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          controller.passwordVisible
-                                              ? Icons.visibility_off
-                                              : Icons.visibility,
-                                          color: MyColors.royalBlue,
-                                        ),
-                                        onPressed: () =>
-                                            controller.changeVisible(),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: SizedBox(
-                                    height: 35.h,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        controller.loginButton();
-                                      },
+                    stream: null,
+                    builder: (context, snapshot) {
+                      return FadeAnimation(
+                        delay: 1.4,
+                        widgetChild: Form(
+                          key: controller.formstate,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: TextFormField(
+                                  controller: controller.usernameController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: (text) {
+                                    return (text != null &&
+                                            text.trim().isNotEmpty)
+                                        ? null
+                                        : "please enter your username";
+                                  },
+                                  cursorColor:
+                                      const Color.fromARGB(255, 141, 168, 209),
+                                  cursorHeight: 20,
+                                  decoration: InputDecoration(
+                                    counterStyle: const TextStyle(
+                                        color: MyColors.royalBlue),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    label: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 14),
                                       child: Text(
-                                        "login",
+                                        "Username",
                                         style: TextStyle(
                                           fontFamily: 'Montserrat',
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16.sp,
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: MyColors.royalBlue,
                                         ),
+                                      ),
+                                    ),
+                                    hintText: "Enter your username",
+                                    hintStyle: TextStyle(
+                                      color: const Color.fromARGB(
+                                          255, 141, 168, 209),
+                                      fontFamily: 'Montserrat',
+                                      fontSize: 12.sp,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: const BorderSide(
+                                        color: MyColors.soLightBlue,
+                                      ),
+                                    ),
+                                    suffixIcon: const Icon(
+                                      Icons.person,
+                                      color: MyColors.royalBlue,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: TextFormField(
+                                  controller: controller.passwordController,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  obscureText: controller.passwordVisible,
+                                  cursorColor:
+                                      const Color.fromARGB(255, 141, 168, 209),
+                                  cursorHeight: 20,
+                                  validator: (text) {
+                                    if (text!.length < 8) {
+                                      return "you have to enter 8 char";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  decoration: InputDecoration(
+                                    counterStyle: const TextStyle(
+                                        color: MyColors.royalBlue),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    label: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 14),
+                                      child: Text(
+                                        "Password",
+                                        style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: MyColors.royalBlue,
+                                        ),
+                                      ),
+                                    ),
+                                    hintText: "Enter your password",
+                                    hintStyle: TextStyle(
+                                      color: const Color.fromARGB(
+                                          255, 141, 168, 209),
+                                      fontFamily: 'Montserrat',
+                                      fontSize: 12.sp,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: const BorderSide(
+                                          color: MyColors.royalBlue),
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        controller.passwordVisible
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        color: MyColors.royalBlue,
+                                      ),
+                                      onPressed: () =>
+                                          controller.changeVisible(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: SizedBox(
+                                  height: 35.h,
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      controller.loginButton();
+                                    },
+                                    child: Text(
+                                      "login",
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.sp,
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        );
-                      }),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

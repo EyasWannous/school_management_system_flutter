@@ -18,31 +18,32 @@ class Notify extends StatelessWidget {
       body: GetBuilder<NotificationController>(
         init: NotificationController(),
         builder: (controller) => ListView.builder(
-            // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //   maxCrossAxisExtent: 400,
-            //   childAspectRatio: 4,
-            //   crossAxisSpacing: 30,
-            //   mainAxisSpacing: 2,
-            // ),
-            itemCount: 8,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 100.h,
-                width: 200.w,
-                decoration: BoxDecoration(
-                  color: MyColors.milkyWhite,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(
-                      color:
-                          const Color.fromARGB(255, 141, 168, 209).withOpacity(0.5),
-                      spreadRadius: 5,
-                      // blurRadius: 7,
-                      // offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(children: [
+          // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          //   maxCrossAxisExtent: 400,
+          //   childAspectRatio: 4,
+          //   crossAxisSpacing: 30,
+          //   mainAxisSpacing: 2,
+          // ),
+          itemCount: 8,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 100.h,
+              width: 200.w,
+              decoration: BoxDecoration(
+                color: MyColors.milkyWhite,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(255, 141, 168, 209)
+                        .withOpacity(0.5),
+                    spreadRadius: 5,
+                    // blurRadius: 7,
+                    // offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
@@ -80,9 +81,11 @@ class Notify extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline6,
                     ),
                   )*/
-                ]),
-              );
-            }),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
