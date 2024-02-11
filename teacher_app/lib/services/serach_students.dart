@@ -84,14 +84,14 @@ class SearchStudents extends SearchDelegate {
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: ListTile(
             tileColor: const Color.fromRGBO(233, 238, 252, 1),
-            title: Text(item.name), // name fo students
-            trailing: const Icon(Icons.arrow_forward), // may be arrow icon
+            title: Text(item.name),
+            trailing: const Icon(Icons.arrow_forward),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0),
             ),
             onTap: () {
               Get.to(() => const StudentProfile(), arguments: [item.id]);
-            }, // go to student profile
+            },
           ),
         );
       },

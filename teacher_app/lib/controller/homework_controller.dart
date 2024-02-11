@@ -77,17 +77,18 @@ class HomeworkController extends GetxController {
       (element) => element.name == gradeSelectedValue,
       orElse: () => Grade(),
     );
-    log('grade.id');
-    log('${grade.id}');
+    // log('grade.id');
+    // log('${grade.id}');
 
     sectionsList = await RestAPIGet.getsections('${grade.id}');
 
-    log('sectionsList');
-    log('$sectionsList');
+    // log('sectionsList');
+    // log('$sectionsList');
     if (sectionsList.isEmpty) {
       homeworkSectionsList = [];
       return;
     }
+
     homeworkSectionsList.clear();
     for (var element in sectionsList) {
       var temp = SectionsHomeworkModel(
@@ -125,9 +126,9 @@ class HomeworkController extends GetxController {
       builder: (context, child) => Theme(
         data: Theme.of(context).copyWith(
           colorScheme: const ColorScheme.light(
-            primary: MyColors.royalBlue, // <-- SEE HERE
-            onPrimary: MyColors.milkyWhite, // <-- SEE HERE
-            onSurface: MyColors.royalBlue, // <-- SEE HERE
+            primary: MyColors.royalBlue,
+            onPrimary: MyColors.milkyWhite,
+            onSurface: MyColors.royalBlue,
           ),
           // textButtonTheme: TextButtonThemeData(
           //   style: TextButton.styleFrom(
@@ -138,6 +139,7 @@ class HomeworkController extends GetxController {
         child: child!,
       ),
     );
+
     if (pickedDate != null) {
       // log(pickedDate);
       String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);

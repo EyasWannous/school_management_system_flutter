@@ -112,9 +112,9 @@ class TeacherAlert extends StatelessWidget {
                             },
                           ),
                         ),
-                      ), // Image of student
+                      ),
                       title: Text(
-                          '${item.firstName!} ${item.middleName!} ${item.lastName!}'), // name fo students
+                          '${item.firstName!} ${item.middleName!} ${item.lastName!}'),
                       // subtitle: Text('item'), // grade of student
                       selected: true,
                       shape: RoundedRectangleBorder(

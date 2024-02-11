@@ -4,6 +4,25 @@ import 'package:simple_animations/simple_animations.dart';
 class FadeAnimation extends StatelessWidget {
   final double delay;
   final Widget widgetChild;
+  static final testOpacity = MovieTweenProperty<double>();
+  static final testTranslateY = MovieTweenProperty<double>();
+  static final tween = MovieTween()
+    ..scene(
+      begin: const Duration(seconds: 0),
+      duration: const Duration(milliseconds: 500),
+    ).tween(
+      testOpacity,
+      Tween(begin: 0.0, end: 1.0),
+      curve: Curves.easeOut,
+    )
+    ..scene(
+      begin: const Duration(seconds: 0),
+      duration: const Duration(milliseconds: 500),
+    ).tween(
+      testTranslateY,
+      Tween(begin: -30.0, end: 0.0),
+      curve: Curves.easeOut,
+    );
 
   const FadeAnimation(
       {super.key, required this.delay, required this.widgetChild});
@@ -27,15 +46,3 @@ class FadeAnimation extends StatelessWidget {
     );
   }
 }
-
-final testOpacity = MovieTweenProperty<double>();
-final testTranslateY = MovieTweenProperty<double>();
-final tween = MovieTween()
-  ..scene(
-    begin: const Duration(seconds: 0),
-    duration: const Duration(milliseconds: 500),
-  ).tween(testOpacity, Tween(begin: 0.0, end: 1.0), curve: Curves.easeOut)
-  ..scene(
-    begin: const Duration(seconds: 0),
-    duration: const Duration(milliseconds: 500),
-  ).tween(testTranslateY, Tween(begin: -30.0, end: 0.0), curve: Curves.easeOut);

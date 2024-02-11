@@ -21,7 +21,7 @@ class Homework extends StatelessWidget {
             return IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: MyColors.milkyWhite, // Change Custom Drawer Icon Color
+                color: MyColors.milkyWhite,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();

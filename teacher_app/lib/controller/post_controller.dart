@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +50,8 @@ class PostController extends GetxController {
   fetchAllGradesData() async {
     gradesList = await RestAPIGet.getgrades();
 
-    log('gradesList');
-    log('$gradesList');
+    // log('gradesList');
+    // log('$gradesList');
 
     if (gradesList.isEmpty) {
       gradeDropdownItems = ["it's Empty"];
@@ -111,12 +110,5 @@ class PostController extends GetxController {
       '${grade.id}',
       fileImages,
     );
-    // await RestAPIPost.postImagesInPost(
-    //   'titleController.text',
-    //   "bodyController.text.trim()",
-    //   typeSelectedValue,
-    //   'grade.id',
-    //   fileImages,
-    // );
   }
 }

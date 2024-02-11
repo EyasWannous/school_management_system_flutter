@@ -70,7 +70,7 @@ class NtificationConfig {
   }
 
   Future initlocalnotification() async {
-    const android = AndroidInitializationSettings('@drawable/ic_launcher');
+    const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const settings = InitializationSettings(android: android);
     await _localnotification.initialize(
       settings,

@@ -27,7 +27,7 @@ class Calendar extends StatelessWidget {
             : Column(
                 children: [
                   TableCalendar(
-                    weekendDays: const [DateTime.friday, DateTime.saturday],
+                    weekendDays: Days.weekend,
                     startingDayOfWeek: StartingDayOfWeek.sunday,
                     firstDay: Days.firstDay,
                     lastDay: Days.lastDay,
@@ -65,7 +65,9 @@ class Calendar extends StatelessWidget {
                       formatButtonVisible: true,
                       formatButtonShowsNext: false,
                       formatButtonPadding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 4.0),
+                        horizontal: 10.0,
+                        vertical: 4.0,
+                      ),
                       formatButtonDecoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(12.0)),

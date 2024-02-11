@@ -4,8 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:teacher_app/services/rest_api_post.dart';
 
 class LoginController extends GetxController {
-  // var email;
-  // var password;
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool passwordVisible = false;
@@ -19,7 +17,10 @@ class LoginController extends GetxController {
   loginButton() async {
     // String tokenForFirebase = await NtificationConfig().notificationconfig();
     // log(tokenForFirebase);
-    RestAPIPost.postlogin(usernameController.text, passwordController.text,
-        GetStorage().read('fire_token'));
+    RestAPIPost.postlogin(
+      usernameController.text,
+      passwordController.text,
+      GetStorage().read('fire_token'),
+    );
   }
 }

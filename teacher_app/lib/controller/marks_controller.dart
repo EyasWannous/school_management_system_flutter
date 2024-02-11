@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:teacher_app/model/serach_model.dart';
-import 'package:teacher_app/services/remove_leading_zeros.dart';
+import 'package:teacher_app/services/leading_zeros.dart';
 
 import '../model/courses_model.dart';
 import '../model/grade_model.dart';
@@ -262,8 +262,10 @@ class MarksController extends GetxController {
       (element) => element.name == coursesSelectedValue,
       orElse: () => Courses(),
     );
-    String score = RemoveLeadingZeros.removeLeadingZeros(markController.text);
+
+    String score = LeadingZeros.remove(markController.text);
     if (score.isEmpty) score = '0';
+
     RestAPIPost.postMarks(
       studentId,
       score,

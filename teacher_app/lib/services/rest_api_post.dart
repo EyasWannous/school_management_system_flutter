@@ -109,12 +109,6 @@ class RestAPIPost {
       http.StreamedResponse response = await request.send();
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // Get.snackbar(
-        //   'Snackbar Example', // Title
-        //   response.reasonPhrase ?? ' asas ', // Message
-        //   snackPosition: SnackPosition.BOTTOM, // Position of the snackbar
-        //   duration: const Duration(seconds: 3),
-        // );
         // //log('postAttendanceStudents :');
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
@@ -127,7 +121,7 @@ class RestAPIPost {
         String messageInSncak =
             jsonDecode(await response.stream.bytesToString())['message'];
         MySnackBar.showSnackBar(message: messageInSncak);
-        MySnackBar.showSnackBar(message: 'Check your internet connection');
+        // MySnackBar.showSnackBar(message: 'Check your internet connection');
       }
     } catch (error) {
       MySnackBar.showSnackBar(message: 'Check your internet connection');
@@ -143,9 +137,6 @@ class RestAPIPost {
     for (var section in list) {
       if (section.isSelected!) jsonList.add(section.id);
     }
-    // = list.map((student) {
-    //   if (student.isSelected!) return student.id!;
-    // }).toList();
     // //log(jsonList);
 
     List<Map<String, int>> jsonObject = [];

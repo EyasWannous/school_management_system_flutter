@@ -136,11 +136,10 @@ class StudentsAttendance extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                              ), // Image of student
+                              ),
                               title: Text(item.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium), // name fo students
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                               subtitle: Text(
                                 'absence: ${item.numberOfDays}',
                               ),

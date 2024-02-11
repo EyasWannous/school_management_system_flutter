@@ -55,9 +55,9 @@ class Students extends StatelessWidget {
                                 'assets/images/photo_2023-08-08_16-46-20.jpg');
                           },
                         ),
-                      ), // Image of student
+                      ),
                       title: Text(
-                          '${item.firstName!} ${item.middleName!} ${item.lastName!}'), // name fo students
+                          '${item.firstName!} ${item.middleName!} ${item.lastName!}'),
                       trailing:
                           const Icon(Icons.arrow_forward), // may be arrow icon
                       // subtitle: Row(

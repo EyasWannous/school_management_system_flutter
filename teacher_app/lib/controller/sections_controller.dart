@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:teacher_app/model/grade_model.dart';
 
@@ -9,7 +7,7 @@ import '../services/rest_api_get.dart';
 class SectionsController extends GetxController {
   String selectedValue = '9th grade';
   List<String> dropdownItems = ['9th grade'];
-  List<Grade> lg = [];
+  List<Grade> grades = [];
   List<Section> numberOfClassesInGrade = [];
   bool isLoading = false;
 
@@ -21,17 +19,17 @@ class SectionsController extends GetxController {
   }
 
   fetchGradesData() async {
-    lg = await RestAPIGet.getgrades();
-    // log('lg');
-    // log(lg);
-    if (lg.isEmpty) {
+    grades = await RestAPIGet.getgrades();
+    // log('grades');
+    // log(grades);
+    if (grades.isEmpty) {
       dropdownItems = ["it's Empty"];
       selectedValue = dropdownItems[0];
       update();
       return;
     }
     dropdownItems.clear();
-    for (var element in lg) {
+    for (var element in grades) {
       dropdownItems.add(element.name!);
     }
     selectedValue = dropdownItems[0];
@@ -43,12 +41,12 @@ class SectionsController extends GetxController {
     update();
 
     numberOfClassesInGrade.clear();
-    Grade grade = lg.firstWhere(
+    Grade grade = grades.firstWhere(
       (element) => element.name == selectedValue,
       orElse: () => Grade(),
     );
-    log('grade.id');
-    log('${grade.id}');
+    // log('grade.id');
+    // log('${grade.id}');
     numberOfClassesInGrade = await RestAPIGet.getsections('${grade.id}');
 
     isLoading = false;

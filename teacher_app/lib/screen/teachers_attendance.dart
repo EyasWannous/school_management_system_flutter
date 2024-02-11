@@ -99,8 +99,8 @@ class TeachersAttendance extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                              ), // Image of student
-                              title: Text(item.name), // name fo students
+                              ),
+                              title: Text(item.name),
                               subtitle: Text('${item.numberOfDays}'),
                               selected: item.isAttendanceToday,
                               shape: RoundedRectangleBorder(

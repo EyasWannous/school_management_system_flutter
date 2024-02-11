@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:teacher_app/model/posts_by_section_model.dart';
 import 'package:teacher_app/services/rest_api_post.dart';
@@ -37,7 +35,7 @@ class ShowPostsController extends GetxController {
 
   deletePost(PostsTS deletedPost, String id) async {
     bool isDeleted = await RestAPIPost.postDelete(id);
-    log('$isDeleted');
+    // log('$isDeleted');
     if (isDeleted) {
       // int ind = posts.indexOf(deletedPost);
       // log(posts[ind].id);
