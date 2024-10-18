@@ -71,37 +71,37 @@ class LigthTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        elevation: MaterialStateProperty.all(10),
-        shadowColor: MaterialStateProperty.all(Colors.black),
-        backgroundColor: MaterialStateProperty.all(MyColors.royalBlue),
-        foregroundColor: MaterialStateProperty.all(MyColors.soLightBlue),
+        elevation: WidgetStateProperty.all(10),
+        shadowColor: WidgetStateProperty.all(Colors.black),
+        backgroundColor: WidgetStateProperty.all(MyColors.royalBlue),
+        foregroundColor: WidgetStateProperty.all(MyColors.soLightBlue),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(MyColors.soLightBlue),
-        backgroundColor: MaterialStateProperty.all<Color>(MyColors.royalBlue),
-        overlayColor: MaterialStateProperty.all<Color>(
+        foregroundColor: WidgetStateProperty.all<Color>(MyColors.soLightBlue),
+        backgroundColor: WidgetStateProperty.all<Color>(MyColors.royalBlue),
+        overlayColor: WidgetStateProperty.all<Color>(
           MyColors.milkyWhite.withOpacity(0.3),
         ),
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(
             vertical: 12.0,
             horizontal: 24.0,
           ),
         ),
-        textStyle: MaterialStateProperty.all<TextStyle>(
+        textStyle: WidgetStateProperty.all<TextStyle>(
           TextStyle(
             fontSize: 16.sp,
             color: MyColors.milkyWhite,
           ),
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),

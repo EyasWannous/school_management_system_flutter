@@ -12,28 +12,28 @@ class Courses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: white,
-        appBar: AppBar(
-          title: Text("8".tr),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: InkWell(
-                onTap: () => Get.toNamed('/notify'),
-                child: SizedBox(
-                  height: 35,
-                  width: 35,
-                  child: Image.asset("assets/icons/bell (1).png"),
-                ),
+      backgroundColor: white,
+      appBar: AppBar(
+        title: Text("8".tr),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: InkWell(
+              onTap: () => Get.toNamed('/notify'),
+              child: SizedBox(
+                height: 35,
+                width: 35,
+                child: Image.asset("assets/icons/bell (1).png"),
               ),
-            )
-          ],
-        ),
-        extendBody: true,
-        body:
-            //   coursescontroller.isLoading?Center(child: CircularProgressIndicator(),):
-            GetBuilder<CoursesController>(
-          builder: ((coursescontroller) => ListView.builder(
+            ),
+          )
+        ],
+      ),
+      extendBody: true,
+      body:
+          //   coursescontroller.isLoading?Center(child: CircularProgressIndicator(),):
+          GetBuilder<CoursesController>(
+        builder: ((coursescontroller) => ListView.builder(
               scrollDirection: Axis.vertical,
               // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               //   maxCrossAxisExtent: 400,
@@ -83,7 +83,9 @@ class Courses extends StatelessWidget {
                     log("jfjf");
                   },
                 );
-              })),
-        ));
+              },
+            )),
+      ),
+    );
   }
 }

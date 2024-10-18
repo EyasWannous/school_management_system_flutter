@@ -152,7 +152,7 @@ class Test extends StatelessWidget {
                         Expanded(
                           child: InkWell(
                             borderRadius: BorderRadius.circular(10),
-                            overlayColor: MaterialStateProperty.all<Color>(
+                            overlayColor: WidgetStateProperty.all<Color>(
                                 const Color.fromRGBO(143, 148, 251, 1)
                                     .withOpacity(0.3)),
                             onTap: () {},
@@ -186,7 +186,7 @@ class Test extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(10),
                             onTap: () {},
-                            overlayColor: MaterialStateProperty.all<Color>(
+                            overlayColor: WidgetStateProperty.all<Color>(
                                 const Color.fromRGBO(143, 148, 251, 1)
                                     .withOpacity(0.3)),
                             child: Ink(

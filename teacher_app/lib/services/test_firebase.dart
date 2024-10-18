@@ -12,7 +12,7 @@ class FireNotificationConfig {
   final _androidchannel = const AndroidNotificationChannel(
     'high_importance_channel',
     'High Importance Notification',
-    description: "This channel is used for important Notifications",
+    description: "This channel is used for Notifications",
     importance: Importance.defaultImportance,
   );
 

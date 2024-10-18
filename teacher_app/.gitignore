@@ -45,3 +45,7 @@ app.*.map.json
 
 # dotenv
 *.env
+
+# Google Services
+android/app/google-services.json
+.fake

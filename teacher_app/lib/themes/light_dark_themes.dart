@@ -18,20 +18,20 @@ class LightDarkTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(MyColors.soLightBlue),
-        backgroundColor: MaterialStateProperty.all<Color>(MyColors.royalBlue),
-        overlayColor: MaterialStateProperty.all<Color>(
+        foregroundColor: WidgetStateProperty.all<Color>(MyColors.soLightBlue),
+        backgroundColor: WidgetStateProperty.all<Color>(MyColors.royalBlue),
+        overlayColor: WidgetStateProperty.all<Color>(
             MyColors.milkyWhite.withOpacity(0.3)),
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(
             vertical: 12.0,
             horizontal: 24.0,
           ),
         ),
-        textStyle: MaterialStateProperty.all<TextStyle>(
+        textStyle: WidgetStateProperty.all<TextStyle>(
           const TextStyle(fontSize: 20),
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),

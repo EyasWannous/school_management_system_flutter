@@ -209,14 +209,12 @@ class LoginparentState extends State<LoginParent> {
                   width: 300.w,
                   child: ElevatedButton(
                       style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              BeveledRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3))),
-                          elevation: MaterialStateProperty.all(10),
-                          shadowColor: MaterialStateProperty.all(Colors.black),
-                          backgroundColor: MaterialStateProperty.all(darkblue),
-                          foregroundColor:
-                              MaterialStateProperty.all(lightblue)),
+                          shape: WidgetStateProperty.all(BeveledRectangleBorder(
+                              borderRadius: BorderRadius.circular(3))),
+                          elevation: WidgetStateProperty.all(10),
+                          shadowColor: WidgetStateProperty.all(Colors.black),
+                          backgroundColor: WidgetStateProperty.all(darkblue),
+                          foregroundColor: WidgetStateProperty.all(lightblue)),
                       onPressed: () {
                         setState(() {
                           // loginData();
@@ -246,8 +244,7 @@ class LoginparentState extends State<LoginParent> {
                       ),
                       TextButton(
                           style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all(darkblue),
+                            foregroundColor: WidgetStateProperty.all(darkblue),
                           ),
                           child: const Text(
                             "website",
